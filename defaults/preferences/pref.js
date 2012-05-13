@@ -1,4 +1,4 @@
-//	Author: Robert Byrne (bobbyrne01@gmail.com)
+//	Author: Robert Byrne
 //	Copyright 2012
 
 pref("extensions.highlightedtexttofile.fileName", 'HighlightedText');
