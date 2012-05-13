@@ -1,0 +1,32 @@
+<?xml version="1.0"?>  
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>  
+
+<prefwindow 
+	id		= "highlightedTextToFile-prefs"  
+	title	= "Highlighted text to file settings"
+    xmlns	= "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+   
+	<prefpane label="Highlighted Text to File settings" align="center">  
+		<preferences>  
+			<preference id="highlighted-text-to-file-fileName" name="extensions.highlightedtexttofile.fileName" type="string"/>  
+			<preference id="highlighted-text-to-file-timestamp" name="extensions.highlightedtexttofile.timestamp" type="bool"/>  
+			<preference id="highlighted-text-to-file-pathToFile" name="extensions.highlightedtexttofile.pathToFile" type="string"/>  
+	  	</preferences>  
+	   
+	   <hbox align="center">  
+			<label control="fileName" value="File name: "/>
+			<textbox id="fileName" preference="highlighted-text-to-file-fileName"/>
+		</hbox>
+	   <hbox align="center">  
+			<label control="timestamp" value="Include timestamp in filename? "/>
+			<checkbox id="timestamp" preference="highlighted-text-to-file-timestamp"/>
+		</hbox>
+	  	<hbox align="center">  
+			<label control="pathToFile" value="Directory to save files: "/>
+			<textbox id="pathToFile" readonly="true" preference="highlighted-text-to-file-pathToFile"/>
+			<button label="Change directory" oncommand="HighlightedTextToFile.selectDir();"/>
+	  	</hbox>
+	</prefpane> 
+	
+	<script type="application/javascript" src="options.js"/>
+</prefwindow>

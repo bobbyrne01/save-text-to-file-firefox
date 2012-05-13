@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://highlightedtexttofile/locale/en-US/overlay.dtd">
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">  
+	<popup id="contentAreaContextMenu">
+		<script type="application/javascript" src="chrome://highlightedtexttofile/content/overlay.js"/>
+		<menuitem id="saveToFile" label="Save to File" oncommand="HighlightedTextToFile.run();"/>
+	</popup>
+</overlay>  
+
+
