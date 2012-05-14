@@ -18,7 +18,9 @@ var HighlightedTextToFile = {
 			
 				// check if a path to saved file has been set in user preferences
 				var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-				var userPrefPathToFile = prefManager.getCharPref("extensions.highlightedtexttofile.pathToFile");
+				var userPrefPathToFile = prefManager.getComplexValue("extensions.highlightedtexttofile.pathToFile",
+						Components.interfaces.nsISupportsString).data;
+
 				if (userPrefPathToFile === ""){
 				
 					// Save file in user's home directory (No preference specified)
@@ -46,7 +48,9 @@ var HighlightedTextToFile = {
 					date = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds() + "-" + date;
 				}
 	
-				return prefManager.getCharPref("extensions.highlightedtexttofile.fileName") + "--" + date + ".txt";
+				var fileName = prefManager.getComplexValue("extensions.highlightedtexttofile.fileName",
+						Components.interfaces.nsISupportsString).data;
+				return fileName + "--" + date + ".txt";
 			},
 			
 			// @param string - Path to saved file
