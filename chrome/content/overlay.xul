@@ -7,8 +7,8 @@
       type="application/javascript" 
       src="chrome://highlightedtexttofile/content/overlay.js"/>
 	<menuitem 
-	  id="saveToFile" 
-	  label="Save to File" 
+	  id="saveTextToFile" 
+	  label="Save Text to File" 
 	  oncommand="HighlightedTextToFile.run();"/>
   </popup>
   
@@ -21,7 +21,7 @@
   }
 
   function contextClicked() {
-    var menuitem = document.getElementById("saveToFile");
+    var menuitem = document.getElementById("saveTextToFile");
 
     if(menuitem)
       menuitem.hidden = !gContextMenu.isTextSelected;
