@@ -4,12 +4,11 @@
 var HighlightedTextToFile = {
   run: function() {
     
-    //declare local varibles/functions
+    //declare local variables/functions
     function getSelText() {
       var focusedWindow = document.commandDispatcher.focusedWindow;
-	  var selText = focusedWindow.getSelection();
 
-	  return selText.toString();
+	  return focusedWindow.getSelection().toString();
     }
     
     var FileManager = {
@@ -26,7 +25,7 @@ var HighlightedTextToFile = {
 				
 		  // Save file in user's home directory (No preference specified)
 		  var dirService = Components.classes["@mozilla.org/file/directory_service;1"]
-		                                  .getService(Components.interfaces.nsIProperties);   
+		                                   .getService(Components.interfaces.nsIProperties);   
 		  var homeDirFile = dirService.get("Home", Components.interfaces.nsIFile); // returns an nsIFile object
 		  var pathToFile = homeDirFile.path;
 		}else{
@@ -71,15 +70,17 @@ var HighlightedTextToFile = {
 		try{
 		  file.initWithPath(fullPathToFile);
 		  if (file.exists() == false)
-		    file.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
-		    
-		  var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
-				  							.createInstance( Components.interfaces.nsIFileOutputStream );
+		    file.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 
-		  outputStream.init(file, 0x04 | 0x08 | 0x20, 420, 0);
-		  var output = selectedText;
-	      var result = outputStream.write(output, output.length);
-		  outputStream.close();
+		  var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
+				  							 .createInstance(Components.interfaces.nsIFileOutputStream);
+		  var converter = Components.classes["@mozilla.org/intl/converter-output-stream;1"]
+                                          .createInstance(Components.interfaces.nsIConverterOutputStream);
+	      outputStream.init(file, 0x04 | 0x08 | 0x20, 420, 0);
+	 
+          converter.init(outputStream, "UTF-8", 0, 0);
+          converter.writeString(selectedText);
+          converter.close();
 					
 		  return true;
 		} catch (e){
