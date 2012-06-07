@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <overlay 
-  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">  
+  xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">  
   <popup 
-    id="contentAreaContextMenu">
+    id = "contentAreaContextMenu">
     <script 
-      type="application/javascript" 
-      src="chrome://highlightedtexttofile/content/overlay.js"/>
+      type = "application/javascript" 
+      src  = "chrome://highlightedtexttofile/content/overlay.js"/>
 	<menuitem 
-	  id="saveTextToFile" 
-	  label="Save Text to File" 
-	  oncommand="HighlightedTextToFile.run();"/>
+	  id        = "saveTextToFile" 
+	  label     = "Save Text to File" 
+	  oncommand = "HighlightedTextToFile.run();"/>
   </popup>
   
-  <script type="application/x-javascript">
+  <script type = "application/x-javascript">
   window.addEventListener("load", addListenerOnContextClick, false);
 
   function addListenerOnContextClick() {

@@ -9,31 +9,39 @@
   <prefpane label="Highlighted Text to File settings" align="center">  
     <preferences>  
 	  <preference 
-	    id="highlighted-text-to-file-fileName" 
-	    name="extensions.highlightedtexttofile.fileName" 
-	    type="string"/>  
+	    id   = "highlighted-text-to-file-fileName" 
+	    name = "extensions.highlightedtexttofile.fileName" 
+	    type = "string"/>   
 	  <preference 
-	    id="highlighted-text-to-file-timestamp" 
-	    name="extensions.highlightedtexttofile.timestamp" 
-	    type="bool"/>  
+	    id   = "highlighted-text-to-file-pathToFile" 
+	    name = "extensions.highlightedtexttofile.pathToFile" 
+	    type = "string"/> 
 	  <preference 
-	    id="highlighted-text-to-file-pathToFile" 
-	    name="extensions.highlightedtexttofile.pathToFile" 
-	    type="string"/>  
+	    id   = "highlighted-text-to-file-datestamp" 
+	    name = "extensions.highlightedtexttofile.datestamp" 
+	    type = "bool"/> 
+	  <preference 
+	    id   = "highlighted-text-to-file-timestamp" 
+	    name = "extensions.highlightedtexttofile.timestamp" 
+	    type = "bool"/>  
 	</preferences>  
 	   
 	<hbox align="center">  
 	  <label control="fileName" value="File name: "/>
 	  <textbox id="fileName" preference="highlighted-text-to-file-fileName"/>
 	</hbox>
-    <hbox align="center">  
-	  <label control="timestamp" value="Include timestamp in filename? "/>
-	  <checkbox id="timestamp" preference="highlighted-text-to-file-timestamp"/>
-	</hbox>
 	<hbox align="center">  
 	  <label control="pathToFile" value="Directory to save files: "/>
 	  <textbox id="pathToFile" readonly="true" preference="highlighted-text-to-file-pathToFile"/>
 	  <button label="Change directory" oncommand="HighlightedTextToFile.selectDir();"/>
+	</hbox>
+	<hbox align="center">  
+	  <label control="datestamp" value="Include datestamp in filename? "/>
+	  <checkbox id="datestamp" preference="highlighted-text-to-file-datestamp"/>
+	</hbox>
+	<hbox align="center">  
+	  <label control="timestamp" value="Include timestamp in filename? "/>
+	  <checkbox id="timestamp" preference="highlighted-text-to-file-timestamp"/>
 	</hbox>
   </prefpane> 
 	

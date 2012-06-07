@@ -41,28 +41,34 @@ var HighlightedTextToFile = {
 	  createFileName: function() {
 		var currentTime = new Date();
 		var date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear();
+		var time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
 	
-		// check whether file name should include timestamp
+		// check whether file name should include date and/or timestamp
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
 		                                 .getService(Components.interfaces.nsIPrefBranch);
+		var datestamp = prefManager.getBoolPref("extensions.highlightedtexttofile.datestamp");
 		var timestamp = prefManager.getBoolPref("extensions.highlightedtexttofile.timestamp");
-		if (timestamp)
-		  date = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds() + "-" + date;
-	
 		var fileName = prefManager.getComplexValue("extensions.highlightedtexttofile.fileName",
 		 			                     Components.interfaces.nsISupportsString).data;
-		return fileName + "--" + date + ".txt";
+		
+		if (datestamp)
+		  fileName += "--" + date;
+			
+		if (timestamp)
+		  fileName += "--" + time;
+	
+		return fileName + ".txt";
 	  },
 			
       // @param string - Path to saved file
 	  // @param string - Text to be saved to file
 	  // @return boolean - Whether file has been saved successfully or not
-	  writeFileToOS: function(homeDirectory, fileName, selectedText) {
+	  writeFileToOS: function(saveDirectory, fileName, selectedText) {
 		
 	    var fileSeparator ="/";
 		if (navigator.appVersion.indexOf("Win")!=-1) fileSeparator = "\\"
 
-		var fullPathToFile = homeDirectory + fileSeparator + fileName;
+		var fullPathToFile = saveDirectory + fileSeparator + fileName;
 		var file = Components.classes["@mozilla.org/file/local;1"]
 				                   .createInstance(Components.interfaces.nsILocalFile);
 				
@@ -110,16 +116,16 @@ var HighlightedTextToFile = {
 	} 
 	
 	//main() like section
-    var homeDirectory = FileManager.getPathToFile();
+    var saveDirectory = FileManager.getPathToFile();
 	var fileName = FileManager.createFileName();
 	var selectedText = getSelText();
 		
 	var nb = gBrowser.getNotificationBox();
-   	if (FileManager.writeFileToOS(homeDirectory, fileName, selectedText)){
-   	  informUser("Text saved to \x22" + homeDirectory + "/" + fileName + "\x22", nb.PRIORITY_INFO_HIGH);
+   	if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText)){
+   	  informUser("Text saved to \x22" + saveDirectory + "/" + fileName + "\x22", nb.PRIORITY_INFO_HIGH);
    	}else{
    	  informUser(
-   			"Could not save text to \x22" + homeDirectory + "/" + fileName + "\x22, Please check you have specified a valid save path which you have write access to in Highlighted Text To File's preferences",
+   			"Could not save text to \x22" + saveDirectory + "/" + fileName + "\x22, Please check you have specified a valid save path which you have write access to in Highlighted Text To File's preferences",
    			nb.PRIORITY_WARNING_HIGH);
     }
   },
