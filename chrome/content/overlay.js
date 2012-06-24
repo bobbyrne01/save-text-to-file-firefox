@@ -5,12 +5,6 @@ var HighlightedTextToFile = {
   run: function() {
     
     //declare local variables/functions
-    function getSelText() {
-      var focusedWindow = document.commandDispatcher.focusedWindow;
-
-	  return focusedWindow.getSelection().toString();
-    }
-    
     var FileManager = {
       // @returns string - Path to saved file
 	  getPathToFile: function() {
@@ -94,6 +88,14 @@ var HighlightedTextToFile = {
 		}
 	  },
     };
+    
+    // @return bool - Whether to 'Save' or 'Cancel' preference updates
+    function showPreferences() {
+      var returnValue = { save: null };
+      window.openDialog("chrome://highlightedtexttofile/content/showPreferences.xul", "", "centerscreen,modal", returnValue);
+      
+      return returnValue.save;
+    }
 		
 	// @return string - Currently highlighted text in web browser
 	function getSelText() {
@@ -112,21 +114,37 @@ var HighlightedTextToFile = {
 				          null,
 				          msgPriority,
 				          null);
+      
+      // Check if notification exists after 10 seconds, if so, remove it
 	  setTimeout(function() { if (nb.getNotificationWithValue(box.value) instanceof XULElement){nb.removeNotification(box);} }, 10000);
 	} 
 	
+	
+	
 	//main() like section
-    var saveDirectory = FileManager.getPathToFile();
-	var fileName = FileManager.createFileName();
-	var selectedText = getSelText();
-		
-	var nb = gBrowser.getNotificationBox();
-   	if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText)){
-   	  informUser("Text saved to \x22" + saveDirectory + "/" + fileName + "\x22", nb.PRIORITY_INFO_HIGH);
-   	}else{
-   	  informUser(
+	var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
+		                             .getService(Components.interfaces.nsIPrefBranch);
+    var nb = gBrowser.getNotificationBox();
+    var save = true;
+		                             
+	var showPref = prefManager.getBoolPref("extensions.highlightedtexttofile.showPreferences");
+	if (showPref)
+	  var save = showPreferences();
+	
+	if (save){
+      var saveDirectory = FileManager.getPathToFile();
+	  var fileName = FileManager.createFileName();
+	  var selectedText = getSelText();
+	
+   	  if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText)){
+   	    informUser("Text saved to \x22" + saveDirectory + "/" + fileName + "\x22", nb.PRIORITY_INFO_HIGH);
+   	  }else{
+   	    informUser(
    			"Could not save text to \x22" + saveDirectory + "/" + fileName + "\x22, Please check you have specified a valid save path which you have write access to in Highlighted Text To File's preferences",
    			nb.PRIORITY_WARNING_HIGH);
+      }
+    }else{
+      informUser("\x22Save Text to File\x22 and preference updates were canceled", nb.PRIORITY_INFO_HIGH);
     }
   },
 };

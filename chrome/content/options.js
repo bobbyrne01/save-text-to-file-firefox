@@ -23,4 +23,22 @@ var HighlightedTextToFile = {
       document.getElementById('pathToFile').value = fp.file.path;
     }
   },
+  
+  setButtons: function() {
+      var buttonAccept = document.documentElement.getButton('accept');
+      buttonAccept.hidden = false;
+      buttonAccept.disabled = false;
+      buttonAccept.label = 'Save';
+      
+      var buttonCancel = document.documentElement.getButton('cancel');
+      buttonCancel.hidden = false;
+      buttonCancel.disabled = false;
+      buttonCancel.label = 'Cancel';
+   },
+   
+   updatePreferences: function(update) {
+   
+     window.arguments[0].save = update;  
+     return true;
+   },
 };

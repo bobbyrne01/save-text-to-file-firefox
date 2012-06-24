@@ -4,7 +4,11 @@
 <prefwindow 
   id             = "highlightedTextToFile-prefs"  
   title	         = "Highlighted Text to File preferences"
-  xmlns	         = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  xmlns	         = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  buttons        = "accept,cancel"
+  onload         = "HighlightedTextToFile.setButtons();"
+  ondialogaccept = "return HighlightedTextToFile.updatePreferences(true);"
+  ondialogcancel = "return HighlightedTextToFile.updatePreferences(false);">
    
   <prefpane label="Highlighted Text to File settings" align="center">  
     <preferences>  
@@ -46,6 +50,7 @@
 	    control = "fileName" 
 	    value   = "Saved file name:"/>
 	  <textbox
+	    align = "right"
 	    id         = "fileName" 
 	    preference = "highlighted-text-to-file-fileName"/>
 	</hbox>
