@@ -1,0 +1,7 @@
+<!ENTITY	windowTitle.label		"設定をファイルにハイライトされたテキスト">
+<!ENTITY	showPreferences.label	"オープン時設定]ダイアログ &quot;ファイルにテキストを保存する&quot; クリックされた?">
+<!ENTITY	fileName.label			"保存したファイル名">
+<!ENTITY	pathToFile.label		"ファイルを保存するディレクトリ">
+<!ENTITY	changeDirectory.label	"ディレクトリを変更する">
+<!ENTITY	datestamp.label			"保存したファイル名に日付スタンプが含まれてい?">
+<!ENTITY	timestamp.label			"保存したファイル名にタイムスタンプを含める?">

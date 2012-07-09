@@ -1,0 +1,7 @@
+<!ENTITY	windowTitle.label		"Podświetlony tekst do pliku preferencji">
+<!ENTITY	showPreferences.label	"Otwórz preferencje okno gdy &quot;Zapisz tekst do pliku&quot; kliknięciu?">
+<!ENTITY	fileName.label			"Zapisana nazwa pliku">
+<!ENTITY	pathToFile.label		"Katalog do zapisywania plików">
+<!ENTITY	changeDirectory.label	"Zmień katalog">
+<!ENTITY	datestamp.label			"Dołącz datestamp w nazwie pliku zapisanego?">
+<!ENTITY	timestamp.label			"Dołącz znacznika czasu zapisanego w nazwie pliku?">

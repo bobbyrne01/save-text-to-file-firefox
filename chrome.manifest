@@ -1,5 +1,13 @@
 # Author: Robert Byrne
 # Copyright 2012
 
-content highlightedtexttofile chrome/content/
-overlay chrome://browser/content/browser.xul chrome://highlightedtexttofile/content/overlay.xul
+content	highlightedtexttofile 					chrome/content/
+overlay	chrome://browser/content/browser.xul	chrome://highlightedtexttofile/content/overlay.xul
+locale	highlightedtexttofile 					en-US			chrome/locale/en-US/
+locale	highlightedtexttofile 					en-GB			chrome/locale/en-GB/
+locale	highlightedtexttofile 					es-ES			chrome/locale/es-ES/
+locale	highlightedtexttofile 					fr				chrome/locale/fr/
+locale	highlightedtexttofile 					de				chrome/locale/de/
+locale	highlightedtexttofile 					ja				chrome/locale/ja/
+locale	highlightedtexttofile 					zh-CH			chrome/locale/zh-CH/
+locale	highlightedtexttofile 					pl				chrome/locale/pl/

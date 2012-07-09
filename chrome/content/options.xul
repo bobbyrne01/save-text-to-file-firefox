@@ -1,12 +1,18 @@
 <?xml version="1.0"?>  
-<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>  
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE highlightedtexttofileDTD SYSTEM "chrome://highlightedtexttofile/locale/options.dtd">  
 
 <prefwindow 
   id             = "highlightedTextToFile-prefs"  
-  title	         = "Highlighted Text to File preferences"
-  xmlns	         = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  title	         = "&windowTitle.label;"
+  xmlns	         = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  onload         = "HighlightedTextToFile.setButtons();">
+  
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="highlightedtexttofile-options-string-bundle" src="chrome://highlightedtexttofile/locale/options.properties"/>
+  </stringbundleset>
    
-  <prefpane label="Highlighted Text to File settings" align="center">  
+  <prefpane label="&windowTitle.label;" align="center">  
     <preferences>  
       <preference 
 	    id   = "highlighted-text-to-file-showPreferences" 
@@ -35,7 +41,7 @@
 	  <label 
 	    flex="1"
 	    control = "showPreferences" 
-	    value   = "Open preferences dialog when &quot;Save Text to File&quot; is clicked?"/>
+	    value   = "&showPreferences.label;"/>
 	  <checkbox 
 	    id         = "showPreferences" 
 	    preference = "highlighted-text-to-file-showPreferences"/>
@@ -44,7 +50,7 @@
 	  <label 
 	    flex="1"
 	    control = "fileName" 
-	    value   = "Saved file name:"/>
+	    value   = "&fileName.label;"/>
 	  <textbox
 	    id         = "fileName" 
 	    preference = "highlighted-text-to-file-fileName"/>
@@ -53,20 +59,20 @@
 	  <label 
 	    flex="1"
 	    control = "pathToFile" 
-	    value   = "Directory to save files:"/>
+	    value   = "&pathToFile.label;"/>
 	  <textbox 
 	    id         = "pathToFile" 
 	    readonly   = "true" 
 	    preference = "highlighted-text-to-file-pathToFile"/>
 	  <button 
-	    label     = "Change directory" 
+	    label     = "&changeDirectory.label;" 
 	    oncommand = "HighlightedTextToFile.selectDir();"/>
 	</hbox>
 	<hbox>  
 	  <label 
 	    flex="1"
 	    control = "datestamp" 
-	    value   = "Include datestamp in saved file name?"/>
+	    value   = "&datestamp.label;"/>
 	  <checkbox 
 	    id         = "datestamp" 
 	    preference = "highlighted-text-to-file-datestamp"/>
@@ -75,7 +81,7 @@
 	  <label 
 	    flex="1"
 	    control = "timestamp" 
-	    value   = "Include timestamp in saved file name?"/>
+	    value   = "&timestamp.label;"/>
 	  <checkbox 
 	    id         = "timestamp" 
 	    preference = "highlighted-text-to-file-timestamp"/>

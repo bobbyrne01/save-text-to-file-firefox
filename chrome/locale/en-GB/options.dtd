@@ -1,0 +1,7 @@
+<!ENTITY	windowTitle.label		"Highlighted Text to File preferences">
+<!ENTITY	showPreferences.label	"Open preferences dialog when &quot;Save Text to File&quot; is clicked?">
+<!ENTITY	fileName.label			"Saved file name">
+<!ENTITY	pathToFile.label		"Directory to save files">
+<!ENTITY	changeDirectory.label	"Change directory">
+<!ENTITY	datestamp.label			"Include datestamp in saved file name?">
+<!ENTITY	timestamp.label			"Include timestamp in saved file name?">

@@ -1,0 +1,7 @@
+<!ENTITY	windowTitle.label		"Markierten Text in Datei-Vorlieben">
+<!ENTITY	showPreferences.label	"Open-Voreinstellungen, wenn &quot;Text in Datei speichern&quot; geklickt wird?">
+<!ENTITY	fileName.label			"Gespeichert Dateinamen">
+<!ENTITY	pathToFile.label		"Verzeichnis zum Speichern von Dateien">
+<!ENTITY	changeDirectory.label	"ändern Sie das Verzeichnis">
+<!ENTITY	datestamp.label			"Fügen Sie Datumsstempel in Dateinamen gespeichert?">
+<!ENTITY	timestamp.label			"Include Zeitstempel gespeichert in Dateinamen?">

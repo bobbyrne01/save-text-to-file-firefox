@@ -1,0 +1,7 @@
+<!ENTITY	windowTitle.label		"El texto resaltado al archivo de preferencias">
+<!ENTITY	showPreferences.label	"Preferencias de diálogo Abrir cuando &quot;Guardar texto en archivo&quot; se hace clic en?">
+<!ENTITY	fileName.label			"Nombre del archivo guardado">
+<!ENTITY	pathToFile.label		"Directorio para guardar archivos">
+<!ENTITY	changeDirectory.label	"Cambie el directorio">
+<!ENTITY	datestamp.label			"Incluye marca de fecha en el nombre del archivo guardado?">
+<!ENTITY	timestamp.label			"Incluya fecha y hora en el nombre de archivo guardado?">

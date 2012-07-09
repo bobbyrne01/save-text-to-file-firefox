@@ -11,15 +11,15 @@ var HighlightedTextToFile = {
 			
 		// check if a path to saved file has been set in user preferences
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
-		                                  .getService(Components.interfaces.nsIPrefBranch);
+		                                     .getService(Components.interfaces.nsIPrefBranch);
 		var userPrefPathToFile = prefManager.getComplexValue("extensions.highlightedtexttofile.pathToFile",
-						                          Components.interfaces.nsISupportsString).data;
+						                                      Components.interfaces.nsISupportsString).data;
 
 		if (userPrefPathToFile === ""){
 				
 		  // Save file in user's home directory (No preference specified)
 		  var dirService = Components.classes["@mozilla.org/file/directory_service;1"]
-		                                   .getService(Components.interfaces.nsIProperties);   
+		                                      .getService(Components.interfaces.nsIProperties);   
 		  var homeDirFile = dirService.get("Home", Components.interfaces.nsIFile); // returns an nsIFile object
 		  var pathToFile = homeDirFile.path;
 		}else{
@@ -39,11 +39,11 @@ var HighlightedTextToFile = {
 	
 		// check whether file name should include date and/or timestamp
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
-		                                 .getService(Components.interfaces.nsIPrefBranch);
+		                                     .getService(Components.interfaces.nsIPrefBranch);
 		var datestamp = prefManager.getBoolPref("extensions.highlightedtexttofile.datestamp");
 		var timestamp = prefManager.getBoolPref("extensions.highlightedtexttofile.timestamp");
 		var fileName = prefManager.getComplexValue("extensions.highlightedtexttofile.fileName",
-		 			                     Components.interfaces.nsISupportsString).data;
+		 			                                Components.interfaces.nsISupportsString).data;
 		
 		if (datestamp)
 		  fileName += "--" + date;
@@ -64,7 +64,7 @@ var HighlightedTextToFile = {
 
 		var fullPathToFile = saveDirectory + fileSeparator + fileName;
 		var file = Components.classes["@mozilla.org/file/local;1"]
-				                   .createInstance(Components.interfaces.nsILocalFile);
+				                      .createInstance(Components.interfaces.nsILocalFile);
 				
 		// Check file is being stored with a valid directory and name
 		try{
@@ -73,9 +73,9 @@ var HighlightedTextToFile = {
 		    file.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 
 		  var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
-				  							 .createInstance(Components.interfaces.nsIFileOutputStream);
+				  							    .createInstance(Components.interfaces.nsIFileOutputStream);
 		  var converter = Components.classes["@mozilla.org/intl/converter-output-stream;1"]
-                                          .createInstance(Components.interfaces.nsIConverterOutputStream);
+                                             .createInstance(Components.interfaces.nsIConverterOutputStream);
 	      outputStream.init(file, 0x04 | 0x08 | 0x20, 420, 0);
 	 
           converter.init(outputStream, "UTF-8", 0, 0);
@@ -123,7 +123,9 @@ var HighlightedTextToFile = {
 	
 	//main() like section
 	var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
-		                             .getService(Components.interfaces.nsIPrefBranch);
+		                                 .getService(Components.interfaces.nsIPrefBranch);
+    var stringsBundle = document.getElementById("highlightedtexttofile-overlay-string-bundle");
+    var cancelSave = stringsBundle.getString('cancelSave');
     var nb = gBrowser.getNotificationBox();
     var save = true;
 		                             
@@ -135,16 +137,19 @@ var HighlightedTextToFile = {
       var saveDirectory = FileManager.getPathToFile();
 	  var fileName = FileManager.createFileName();
 	  var selectedText = getSelText();
+	  
+	  var saveComplete = stringsBundle.getFormattedString('saveComplete', 
+                                                         [saveDirectory, fileName]);
+      var saveError = stringsBundle.getFormattedString('saveError', 
+                                                       [saveDirectory, fileName]);
 	
-   	  if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText)){
-   	    informUser("Text saved to \x22" + saveDirectory + "/" + fileName + "\x22", nb.PRIORITY_INFO_HIGH);
-   	  }else{
-   	    informUser(
-   			"Could not save text to \x22" + saveDirectory + "/" + fileName + "\x22, Please check you have specified a valid save path which you have write access to in Highlighted Text To File's preferences",
-   			nb.PRIORITY_WARNING_HIGH);
-      }
+   	  if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText))
+   	    informUser(saveComplete, nb.PRIORITY_INFO_HIGH);
+   	  else
+   	    informUser(saveError, nb.PRIORITY_WARNING_HIGH);
+      
     }else{
-      informUser("\x22Save Text to File\x22 and preference updates were canceled", nb.PRIORITY_INFO_HIGH);
+      informUser(cancelSave, nb.PRIORITY_INFO_HIGH);
     }
   },
 };
