@@ -7,9 +7,9 @@
   title	         = "&windowTitle.label;"
   xmlns	         = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   buttons        = "accept,cancel"
-  onload         = "HighlightedTextToFile.setButtons();"
-  ondialogaccept = "return HighlightedTextToFile.updatePreferences(true);"
-  ondialogcancel = "return HighlightedTextToFile.updatePreferences(false);">
+  onload         = "HighlightedTextToFile_Options.setButtons();"
+  ondialogaccept = "return HighlightedTextToFile_Options.updatePreferences(true);"
+  ondialogcancel = "return HighlightedTextToFile_Options.updatePreferences(false);">
   
   <stringbundleset id="stringbundleset">
     <stringbundle id="highlightedtexttofile-options-string-bundle" src="chrome://highlightedtexttofile/locale/options.properties"/>
@@ -36,13 +36,17 @@
 	  <preference 
 	    id   = "highlighted-text-to-file-timestamp" 
 	    name = "extensions.highlightedtexttofile.timestamp" 
-	    type = "bool"/>  
+	    type = "bool"/> 
+	  <preference 
+	    id   = "highlighted-text-to-file-saveMode" 
+	    name = "extensions.highlightedtexttofile.saveMode" 
+	    type = "int"/> 
 	</preferences>  
 
 	   
 	<hbox>  
 	  <label 
-	    flex="1"
+	    flex    = "1"
 	    control = "showPreferences" 
 	    value   = "&showPreferences.label;"/>
 	  <checkbox 
@@ -51,7 +55,7 @@
 	</hbox>
 	<hbox>  
 	  <label 
-	    flex="1"
+	    flex    = "1"
 	    control = "fileName" 
 	    value   = "&fileName.label;"/>
 	  <textbox
@@ -60,7 +64,7 @@
 	</hbox>
 	<hbox>  
 	  <label 
-	    flex="1"
+	    flex    = "1"
 	    control = "pathToFile" 
 	    value   = "&pathToFile.label;"/>
 	  <textbox 
@@ -69,11 +73,11 @@
 	    preference = "highlighted-text-to-file-pathToFile"/>
 	  <button 
 	    label     = "&changeDirectory.label;" 
-	    oncommand = "HighlightedTextToFile.selectDir();"/>
+	    oncommand = "HighlightedTextToFile_Options.selectDir();"/>
 	</hbox>
 	<hbox>  
 	  <label 
-	    flex="1"
+	    flex    = "1"
 	    control = "datestamp" 
 	    value   = "&datestamp.label;"/>
 	  <checkbox 
@@ -82,14 +86,34 @@
 	</hbox>
 	<hbox>  
 	  <label 
-	    flex="1"
+	    flex    = "1"
 	    control = "timestamp" 
 	    value   = "&timestamp.label;"/>
 	  <checkbox 
 	    id         = "timestamp" 
 	    preference = "highlighted-text-to-file-timestamp"/>
 	</hbox>
+	<hbox>
+	  <label
+	    flex    = "1"
+	    control = "saveMode"
+	    value   = "&saveMode.label;"/>
+	  <menulist
+	    preference = "highlighted-text-to-file-saveMode">
+	    <menupopup>
+	      <menuitem 
+	        label = "&createFile.label;" 
+	        value = "1"
+	        oncommand="HighlightedTextToFile_ShowPreferences.updateSaveMode(1)"/>
+	      <menuitem 
+	        label = "&appendFile.label;" 
+	        value = "2"
+	        oncommand="HighlightedTextToFile_ShowPreferences.updateSaveMode(2)"/>
+	    </menupopup>
+	  </menulist>
+	</hbox>
   </prefpane> 
 	
   <script type="application/javascript" src="options.js"/>
+  <script type="application/javascript" src="showPreferences.js"/>
 </prefwindow>

@@ -55,10 +55,12 @@ var HighlightedTextToFile = {
 	  },
 			
       // @param string - Path to saved file
+      // @param string - Saved file name
 	  // @param string - Text to be saved to file
+	  // @param string - Whether to create a new file or append data to existing file
 	  // @return boolean - Whether file has been saved successfully or not
-	  writeFileToOS: function(saveDirectory, fileName, selectedText) {
-		
+	  writeFileToOS: function(saveDirectory, fileName, selectedText, saveMode) {
+
 	    var fileSeparator ="/";
 		if (navigator.appVersion.indexOf("Win")!=-1) fileSeparator = "\\"
 
@@ -76,8 +78,12 @@ var HighlightedTextToFile = {
 				  							    .createInstance(Components.interfaces.nsIFileOutputStream);
 		  var converter = Components.classes["@mozilla.org/intl/converter-output-stream;1"]
                                              .createInstance(Components.interfaces.nsIConverterOutputStream);
-	      outputStream.init(file, 0x04 | 0x08 | 0x20, 420, 0);
-	 
+                            
+          if (saveMode == 1)
+            outputStream.init(file, 0x02 | 0x08 | 0x20, 420, 0);
+          else if (saveMode == 2)
+            outputStream.init(file, 0x02 | 0x10, 420, 0);
+	      
           converter.init(outputStream, "UTF-8", 0, 0);
           converter.writeString(selectedText);
           converter.close();
@@ -128,8 +134,8 @@ var HighlightedTextToFile = {
     var cancelSave = stringsBundle.getString('cancelSave');
     var nb = gBrowser.getNotificationBox();
     var save = true;
-		                             
-	var showPref = prefManager.getBoolPref("extensions.highlightedtexttofile.showPreferences");
+    var showPref = prefManager.getBoolPref("extensions.highlightedtexttofile.showPreferences");
+	
 	if (showPref)
 	  var save = showPreferences();
 	
@@ -137,13 +143,13 @@ var HighlightedTextToFile = {
       var saveDirectory = FileManager.getPathToFile();
 	  var fileName = FileManager.createFileName();
 	  var selectedText = getSelText();
-	  
 	  var saveComplete = stringsBundle.getFormattedString('saveComplete', 
                                                          [saveDirectory, fileName]);
       var saveError = stringsBundle.getFormattedString('saveError', 
                                                        [saveDirectory, fileName]);
 	
-   	  if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText))
+	  var saveMode = prefManager.getIntPref("extensions.highlightedtexttofile.saveMode");
+   	  if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText, saveMode))
    	    informUser(saveComplete, nb.PRIORITY_INFO_HIGH);
    	  else
    	    informUser(saveError, nb.PRIORITY_WARNING_HIGH);

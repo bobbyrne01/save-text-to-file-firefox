@@ -1,7 +1,7 @@
 // Author: Robert Byrne
 // Copyright 2012
 
-var HighlightedTextToFile = {
+var HighlightedTextToFile_Options = {
 
   selectDir: function() {
   

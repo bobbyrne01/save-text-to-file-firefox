@@ -5,3 +5,6 @@
 <!ENTITY	changeDirectory.label	"Zmień katalog">
 <!ENTITY	datestamp.label			"Dołącz datestamp w nazwie pliku zapisanego?">
 <!ENTITY	timestamp.label			"Dołącz znacznika czasu zapisanego w nazwie pliku?">
+<!ENTITY 	saveMode.label 			"Sposób, aby zapisać tekst?">
+<!ENTITY 	createFile.label 		"Utwórz nowy plik">
+<!ENTITY 	appendFile.label 		"Dołącz do istniejącego pliku">
