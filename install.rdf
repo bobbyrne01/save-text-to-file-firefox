@@ -7,14 +7,26 @@
 	    <em:version>1.0.8</em:version>  
 	    <em:description>Saves highlighted text to a file in a specified directory</em:description>  
 	    <em:creator>Robert Byrne</em:creator>  
-	    <em:homepageURL>http://www.bobbyrne01.blogspot.com</em:homepageURL>  
+	    <em:homepageURL>http://www.bobbyrne01.blogspot.com</em:homepageURL>
+	    
+	    <!-- Firefox -->
 	    <em:targetApplication>  
 			<Description>  
         		<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>  
         		<em:minVersion>2.0</em:minVersion>  
-        		<em:maxVersion>13.*</em:maxVersion>  
+        		<em:maxVersion>14.*</em:maxVersion>  
       		</Description>  
     	</em:targetApplication>
+    	
+    	 <!-- SeaMonkey-->
+        <em:targetApplication>
+            <Description>
+                <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+                <em:minVersion>2.0</em:minVersion>
+                <em:maxVersion>2.*</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+    	
     	<em:optionsURL>chrome://highlightedtexttofile/content/options.xul</em:optionsURL> 
   	</Description>  
 </RDF>
