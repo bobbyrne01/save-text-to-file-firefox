@@ -32,7 +32,7 @@
     var menuitem = document.getElementById("saveTextToFile");
 
     if(menuitem)
-      menuitem.hidden = !gContextMenu.isTextSelected;
+      menuitem.hidden = !gContextMenu.isTextSelected || !gContextMenu.onTextInput;
   }
   </script> 
 </overlay>
