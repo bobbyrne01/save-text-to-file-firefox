@@ -5,6 +5,7 @@
 <!ENTITY	changeDirectory.label	"Cambie el directorio">
 <!ENTITY	datestamp.label			"Incluye marca de fecha en el nombre del archivo guardado?">
 <!ENTITY	timestamp.label			"Incluya fecha y hora en el nombre de archivo guardado?">
+<!ENTITY	lineSeparator.label		"Guardar un separador de línea en el archivo antes de guardar el texto?">
 <!ENTITY	saveMode.label			"Método para guardar mensajes de texto?">
 <!ENTITY	createFile.label		"Crear un fichero nuevo">
 <!ENTITY	appendFile.label		"Anexar al archivo existente">

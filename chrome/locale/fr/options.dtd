@@ -5,6 +5,7 @@
 <!ENTITY	changeDirectory.label	"Changer le répertoire">
 <!ENTITY	datestamp.label			"Inclure horodatage au nom de fichier enregistré?">
 <!ENTITY	timestamp.label			"Inclure horodatage dans le nom du fichier sauvegardé?">
+<!ENTITY	lineSeparator.label		"Enregistrer un séparateur de ligne dans le fichier avant d'enregistrer le texte?">
 <!ENTITY	saveMode.label			"Méthode pour enregistrer le texte?">
 <!ENTITY	createFile.label		"Créer un nouveau fichier">
 <!ENTITY	appendFile.label		"Ajouter au fichier existant">

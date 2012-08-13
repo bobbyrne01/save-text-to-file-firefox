@@ -58,8 +58,9 @@ var HighlightedTextToFile = {
       // @param string - Saved file name
 	  // @param string - Text to be saved to file
 	  // @param string - Whether to create a new file or append data to existing file
+	  // @param string - Whether to save a line separator in the file before saving text
 	  // @return boolean - Whether file has been saved successfully or not
-	  writeFileToOS: function(saveDirectory, fileName, selectedText, saveMode) {
+	  writeFileToOS: function(saveDirectory, fileName, selectedText, saveMode, lineSeparator) {
 
 	    var fileSeparator ="/";
 		if (navigator.appVersion.indexOf("Win")!=-1) fileSeparator = "\\"
@@ -85,6 +86,12 @@ var HighlightedTextToFile = {
             outputStream.init(file, 0x02 | 0x10, 420, 0);
 	      
           converter.init(outputStream, "UTF-8", 0, 0);
+          
+          if (lineSeparator)
+            converter.writeString('\n\n --------------------------------------------------- \n\n');
+          else
+          	converter.writeString('\n');
+          
           converter.writeString(selectedText);
           converter.close();
 					
@@ -148,8 +155,9 @@ var HighlightedTextToFile = {
       var saveError = stringsBundle.getFormattedString('saveError', 
                                                        [saveDirectory, fileName]);
 	
+	  var lineSeparator = prefManager.getBoolPref("extensions.highlightedtexttofile.lineSeparator");
 	  var saveMode = prefManager.getIntPref("extensions.highlightedtexttofile.saveMode");
-   	  if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText, saveMode))
+   	  if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText, saveMode, lineSeparator))
    	    informUser(saveComplete, nb.PRIORITY_INFO_HIGH);
    	  else
    	    informUser(saveError, nb.PRIORITY_WARNING_HIGH);
