@@ -72,16 +72,17 @@ var HighlightedTextToFile_Main = {
 		// check whether file name should include date and/or timestamp
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
 		                                     .getService(Components.interfaces.nsIPrefBranch);
-		var datestampInLine = prefManager.getBoolPref("extensions.highlightedtexttofile.datestampInLine");
-		var timestampInLine = prefManager.getBoolPref("extensions.highlightedtexttofile.timestampInLine");
+		var currentURL = prefManager.getBoolPref("extensions.highlightedtexttofile.currentURL");
+		var datestampInLinePref = prefManager.getBoolPref("extensions.highlightedtexttofile.datestampInLine");
+		var timestampInLinePref = prefManager.getBoolPref("extensions.highlightedtexttofile.timestampInLine");
 		
 		var currentTime = new Date();
 		var date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear();
 		var time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
 		
 		var stringsBundle = document.getElementById("highlightedtexttofile-overlay-string-bundle");
-	    var datestampInLine = stringsBundle.getString('datestampInLine');
-	    var timestampInLine = stringsBundle.getString('timestampInLine');
+	    var datestampInLineString = stringsBundle.getString('datestampInLine');
+	    var timestampInLineString = stringsBundle.getString('timestampInLine');
 				
 		// Check file is being stored with a valid directory and name
 		try{
@@ -94,27 +95,37 @@ var HighlightedTextToFile_Main = {
 		  var converter = Components.classes["@mozilla.org/intl/converter-output-stream;1"]
                                              .createInstance(Components.interfaces.nsIConverterOutputStream);
                             
-          if (saveMode == 1)
+          if (saveMode == 1){
             outputStream.init(file, 0x02 | 0x08 | 0x20, 420, 0);
-          else if (saveMode == 2)
+		  }else if (saveMode == 2){
             outputStream.init(file, 0x02 | 0x10, 420, 0);
+          }
 	      
           converter.init(outputStream, "UTF-8", 0, 0);
           
-          if (lineSeparator)
+          if (lineSeparator){
             converter.writeString('\n --------------------------------------------------- \n');
-          else
+		  }else{
           	converter.writeString('\n');
+		  }
           
-          if (datestampInLine)
-              converter.writeString(datestampInLine + date + '\n');
-            else
+          if (datestampInLinePref){
+              converter.writeString(datestampInLineString + date + '\n');
+          }else{
             	converter.writeString('\n');
+		  }
           
-          if (timestampInLine)
-              converter.writeString(timestampInLine + time + '\n');
-            else
+          if (timestampInLinePref){
+              converter.writeString(timestampInLineString + time + '\n');
+          }else{
             	converter.writeString('\n');
+          }
+          
+          if (currentURL){
+              converter.writeString(window.content.location.href + '\n');
+          }else{
+            	converter.writeString('\n');
+          } 
           
           converter.writeString('\n' + selectedText);
           converter.close();
@@ -155,7 +166,6 @@ var HighlightedTextToFile_Main = {
       // Check if notification exists after 10 seconds, if so, remove it
 	  setTimeout(function() { if (nb.getNotificationWithValue(box.value) instanceof XULElement){nb.removeNotification(box);} }, 10000);
 	} 
-	
 	
 	
 	var prefManager = Components.classes["@mozilla.org/preferences-service;1"]

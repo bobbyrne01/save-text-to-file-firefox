@@ -8,6 +8,7 @@
 <!ENTITY	datestampInLine.label	"Dołącz datestamp w zapisanym pliku?">
 <!ENTITY	timestampInLine.label	"Dołącz znacznik czasu w zapisanym pliku?">
 <!ENTITY	lineSeparator.label		"Zapisz separator linii w pliku przed zapisaniem tekstu?">
+<!ENTITY	currentURL.label		"Zapisz bieżący adres URL w pliku?">
 <!ENTITY 	saveMode.label 			"Sposób, aby zapisać tekst?">
 <!ENTITY 	createFile.label 		"Utwórz nowy plik">
 <!ENTITY 	appendFile.label 		"Dołącz do istniejącego pliku">

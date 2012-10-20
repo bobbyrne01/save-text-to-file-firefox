@@ -8,6 +8,7 @@
 <!ENTITY	datestampInLine.label	"保存されたファイル内の日付スタンプを含める?">
 <!ENTITY	timestampInLine.label	"保存したファイルにタイムスタンプを含める?">
 <!ENTITY	lineSeparator.label		"テキストを保存する前にファイル内の行区切り文字を保存する?">
+<!ENTITY	currentURL.label		"ファイル内の現在のURLを保存します?">
 <!ENTITY	saveMode.label			"メソッドは、テキストを保存する?">
 <!ENTITY	createFile.label		"新しいファイルを作成します">
 <!ENTITY	appendFile.label		"既存のファイルに追加">

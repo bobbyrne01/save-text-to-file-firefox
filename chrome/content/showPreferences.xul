@@ -50,6 +50,10 @@
 	    name = "extensions.highlightedtexttofile.lineSeparator" 
 	    type = "bool"/>  
 	  <preference 
+	    id   = "highlighted-text-to-file-currentURL" 
+	    name = "extensions.highlightedtexttofile.currentURL" 
+	    type = "bool"/>
+	  <preference 
 	    id   = "highlighted-text-to-file-saveMode" 
 	    name = "extensions.highlightedtexttofile.saveMode" 
 	    type = "int"/> 
@@ -131,6 +135,15 @@
 	  <checkbox 
 	    id         = "lineSeparator" 
 	    preference = "highlighted-text-to-file-lineSeparator"/>
+	</hbox>
+	<hbox>  
+	  <label 
+	    flex    = "1"
+	    control = "currentURL" 
+	    value   = "&currentURL.label;"/>
+	  <checkbox 
+	    id         = "currentURL" 
+	    preference = "highlighted-text-to-file-currentURL"/>
 	</hbox>
 	<hbox>
 	  <label

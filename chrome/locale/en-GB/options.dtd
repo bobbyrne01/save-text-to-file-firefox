@@ -8,6 +8,7 @@
 <!ENTITY	datestampInLine.label	"Include datestamp in saved file?">
 <!ENTITY	timestampInLine.label	"Include timestamp in saved file?">
 <!ENTITY	lineSeparator.label		"Save a line separator in the file before saving text?">
+<!ENTITY	currentURL.label		"Save current URL in file?">
 <!ENTITY	saveMode.label			"Method to save Text?">
 <!ENTITY	createFile.label		"Create new file">
 <!ENTITY	appendFile.label		"Append to existing file">

@@ -8,6 +8,7 @@
 <!ENTITY	datestampInLine.label	"Gehören Datumsstempel in gespeicherte Datei?">
 <!ENTITY	timestampInLine.label	"Gehören Zeitstempel in gespeicherte Datei?">
 <!ENTITY	lineSeparator.label		"Speichern Sie eine Zeile Trennzeichen in der Datei vor dem Speichern von Text?">
+<!ENTITY	currentURL.label		"Speichern der aktuellen URL in der Datei?">
 <!ENTITY	saveMode.label			"Methode, um Text zu sparen?">
 <!ENTITY	createFile.label		"Neue Datei erstellen">
 <!ENTITY	appendFile.label		"An vorhandene Datei anhängen">

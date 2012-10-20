@@ -8,6 +8,7 @@
 <!ENTITY	datestampInLine.label	"在已保存的文件包括邮戳?">
 <!ENTITY	timestampInLine.label	"在保存的文件包括时间戳?">
 <!ENTITY	lineSeparator.label		"保存文本之前保存在文件中的行分隔符?">
+<!ENTITY	currentURL.label		"在文件中保存当前的URL?">
 <!ENTITY	saveMode.label			"的方法来保存的文本吗?">
 <!ENTITY	createFile.label		"创建新文件">
 <!ENTITY	appendFile.label		"附加到现有文件">

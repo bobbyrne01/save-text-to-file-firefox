@@ -8,6 +8,7 @@
 <!ENTITY	datestampInLine.label	"Incluya marca de fecha en el archivo guardado?">
 <!ENTITY	timestampInLine.label	"Incluye fecha y hora en el archivo guardado?">
 <!ENTITY	lineSeparator.label		"Guardar un separador de línea en el archivo antes de guardar el texto?">
+<!ENTITY	currentURL.label		"Guardar URL actual en el archivo?">
 <!ENTITY	saveMode.label			"Método para guardar mensajes de texto?">
 <!ENTITY	createFile.label		"Crear un fichero nuevo">
 <!ENTITY	appendFile.label		"Anexar al archivo existente">

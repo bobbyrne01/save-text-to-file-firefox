@@ -8,6 +8,7 @@
 <!ENTITY	datestampInLine.label	"Inclure horodatage dans le fichier sauvegardé?">
 <!ENTITY	timestampInLine.label	"Inclure horodatage dans le fichier sauvegardé?">
 <!ENTITY	lineSeparator.label		"Enregistrer un séparateur de ligne dans le fichier avant d'enregistrer le texte?">
+<!ENTITY	currentURL.label		"Enregistrer URL actuelle dans le fichier?">
 <!ENTITY	saveMode.label			"Méthode pour enregistrer le texte?">
 <!ENTITY	createFile.label		"Créer un nouveau fichier">
 <!ENTITY	appendFile.label		"Ajouter au fichier existant">
