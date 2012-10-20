@@ -35,6 +35,14 @@
 	    name = "extensions.highlightedtexttofile.timestamp" 
 	    type = "bool"/>  
 	  <preference 
+	    id   = "highlighted-text-to-file-datestampInLine" 
+	    name = "extensions.highlightedtexttofile.datestampInLine" 
+	    type = "bool"/> 
+	  <preference 
+	    id   = "highlighted-text-to-file-timestampInLine" 
+	    name = "extensions.highlightedtexttofile.timestampInLine" 
+	    type = "bool"/>  
+	  <preference 
 	    id   = "highlighted-text-to-file-lineSeparator" 
 	    name = "extensions.highlightedtexttofile.lineSeparator" 
 	    type = "bool"/> 
@@ -93,6 +101,24 @@
 	  <checkbox 
 	    id         = "timestamp" 
 	    preference = "highlighted-text-to-file-timestamp"/>
+	</hbox>
+	<hbox>  
+	  <label 
+	    flex    = "1"
+	    control = "datestampInLine" 
+	    value   = "&datestampInLine.label;"/>
+	  <checkbox 
+	    id         = "datestampInLine" 
+	    preference = "highlighted-text-to-file-datestampInLine"/>
+	</hbox>
+	<hbox>  
+	  <label 
+	    flex    = "1"
+	    control = "timestampInLine" 
+	    value   = "&timestampInLine.label;"/>
+	  <checkbox 
+	    id         = "timestampInLine" 
+	    preference = "highlighted-text-to-file-timestampInLine"/>
 	</hbox>
 	<hbox>  
 	  <label 

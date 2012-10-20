@@ -5,6 +5,8 @@
 <!ENTITY	changeDirectory.label	"Change directory">
 <!ENTITY	datestamp.label			"Include datestamp in saved file name?">
 <!ENTITY	timestamp.label			"Include timestamp in saved file name?">
+<!ENTITY	datestampInLine.label	"Include datestamp in saved file?">
+<!ENTITY	timestampInLine.label	"Include timestamp in saved file?">
 <!ENTITY	lineSeparator.label		"Save a line separator in the file before saving text?">
 <!ENTITY	saveMode.label			"Method to save Text?">
 <!ENTITY	createFile.label		"Create new file">

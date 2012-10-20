@@ -5,6 +5,8 @@
 <!ENTITY	changeDirectory.label	"ディレクトリを変更する">
 <!ENTITY	datestamp.label			"保存したファイル名に日付スタンプが含まれてい?">
 <!ENTITY	timestamp.label			"保存したファイル名にタイムスタンプを含める?">
+<!ENTITY	datestampInLine.label	"保存されたファイル内の日付スタンプを含める?">
+<!ENTITY	timestampInLine.label	"保存したファイルにタイムスタンプを含める?">
 <!ENTITY	lineSeparator.label		"テキストを保存する前にファイル内の行区切り文字を保存する?">
 <!ENTITY	saveMode.label			"メソッドは、テキストを保存する?">
 <!ENTITY	createFile.label		"新しいファイルを作成します">

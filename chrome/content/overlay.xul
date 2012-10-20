@@ -17,7 +17,7 @@
 	<menuitem 
 	  id        = "saveTextToFile" 
 	  label     = "&saveTextToFile.context.label;"
-	  oncommand = "HighlightedTextToFile.run();"/>
+	  oncommand = "HighlightedTextToFile_Main.run();"/>
   </popup>
   
   <script type = "application/x-javascript">

@@ -1,7 +1,7 @@
 // Author: Robert Byrne
 // Copyright 2012
 
-var HighlightedTextToFile = {
+var HighlightedTextToFile_Main = {
   run: function() {
     
     //declare local variables/functions
@@ -68,6 +68,20 @@ var HighlightedTextToFile = {
 		var fullPathToFile = saveDirectory + fileSeparator + fileName;
 		var file = Components.classes["@mozilla.org/file/local;1"]
 				                      .createInstance(Components.interfaces.nsILocalFile);
+		
+		// check whether file name should include date and/or timestamp
+		var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
+		                                     .getService(Components.interfaces.nsIPrefBranch);
+		var datestampInLine = prefManager.getBoolPref("extensions.highlightedtexttofile.datestampInLine");
+		var timestampInLine = prefManager.getBoolPref("extensions.highlightedtexttofile.timestampInLine");
+		
+		var currentTime = new Date();
+		var date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear();
+		var time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
+		
+		var stringsBundle = document.getElementById("highlightedtexttofile-overlay-string-bundle");
+	    var datestampInLine = stringsBundle.getString('datestampInLine');
+	    var timestampInLine = stringsBundle.getString('timestampInLine');
 				
 		// Check file is being stored with a valid directory and name
 		try{
@@ -88,11 +102,21 @@ var HighlightedTextToFile = {
           converter.init(outputStream, "UTF-8", 0, 0);
           
           if (lineSeparator)
-            converter.writeString('\n\n --------------------------------------------------- \n\n');
+            converter.writeString('\n --------------------------------------------------- \n');
           else
           	converter.writeString('\n');
           
-          converter.writeString(selectedText);
+          if (datestampInLine)
+              converter.writeString(datestampInLine + date + '\n');
+            else
+            	converter.writeString('\n');
+          
+          if (timestampInLine)
+              converter.writeString(timestampInLine + time + '\n');
+            else
+            	converter.writeString('\n');
+          
+          converter.writeString('\n' + selectedText);
           converter.close();
 					
 		  return true;
@@ -134,11 +158,12 @@ var HighlightedTextToFile = {
 	
 	
 	
-	//main() like section
 	var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
 		                                 .getService(Components.interfaces.nsIPrefBranch);
     var stringsBundle = document.getElementById("highlightedtexttofile-overlay-string-bundle");
     var cancelSave = stringsBundle.getString('cancelSave');
+    var datestampInLine = stringsBundle.getString('datestampInLine');
+    var datestampInLine = stringsBundle.getString('timestampInLine');
     var nb = gBrowser.getNotificationBox();
     var save = true;
     var showPref = prefManager.getBoolPref("extensions.highlightedtexttofile.showPreferences");

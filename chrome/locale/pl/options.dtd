@@ -5,6 +5,8 @@
 <!ENTITY	changeDirectory.label	"Zmień katalog">
 <!ENTITY	datestamp.label			"Dołącz datestamp w nazwie pliku zapisanego?">
 <!ENTITY	timestamp.label			"Dołącz znacznika czasu zapisanego w nazwie pliku?">
+<!ENTITY	datestampInLine.label	"Dołącz datestamp w zapisanym pliku?">
+<!ENTITY	timestampInLine.label	"Dołącz znacznik czasu w zapisanym pliku?">
 <!ENTITY	lineSeparator.label		"Zapisz separator linii w pliku przed zapisaniem tekstu?">
 <!ENTITY 	saveMode.label 			"Sposób, aby zapisać tekst?">
 <!ENTITY 	createFile.label 		"Utwórz nowy plik">
