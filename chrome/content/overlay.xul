@@ -3,6 +3,7 @@
 <!DOCTYPE highlightedtexttofileDTD SYSTEM "chrome://highlightedtexttofile/locale/overlay.dtd">
 
 <overlay 
+  id	= "highlightedTextToFile-overlay" 
   xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">  
   
   <stringbundleset id="stringbundleset">
@@ -15,24 +16,28 @@
       type = "application/javascript" 
       src  = "chrome://highlightedtexttofile/content/overlay.js"/>
 	<menuitem 
-	  id        = "saveTextToFile" 
+	  id        = "highlighted-text-to-file-saveTextToFile" 
 	  label     = "&saveTextToFile.context.label;"
 	  oncommand = "HighlightedTextToFile_Main.run();"/>
   </popup>
   
   <script type = "application/x-javascript">
-  window.addEventListener("load", addListenerOnContextClick, false);
+  var HighlightedTextToFile_Overlay = {
+    setup: function() {
+      window.addEventListener("load", addListenerOnContextClick, false);
 
-  function addListenerOnContextClick() {
-    var menu = document.getElementById("contentAreaContextMenu");
-    menu.addEventListener("popupshowing", contextClicked, false);
-  }
+      function addListenerOnContextClick() {
+        var menu = document.getElementById("contentAreaContextMenu");
+        menu.addEventListener("popupshowing", contextClicked, false);
+      }
 
-  function contextClicked() {
-    var menuitem = document.getElementById("saveTextToFile");
+      function contextClicked() {
+        var menuitem = document.getElementById("highlighted-text-to-file-saveTextToFile");
 
-    if(menuitem)
-      menuitem.hidden = !(gContextMenu.isTextSelected || gContextMenu.onTextInput);
-  }
+        if(menuitem)
+          menuitem.hidden = !(gContextMenu.isTextSelected || gContextMenu.onTextInput);
+      }
+    },
+  };
   </script> 
 </overlay>
