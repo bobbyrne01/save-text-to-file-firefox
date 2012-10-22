@@ -201,4 +201,20 @@ var HighlightedTextToFile_Main = {
       informUser(cancelSave, nb.PRIORITY_INFO_HIGH);
     }
   },
+  
+  overlaySetup: function() {
+    window.addEventListener("load", addListenerOnContextClick, false);
+
+    function addListenerOnContextClick() {
+      var menu = document.getElementById("contentAreaContextMenu");
+      menu.addEventListener("popupshowing", contextClicked, false);
+    }
+
+    function contextClicked() {
+      var menuitem = document.getElementById("highlighted-text-to-file-saveTextToFile");
+
+      if(menuitem)
+        menuitem.hidden = !(gContextMenu.isTextSelected || gContextMenu.onTextInput);
+    }
+  },
 };

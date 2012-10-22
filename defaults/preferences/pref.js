@@ -11,4 +11,3 @@ pref("extensions.highlightedtexttofile.timestampInLine", true);
 pref("extensions.highlightedtexttofile.lineSeparator", true);
 pref("extensions.highlightedtexttofile.currentURL", true);
 pref("extensions.highlightedtexttofile.saveMode", 1);
-pref("browser.preferences.instantApply", false);

@@ -3,8 +3,9 @@
 <!DOCTYPE highlightedtexttofileDTD SYSTEM "chrome://highlightedtexttofile/locale/overlay.dtd">
 
 <overlay 
-  id	= "highlightedTextToFile-overlay" 
-  xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">  
+  id		= "highlightedTextToFile-overlay" 
+  onload	= "HighlightedTextToFile_Main.overlaySetup();"
+  xmlns 	= "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">  
   
   <stringbundleset id="stringbundleset">
     <stringbundle id="highlightedtexttofile-overlay-string-bundle" src="chrome://highlightedtexttofile/locale/overlay.properties"/>
@@ -19,25 +20,5 @@
 	  id        = "highlighted-text-to-file-saveTextToFile" 
 	  label     = "&saveTextToFile.context.label;"
 	  oncommand = "HighlightedTextToFile_Main.run();"/>
-  </popup>
-  
-  <script type = "application/x-javascript">
-  var HighlightedTextToFile_Overlay = {
-    setup: function() {
-      window.addEventListener("load", addListenerOnContextClick, false);
-
-      function addListenerOnContextClick() {
-        var menu = document.getElementById("contentAreaContextMenu");
-        menu.addEventListener("popupshowing", contextClicked, false);
-      }
-
-      function contextClicked() {
-        var menuitem = document.getElementById("highlighted-text-to-file-saveTextToFile");
-
-        if(menuitem)
-          menuitem.hidden = !(gContextMenu.isTextSelected || gContextMenu.onTextInput);
-      }
-    },
-  };
-  </script> 
+  </popup> 
 </overlay>
