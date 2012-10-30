@@ -1,0 +1,14 @@
+<!ENTITY	windowTitle.label		"Выделенный текст в файл. Настройки">
+<!ENTITY	showPreferences.label	"Открывать диалог настроек при выборе пункта &quot;Сохранить текст в файл&quot;?">
+<!ENTITY	fileName.label			"Название сохраняемого файла">
+<!ENTITY	pathToFile.label		"Каталог для сохранения файлов">
+<!ENTITY	changeDirectory.label	"Изменить каталог">
+<!ENTITY	datestamp.label			"Включать дату в имя сохраняемого файла?">
+<!ENTITY	timestamp.label			"Включать время в имя сохраняемого файла?">
+<!ENTITY	datestampInLine.label	"Включать дату в сохраняемый файл?">
+<!ENTITY	timestampInLine.label	"Включать время в сохраняемый файл?">
+<!ENTITY	lineSeparator.label		"Вставлять строку-разделитель в файле перед сохраняемым текстом?">
+<!ENTITY	currentURL.label		"Сохранять в файле URL-адрес страницы?">
+<!ENTITY	saveMode.label			"Метод сохранения текста?">
+<!ENTITY	createFile.label		"Создать новый файл">
+<!ENTITY	appendFile.label		"Добавить в существующий файл">
