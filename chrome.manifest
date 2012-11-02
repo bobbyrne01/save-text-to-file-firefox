@@ -17,3 +17,4 @@ locale	highlightedtexttofile 					ja			chrome/locale/ja/
 locale	highlightedtexttofile 					zh-CH			chrome/locale/zh-CH/
 locale	highlightedtexttofile 					pl			chrome/locale/pl/
 locale	highlightedtexttofile 					ru			chrome/locale/ru/
+locale	highlightedtexttofile 					it			chrome/locale/it/

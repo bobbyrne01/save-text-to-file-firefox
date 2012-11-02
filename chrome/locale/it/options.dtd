@@ -1,0 +1,14 @@
+<!ENTITY	windowTitle.label		"il testo evidenziato preferenze File">
+<!ENTITY	showPreferences.label	"Apri preferenze quando Salva testo su file viene cliccato?">
+<!ENTITY	fileName.label			"Nome del file salvato">
+<!ENTITY	pathToFile.label		"directory dove salvare i file">
+<!ENTITY	changeDirectory.label	"Cambia directory">
+<!ENTITY	datestamp.label			"Includi bollo in nome del file salvato?">
+<!ENTITY	timestamp.label			"Includi timestamp nel nome del file salvato?">
+<!ENTITY	datestampInLine.label	"Includi datestamp nel file salvato?">
+<!ENTITY	timestampInLine.label	"Includi timestamp nel file salvato?">
+<!ENTITY	lineSeparator.label		"Salva un separatore di riga del file di testo prima di salvare?">
+<!ENTITY	currentURL.label		"Salva URL corrente nel file?">
+<!ENTITY	saveMode.label			"Metodo per salvare testo?">
+<!ENTITY	createFile.label		"Crea nuovo file">
+<!ENTITY	appendFile.label		"Aggiungi a file esistente">
