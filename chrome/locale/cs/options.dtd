@@ -1,0 +1,14 @@
+<!ENTITY	windowTitle.label		"Zvýrazněné Text do souboru předvoleb">
+<!ENTITY	showPreferences.label	"Otevřít dialogové okno preferencí, pokud Uložit text do souboru kliknutí?">
+<!ENTITY	fileName.label			"Uloženo název souboru">
+<!ENTITY	pathToFile.label		"Adresář pro ukládání souborů">
+<!ENTITY	changeDirectory.label	"změňte adresář">
+<!ENTITY	datestamp.label			"Zahrnout datestamp v uloženého názvu souboru?">
+<!ENTITY	timestamp.label			"Zahrnout časové razítko v uloženého názvu souboru?">
+<!ENTITY	datestampInLine.label	"Zahrnout datestamp v uloženém souboru?">
+<!ENTITY	timestampInLine.label	"Zahrnout časové razítko v uloženém souboru?">
+<!ENTITY	lineSeparator.label		"Uložit řádky jsou v souboru před uložením textu?">
+<!ENTITY	currentURL.label		"Uložit aktuální URL v souboru?">
+<!ENTITY	saveMode.label			"Metoda pro uložení textu?">
+<!ENTITY	createFile.label		"Vytvořit nový soubor">
+<!ENTITY	appendFile.label		"Připojit k existujícímu souboru">

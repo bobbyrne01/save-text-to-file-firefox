@@ -19,3 +19,4 @@ locale	highlightedtexttofile 					pl			chrome/locale/pl/
 locale	highlightedtexttofile 					ru			chrome/locale/ru/
 locale	highlightedtexttofile 					it			chrome/locale/it/
 locale	highlightedtexttofile 					ko			chrome/locale/ko/
+locale	highlightedtexttofile 					cs			chrome/locale/cs/
