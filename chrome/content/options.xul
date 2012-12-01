@@ -1,58 +1,58 @@
 <?xml version="1.0"?>  
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<!DOCTYPE highlightedtexttofileDTD SYSTEM "chrome://highlightedtexttofile/locale/options.dtd">  
+<!DOCTYPE savetexttofileDTD SYSTEM "chrome://savetexttofile/locale/options.dtd">  
 
 <prefwindow 
-  id             = "highlightedTextToFile-prefs"  
+  id             = "saveTextToFile-prefs"  
   title	         = "&windowTitle.label;"
   xmlns	         = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-  onload         = "HighlightedTextToFile_Options.setButtons();">
+  onload         = "SaveTextToFile_Options.setButtons();">
   
   <stringbundleset id = "stringbundleset">
-    <stringbundle id =  "highlightedtexttofile-options-string-bundle" src="chrome://highlightedtexttofile/locale/options.properties"/>
+    <stringbundle id =  "savetexttofile-options-string-bundle" src="chrome://savetexttofile/locale/options.properties"/>
   </stringbundleset>
    
   <prefpane label="&windowTitle.label;" align="center">  
     <preferences>  
       <preference 
-	    id   = "highlighted-text-to-file-showPreferences" 
-	    name = "extensions.highlightedtexttofile.showPreferences" 
+	    id   = "save-text-to-file-showPreferences" 
+	    name = "extensions.savetexttofile.showPreferences" 
 	    type = "bool"/> 
 	  <preference
-	    id   = "highlighted-text-to-file-fileName" 
-	    name = "extensions.highlightedtexttofile.fileName" 
+	    id   = "save-text-to-file-fileName" 
+	    name = "extensions.savetexttofile.fileName" 
 	    type = "string"/>   
 	  <preference 
-	    id   = "highlighted-text-to-file-pathToFile" 
-	    name = "extensions.highlightedtexttofile.pathToFile" 
+	    id   = "save-text-to-file-pathToFile" 
+	    name = "extensions.savetexttofile.pathToFile" 
 	    type = "string"/> 
 	  <preference 
-	    id   = "highlighted-text-to-file-datestamp" 
-	    name = "extensions.highlightedtexttofile.datestamp" 
+	    id   = "save-text-to-file-datestamp" 
+	    name = "extensions.savetexttofile.datestamp" 
 	    type = "bool"/> 
 	  <preference 
-	    id   = "highlighted-text-to-file-timestamp" 
-	    name = "extensions.highlightedtexttofile.timestamp" 
+	    id   = "save-text-to-file-timestamp" 
+	    name = "extensions.savetexttofile.timestamp" 
 	    type = "bool"/>  
 	  <preference 
-	    id   = "highlighted-text-to-file-datestampInLine" 
-	    name = "extensions.highlightedtexttofile.datestampInLine" 
+	    id   = "save-text-to-file-datestampInLine" 
+	    name = "extensions.savetexttofile.datestampInLine" 
 	    type = "bool"/> 
 	  <preference 
-	    id   = "highlighted-text-to-file-timestampInLine" 
-	    name = "extensions.highlightedtexttofile.timestampInLine" 
+	    id   = "save-text-to-file-timestampInLine" 
+	    name = "extensions.savetexttofile.timestampInLine" 
 	    type = "bool"/>  
 	  <preference 
-	    id   = "highlighted-text-to-file-lineSeparator" 
-	    name = "extensions.highlightedtexttofile.lineSeparator" 
+	    id   = "save-text-to-file-lineSeparator" 
+	    name = "extensions.savetexttofile.lineSeparator" 
 	    type = "bool"/> 
 	  <preference 
-	    id   = "highlighted-text-to-file-currentURL" 
-	    name = "extensions.highlightedtexttofile.currentURL" 
+	    id   = "save-text-to-file-currentURL" 
+	    name = "extensions.savetexttofile.currentURL" 
 	    type = "bool"/> 
 	  <preference 
-	    id   = "highlighted-text-to-file-saveMode" 
-	    name = "extensions.highlightedtexttofile.saveMode" 
+	    id   = "save-text-to-file-saveMode" 
+	    name = "extensions.savetexttofile.saveMode" 
 	    type = "int"/>
 	</preferences>  
 
@@ -64,7 +64,7 @@
 	    value   = "&showPreferences.label;"/>
 	  <checkbox 
 	    id         = "showPreferences" 
-	    preference = "highlighted-text-to-file-showPreferences"/>
+	    preference = "save-text-to-file-showPreferences"/>
 	</hbox>
 	<hbox>  
 	  <label 
@@ -73,7 +73,7 @@
 	    value   = "&fileName.label;"/>
 	  <textbox
 	    id         = "fileName" 
-	    preference = "highlighted-text-to-file-fileName"/>
+	    preference = "save-text-to-file-fileName"/>
 	</hbox>
 	<hbox>
 	  <label 
@@ -83,10 +83,10 @@
 	  <textbox 
 	    id         = "pathToFile" 
 	    readonly   = "true" 
-	    preference = "highlighted-text-to-file-pathToFile"/>
+	    preference = "save-text-to-file-pathToFile"/>
 	  <button 
 	    label     = "&changeDirectory.label;" 
-	    oncommand = "HighlightedTextToFile_Options.selectDir();"/>
+	    oncommand = "SaveTextToFile_Options.selectDir();"/>
 	</hbox>
 	<hbox>  
 	  <label 
@@ -95,7 +95,7 @@
 	    value   = "&datestamp.label;"/>
 	  <checkbox 
 	    id         = "datestamp" 
-	    preference = "highlighted-text-to-file-datestamp"/>
+	    preference = "save-text-to-file-datestamp"/>
 	</hbox>
 	<hbox>  
 	  <label 
@@ -104,7 +104,7 @@
 	    value   = "&timestamp.label;"/>
 	  <checkbox 
 	    id         = "timestamp" 
-	    preference = "highlighted-text-to-file-timestamp"/>
+	    preference = "save-text-to-file-timestamp"/>
 	</hbox>
 	<hbox>  
 	  <label 
@@ -113,7 +113,7 @@
 	    value   = "&datestampInLine.label;"/>
 	  <checkbox 
 	    id         = "datestampInLine" 
-	    preference = "highlighted-text-to-file-datestampInLine"/>
+	    preference = "save-text-to-file-datestampInLine"/>
 	</hbox>
 	<hbox>  
 	  <label 
@@ -122,7 +122,7 @@
 	    value   = "&timestampInLine.label;"/>
 	  <checkbox 
 	    id         = "timestampInLine" 
-	    preference = "highlighted-text-to-file-timestampInLine"/>
+	    preference = "save-text-to-file-timestampInLine"/>
 	</hbox>
 	<hbox>  
 	  <label 
@@ -131,7 +131,7 @@
 	    value   = "&lineSeparator.label;"/>
 	  <checkbox 
 	    id         = "lineSeparator" 
-	    preference = "highlighted-text-to-file-lineSeparator"/>
+	    preference = "save-text-to-file-lineSeparator"/>
 	</hbox>
 	<hbox>  
 	  <label 
@@ -140,7 +140,7 @@
 	    value   = "&currentURL.label;"/>
 	  <checkbox 
 	    id         = "currentURL" 
-	    preference = "highlighted-text-to-file-currentURL"/>
+	    preference = "save-text-to-file-currentURL"/>
 	</hbox>
 	<hbox>
 	  <label
@@ -148,7 +148,7 @@
 	    control = "saveMode"
 	    value   = "&saveMode.label;"/>
 	  <menulist
-	    preference = "highlighted-text-to-file-saveMode">
+	    preference = "save-text-to-file-saveMode">
 	    <menupopup>
 	      <menuitem 
 	        label = "&createFile.label;" 

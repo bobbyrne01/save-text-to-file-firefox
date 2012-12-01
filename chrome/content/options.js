@@ -1,11 +1,11 @@
 // Author: Robert Byrne
 // Copyright 2012
 
-var HighlightedTextToFile_Options = {
+var SaveTextToFile_Options = {
 
   selectDir: function() {
   
-    var stringsBundle = document.getElementById("highlightedtexttofile-options-string-bundle");
+    var stringsBundle = document.getElementById("savetexttofile-options-string-bundle");
     var directorySelectionString = stringsBundle.getString('directorySelectionString');
    
     const nsIFilePicker = Components.interfaces.nsIFilePicker;
@@ -21,7 +21,7 @@ var HighlightedTextToFile_Options = {
       var str = Components.classes["@mozilla.org/supports-string;1"]
                                    .createInstance(Components.interfaces.nsISupportsString);
       str.data = fp.file.path;
-      prefManager.setComplexValue("extensions.highlightedtexttofile.pathToFile", 
+      prefManager.setComplexValue("extensions.savetexttofile.pathToFile", 
     	                           Components.interfaces.nsISupportsString, str);
     		
       document.getElementById('pathToFile').value = fp.file.path;
@@ -29,7 +29,7 @@ var HighlightedTextToFile_Options = {
   },
   
   setButtons: function() {
-    var stringsBundle = document.getElementById("highlightedtexttofile-options-string-bundle");
+    var stringsBundle = document.getElementById("savetexttofile-options-string-bundle");
     var saveString = stringsBundle.getString('saveString');
     var cancelString = stringsBundle.getString('cancelString');
   

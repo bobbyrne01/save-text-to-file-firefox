@@ -10,7 +10,7 @@
 	    <em:localized>
           <Description>
             <em:locale>cs</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>Uložit text do souboru</em:name>
             <em:description>Uloží zvýrazněný text do souboru v daném adresáři</em:description>
           </Description>
         </em:localized>
@@ -18,7 +18,7 @@
         <em:localized>
           <Description>
             <em:locale>de</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>Sparen Sie Text in Datei</em:name>
             <em:description>Speichert markierten Text in eine Datei in einem bestimmten Verzeichnis</em:description>
           </Description>
         </em:localized>
@@ -26,7 +26,7 @@
         <em:localized>
           <Description>
             <em:locale>en-GB</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>Save Text To File</em:name>
             <em:description>Saves highlighted text to a file in a specified directory</em:description>
           </Description>
         </em:localized>
@@ -34,7 +34,7 @@
         <em:localized>
           <Description>
             <em:locale>en-US</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>Save Text To File</em:name>
             <em:description>Saves highlighted text to a file in a specified directory</em:description>
           </Description>
         </em:localized>
@@ -42,7 +42,7 @@
         <em:localized>
           <Description>
             <em:locale>es-ES</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>Guardar texto en archivo</em:name>
             <em:description>Guarda el texto seleccionado a un archivo en un directorio especificado</em:description>
           </Description>
         </em:localized>
@@ -50,7 +50,7 @@
         <em:localized>
           <Description>
             <em:locale>fr</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>Enregistrer le texte dans un fichier</em:name>
             <em:description>Enregistre le texte sélectionné vers un fichier dans un répertoire spécifié</em:description>
           </Description>
         </em:localized>
@@ -58,7 +58,7 @@
         <em:localized>
           <Description>
             <em:locale>it</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>Salva il testo su file</em:name>
             <em:description>Conserva il testo evidenziato in un file in una directory specificata</em:description>
           </Description>
         </em:localized>
@@ -66,7 +66,7 @@
         <em:localized>
           <Description>
             <em:locale>ja</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>テキストをファイルに保存</em:name>
             <em:description>指定したディレクトリ内のファイルにテキストを強調節約</em:description>
           </Description>
         </em:localized>
@@ -74,7 +74,7 @@
         <em:localized>
           <Description>
             <em:locale>ko</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>파일에 텍스트를 저장</em:name>
             <em:description>지정된 디렉토리에 파일에 텍스트를 강조 저장</em:description>
           </Description>
         </em:localized>
@@ -82,7 +82,7 @@
         <em:localized>
           <Description>
             <em:locale>pl</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>Zapisz tekst do pliku</em:name>
             <em:description>Zapisuje podświetlony tekst do pliku w określonym katalogu</em:description>
           </Description>
         </em:localized>
@@ -90,7 +90,7 @@
         <em:localized>
           <Description>
             <em:locale>ru</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>Сохранить текст в файл</em:name>
             <em:description>Сохраняет выделенный текст в файл в указанную директорию</em:description>
           </Description>
         </em:localized>
@@ -98,13 +98,13 @@
         <em:localized>
           <Description>
             <em:locale>zh-CH</em:locale>
-            <em:name>Highlighted Text To File</em:name>
+            <em:name>保存文本文件</em:name>
             <em:description>突出显示的文本保存到一个文件中指定的目录</em:description>
           </Description>
         </em:localized>
 	    
-	    <em:name>Highlighted Text To File</em:name>  
-	    <em:version>1.0.13</em:version>  
+	    <em:name>Save Text To File</em:name>  
+	    <em:version>1.1</em:version>  
 	    <em:description>Saves highlighted text to a file in a specified directory</em:description>  
 	    <em:creator>Robert Byrne</em:creator>  
 	    <em:homepageURL>http://www.bobbyrne01.blogspot.com</em:homepageURL>
@@ -114,7 +114,7 @@
 			<Description>  
         		<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>  
         		<em:minVersion>2.0</em:minVersion>  
-        		<em:maxVersion>16.*</em:maxVersion>  
+        		<em:maxVersion>17.*</em:maxVersion>  
       		</Description>  
     	</em:targetApplication>
     	
@@ -127,6 +127,6 @@
             </Description>
         </em:targetApplication>
     	
-    	<em:optionsURL>chrome://highlightedtexttofile/content/options.xul</em:optionsURL> 
+    	<em:optionsURL>chrome://savetexttofile/content/options.xul</em:optionsURL> 
   	</Description>  
 </RDF>

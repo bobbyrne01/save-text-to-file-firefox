@@ -1,4 +1,4 @@
-<!ENTITY	windowTitle.label		"Highlighted Text to File preferences">
+<!ENTITY	windowTitle.label		"Save Text to File preferences">
 <!ENTITY	showPreferences.label	"Open preferences dialog when &quot;Save Text to File&quot; is clicked?">
 <!ENTITY	fileName.label			"Saved file name">
 <!ENTITY	pathToFile.label		"Directory to save files">

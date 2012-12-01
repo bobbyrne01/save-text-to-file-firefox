@@ -1,7 +1,7 @@
 // Author: Robert Byrne
 // Copyright 2012
 
-var HighlightedTextToFile_Main = {
+var SaveTextToFile_Main = {
   run: function() {
     
     //declare local variables/functions
@@ -12,7 +12,7 @@ var HighlightedTextToFile_Main = {
 		// check if a path to saved file has been set in user preferences
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
 		                                     .getService(Components.interfaces.nsIPrefBranch);
-		var userPrefPathToFile = prefManager.getComplexValue("extensions.highlightedtexttofile.pathToFile",
+		var userPrefPathToFile = prefManager.getComplexValue("extensions.savetexttofile.pathToFile",
 						                                      Components.interfaces.nsISupportsString).data;
 
 		if (userPrefPathToFile === ""){
@@ -40,9 +40,9 @@ var HighlightedTextToFile_Main = {
 		// check whether file name should include date and/or timestamp
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
 		                                     .getService(Components.interfaces.nsIPrefBranch);
-		var datestamp = prefManager.getBoolPref("extensions.highlightedtexttofile.datestamp");
-		var timestamp = prefManager.getBoolPref("extensions.highlightedtexttofile.timestamp");
-		var fileName = prefManager.getComplexValue("extensions.highlightedtexttofile.fileName",
+		var datestamp = prefManager.getBoolPref("extensions.savetexttofile.datestamp");
+		var timestamp = prefManager.getBoolPref("extensions.savetexttofile.timestamp");
+		var fileName = prefManager.getComplexValue("extensions.savetexttofile.fileName",
 		 			                                Components.interfaces.nsISupportsString).data;
 		
 		if (datestamp)
@@ -72,15 +72,15 @@ var HighlightedTextToFile_Main = {
 		// check whether file name should include date and/or timestamp
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
 		                                     .getService(Components.interfaces.nsIPrefBranch);
-		var currentURL = prefManager.getBoolPref("extensions.highlightedtexttofile.currentURL");
-		var datestampInLinePref = prefManager.getBoolPref("extensions.highlightedtexttofile.datestampInLine");
-		var timestampInLinePref = prefManager.getBoolPref("extensions.highlightedtexttofile.timestampInLine");
+		var currentURL = prefManager.getBoolPref("extensions.savetexttofile.currentURL");
+		var datestampInLinePref = prefManager.getBoolPref("extensions.savetexttofile.datestampInLine");
+		var timestampInLinePref = prefManager.getBoolPref("extensions.savetexttofile.timestampInLine");
 		
 		var currentTime = new Date();
 		var date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear();
 		var time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
 		
-		var stringsBundle = document.getElementById("highlightedtexttofile-overlay-string-bundle");
+		var stringsBundle = document.getElementById("savetexttofile-overlay-string-bundle");
 	    var datestampInLineString = stringsBundle.getString('datestampInLine');
 	    var timestampInLineString = stringsBundle.getString('timestampInLine');
 				
@@ -140,7 +140,7 @@ var HighlightedTextToFile_Main = {
     // @return bool - Whether to 'Save' or 'Cancel' preference updates
     function showPreferences() {
       var returnValue = { save: null };
-      window.openDialog("chrome://highlightedtexttofile/content/showPreferences.xul", "", "centerscreen,modal", returnValue);
+      window.openDialog("chrome://savetexttofile/content/showPreferences.xul", "", "centerscreen,modal", returnValue);
       
       return returnValue.save;
     }
@@ -170,13 +170,13 @@ var HighlightedTextToFile_Main = {
 	
 	var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
 		                                 .getService(Components.interfaces.nsIPrefBranch);
-    var stringsBundle = document.getElementById("highlightedtexttofile-overlay-string-bundle");
+    var stringsBundle = document.getElementById("savetexttofile-overlay-string-bundle");
     var cancelSave = stringsBundle.getString('cancelSave');
     var datestampInLine = stringsBundle.getString('datestampInLine');
     var datestampInLine = stringsBundle.getString('timestampInLine');
     var nb = gBrowser.getNotificationBox();
     var save = true;
-    var showPref = prefManager.getBoolPref("extensions.highlightedtexttofile.showPreferences");
+    var showPref = prefManager.getBoolPref("extensions.savetexttofile.showPreferences");
 	
 	if (showPref)
 	  var save = showPreferences();
@@ -190,8 +190,8 @@ var HighlightedTextToFile_Main = {
       var saveError = stringsBundle.getFormattedString('saveError', 
                                                        [saveDirectory, fileName]);
 	
-	  var lineSeparator = prefManager.getBoolPref("extensions.highlightedtexttofile.lineSeparator");
-	  var saveMode = prefManager.getIntPref("extensions.highlightedtexttofile.saveMode");
+	  var lineSeparator = prefManager.getBoolPref("extensions.savetexttofile.lineSeparator");
+	  var saveMode = prefManager.getIntPref("extensions.savetexttofile.saveMode");
    	  if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText, saveMode, lineSeparator))
    	    informUser(saveComplete, nb.PRIORITY_INFO_HIGH);
    	  else
@@ -211,7 +211,7 @@ var HighlightedTextToFile_Main = {
     }
 
     function contextClicked() {
-      var menuitem = document.getElementById("highlighted-text-to-file-saveTextToFile");
+      var menuitem = document.getElementById("save-text-to-file-saveTextToFile");
 
       if(menuitem)
         menuitem.hidden = !(gContextMenu.isTextSelected || gContextMenu.onTextInput);
