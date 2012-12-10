@@ -3,11 +3,11 @@
 <!ENTITY	fileName.label			"Uloženo název souboru">
 <!ENTITY	pathToFile.label		"Adresář pro ukládání souborů">
 <!ENTITY	changeDirectory.label	"změňte adresář">
-<!ENTITY	datestamp.label			"Zahrnout datestamp v uloženého názvu souboru?">
-<!ENTITY	timestamp.label			"Zahrnout časové razítko v uloženého názvu souboru?">
-<!ENTITY	datestampInLine.label	"Zahrnout datestamp v uloženém souboru?">
-<!ENTITY	timestampInLine.label	"Zahrnout časové razítko v uloženém souboru?">
-<!ENTITY	lineSeparator.label		"Uložit řádky jsou v souboru před uložením textu?">
+<!ENTITY	datestamp.label			"Přidat datum k uloženého názvu souboru?">
+<!ENTITY	timestamp.label			"Přidat čas uložený název souboru?">
+<!ENTITY	datestampInLine.label	"Přidat datum na začátek uloženého textu?">
+<!ENTITY	timestampInLine.label	"Přidání času na začátek uloženého textu?">
+<!ENTITY	lineSeparator.label		"Přidat řádek oddělovač ke spisu ještě před uloženého textu?">
 <!ENTITY	currentURL.label		"Uložit aktuální URL v souboru?">
 <!ENTITY	saveMode.label			"Metoda pro uložení textu?">
 <!ENTITY	createFile.label		"Vytvořit nový soubor">

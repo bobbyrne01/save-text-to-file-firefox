@@ -104,7 +104,7 @@
         </em:localized>
 	    
 	    <em:name>Save Text To File</em:name>  
-	    <em:version>1.1</em:version>  
+	    <em:version>1.1.1</em:version>  
 	    <em:description>Saves highlighted text to a file in a specified directory</em:description>  
 	    <em:creator>Robert Byrne</em:creator>  
 	    <em:homepageURL>http://www.bobbyrne01.blogspot.com</em:homepageURL>

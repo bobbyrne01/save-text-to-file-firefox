@@ -3,11 +3,11 @@
 <!ENTITY	fileName.label			"保存的文件名">
 <!ENTITY	pathToFile.label		"目录来保存文件">
 <!ENTITY	changeDirectory.label	"更改目录">
-<!ENTITY	datestamp.label			"包括在保存的文件名邮戳?">
-<!ENTITY	timestamp.label			"包括在保存的文件名的时间戳?">
-<!ENTITY	datestampInLine.label	"在已保存的文件包括邮戳?">
-<!ENTITY	timestampInLine.label	"在保存的文件包括时间戳?">
-<!ENTITY	lineSeparator.label		"保存文本之前保存在文件中的行分隔符?">
+<!ENTITY	datestamp.label			"添加日期保存的文件名?">
+<!ENTITY	timestamp.label			"添加时间保存的文件名?">
+<!ENTITY	datestampInLine.label	"保存的文本的开始日期?">
+<!ENTITY	timestampInLine.label	"添加时间保存的文本的开头?">
+<!ENTITY	lineSeparator.label		"添加一个行分隔符的文件之前保存的文本?">
 <!ENTITY	currentURL.label		"在文件中保存当前的URL?">
 <!ENTITY	saveMode.label			"的方法来保存的文本吗?">
 <!ENTITY	createFile.label		"创建新文件">

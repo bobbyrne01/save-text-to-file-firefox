@@ -3,11 +3,11 @@
 <!ENTITY	fileName.label			"Nome del file salvato">
 <!ENTITY	pathToFile.label		"directory dove salvare i file">
 <!ENTITY	changeDirectory.label	"Cambia directory">
-<!ENTITY	datestamp.label			"Includi bollo in nome del file salvato?">
-<!ENTITY	timestamp.label			"Includi timestamp nel nome del file salvato?">
-<!ENTITY	datestampInLine.label	"Includi datestamp nel file salvato?">
-<!ENTITY	timestampInLine.label	"Includi timestamp nel file salvato?">
-<!ENTITY	lineSeparator.label		"Salva un separatore di riga del file di testo prima di salvare?">
+<!ENTITY	datestamp.label			"Aggiungere la data al nome del file salvato?">
+<!ENTITY	timestamp.label			"Aggiungi il momento di nome del file salvato?">
+<!ENTITY	datestampInLine.label	"Aggiungere la data all'inizio del testo salvato?">
+<!ENTITY	timestampInLine.label	"Aggiungere tempo all'inizio del testo salvato?">
+<!ENTITY	lineSeparator.label		"Aggiungere un separatore di linea al file di testo salvato prima?">
 <!ENTITY	currentURL.label		"Salva URL corrente nel file?">
 <!ENTITY	saveMode.label			"Metodo per salvare testo?">
 <!ENTITY	createFile.label		"Crea nuovo file">

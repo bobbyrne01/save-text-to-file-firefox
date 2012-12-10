@@ -3,11 +3,11 @@
 <!ENTITY	fileName.label			"저장된 파일 이름">
 <!ENTITY	pathToFile.label		"파일을 저장하는 디렉토리">
 <!ENTITY	changeDirectory.label	"변경 디렉토리">
-<!ENTITY	datestamp.label			"저장된 파일 이름에 날짜를 포함합니까?">
-<!ENTITY	timestamp.label			"저장된 파일 이름에 타임 스탬프를 포함합니까?">
-<!ENTITY	datestampInLine.label	"저장 파일에 날짜를 포함합니까?">
-<!ENTITY	timestampInLine.label	"저장 파일에 타임 스탬프를 포함합니까?">
-<!ENTITY	lineSeparator.label		"텍스트를 저장하기 전에 파일의 줄 구분 기호를 저장 하시겠습니까?">
+<!ENTITY	datestamp.label			"저장된 파일 이름에 날짜를 추가합니다?">
+<!ENTITY	timestamp.label			"저장된 파일 이름에 시간을 추가?">
+<!ENTITY	datestampInLine.label	"저장된 텍스트의 시작 부분에 날짜를 추가?">
+<!ENTITY	timestampInLine.label	"저장된 텍스트의 시작 부분에 시간을 추가?">
+<!ENTITY	lineSeparator.label		"저장된 텍스트 전에 파일에 행 구분 기호를 추가합니다?">
 <!ENTITY	currentURL.label		"는 파일에 현재 URL을 저장 하시겠습니까?">
 <!ENTITY	saveMode.label			"방법은 텍스트를 저장하려면?">
 <!ENTITY	createFile.label		"새 파일을 만듭니다">

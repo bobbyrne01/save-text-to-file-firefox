@@ -3,11 +3,11 @@
 <!ENTITY	fileName.label			"Saved file name">
 <!ENTITY	pathToFile.label		"Directory to save files">
 <!ENTITY	changeDirectory.label	"Change directory">
-<!ENTITY	datestamp.label			"Include datestamp in saved file name?">
-<!ENTITY	timestamp.label			"Include timestamp in saved file name?">
-<!ENTITY	datestampInLine.label	"Include datestamp in saved file?">
-<!ENTITY	timestampInLine.label	"Include timestamp in saved file?">
-<!ENTITY	lineSeparator.label		"Save a line separator in the file before saving text?">
+<!ENTITY	datestamp.label			"Add date to saved file name?">
+<!ENTITY	timestamp.label			"Add time to saved file name?">
+<!ENTITY	datestampInLine.label	"Add date to the beginning of saved text?">
+<!ENTITY	timestampInLine.label	"Add time to the beginning of saved text?">
+<!ENTITY	lineSeparator.label		"Add a line separator to the file before saved text?">
 <!ENTITY	currentURL.label		"Save current URL in file?">
 <!ENTITY	saveMode.label			"Method to save Text?">
 <!ENTITY	createFile.label		"Create new file">

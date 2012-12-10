@@ -1,14 +1,14 @@
-<!ENTITY	windowTitle.label		"El texto resaltado al archivo de preferencias">
-<!ENTITY	showPreferences.label	"Preferencias de diálogo Abrir cuando &quot;Guardar texto en archivo&quot; se hace clic en?">
+<!ENTITY	windowTitle.label		"Preferencias de Guardar Texto en Archivo">
+<!ENTITY	showPreferences.label	"¿Abrir la ventana de preferencias cuando hagas clic en &quot;Guardar Texto en Archivo&quot;?">
 <!ENTITY	fileName.label			"Nombre del archivo guardado">
-<!ENTITY	pathToFile.label		"Directorio para guardar archivos">
-<!ENTITY	changeDirectory.label	"Cambie el directorio">
-<!ENTITY	datestamp.label			"Incluye marca de fecha en el nombre del archivo guardado?">
-<!ENTITY	timestamp.label			"Incluya fecha y hora en el nombre de archivo guardado?">
-<!ENTITY	datestampInLine.label	"Incluya marca de fecha en el archivo guardado?">
-<!ENTITY	timestampInLine.label	"Incluye fecha y hora en el archivo guardado?">
-<!ENTITY	lineSeparator.label		"Guardar un separador de línea en el archivo antes de guardar el texto?">
-<!ENTITY	currentURL.label		"Guardar URL actual en el archivo?">
-<!ENTITY	saveMode.label			"Método para guardar mensajes de texto?">
-<!ENTITY	createFile.label		"Crear un fichero nuevo">
-<!ENTITY	appendFile.label		"Anexar al archivo existente">
+<!ENTITY	pathToFile.label		"Carpeta donde guardar los archivos">
+<!ENTITY	changeDirectory.label	"Otra carpeta">
+<!ENTITY	datestamp.label			"¿Añadir la fecha en el nombre del archivo?">
+<!ENTITY	timestamp.label			"¿Añadir la hora en el nombre del archivo?">
+<!ENTITY	datestampInLine.label	"¿Añadir la fecha al principio del texto guardado?">
+<!ENTITY	timestampInLine.label	"¿Añadir la hora al principio del texto guardado?">
+<!ENTITY	lineSeparator.label		"¿Añadir una línea de separación antes del texto guardado?">
+<!ENTITY	currentURL.label		"¿Añadir la dirección web en el archivo?">
+<!ENTITY	saveMode.label			"Forma de guardar el texto:">
+<!ENTITY	createFile.label		"Crear un archivo nuevo">
+<!ENTITY	appendFile.label		"Añadir a un archivo existente">
