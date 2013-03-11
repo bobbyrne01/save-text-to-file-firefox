@@ -1,5 +1,4 @@
-// Author: Robert Byrne
-// Copyright 2012
+// Copyright 2012-2013 Robert Byrne
 
 var SaveTextToFile_ShowPreferences = {
 
