@@ -1,14 +1,14 @@
-<!ENTITY	windowTitle.label		"Markierten Text in Datei-Vorlieben">
-<!ENTITY	showPreferences.label	"Open-Voreinstellungen, wenn &quot;Text in Datei speichern&quot; geklickt wird?">
-<!ENTITY	fileName.label			"Gespeichert Dateinamen">
-<!ENTITY	pathToFile.label		"Verzeichnis zum Speichern von Dateien">
-<!ENTITY	changeDirectory.label	"Ã¤ndern Sie das Verzeichnis">
-<!ENTITY	datestamp.label			"Add date gespeichert Dateinamen?">
-<!ENTITY	timestamp.label			"Add Zeit gespeichert Dateinamen?">
-<!ENTITY	datestampInLine.label	"Add date an den Anfang des gespeicherten Text?">
-<!ENTITY	timestampInLine.label	"Add Zeit bis zum Beginn der gespeicherten Text?">
-<!ENTITY	lineSeparator.label		"FÃ¼gen Sie eine Zeile Trennzeichen der Datei vor dem gespeicherten Text?">
-<!ENTITY	currentURL.label		"Speichern der aktuellen URL in der Datei?">
-<!ENTITY	saveMode.label			"Methode, um Text zu sparen?">
-<!ENTITY	createFile.label		"Neue Datei erstellen">
-<!ENTITY	appendFile.label		"An vorhandene Datei anhÃ¤ngen">
+<!ENTITY	windowTitle.label		"Save Text to File Einstellungen">
+<!ENTITY	showPreferences.label	"Einstellungen öffnen, wenn &quot;Save Text to File&quot; gestarte wird?">
+<!ENTITY	fileName.label			"Dateiname">
+<!ENTITY	pathToFile.label		"Verzeichnis, um die Dateien zu speichern">
+<!ENTITY	changeDirectory.label	"Verzeichnis wechseln">
+<!ENTITY	datestamp.label			"Datum zum Dateinamen hinzufügen?">
+<!ENTITY	timestamp.label			"Zeit zum Dateinamen hinzufügen?">
+<!ENTITY	datestampInLine.label	"Datum vor dem gesicherten Text einfügen?">
+<!ENTITY	timestampInLine.label	"Zeit vor dem gesicherten Text einfügen?">
+<!ENTITY	lineSeparator.label		"Eine Leerzeile vor dem gesicherten Text einfügen?">
+<!ENTITY	currentURL.label		"Den aktuellen URL mit dem Text sichern?">
+<!ENTITY	saveMode.label			"Wie soll der Text gesichert werden?">
+<!ENTITY	createFile.label		"Neue Datei erzeugen">
+<!ENTITY	appendFile.label		"An die existierede Datei anfügen">
