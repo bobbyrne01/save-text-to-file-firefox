@@ -1,14 +1,14 @@
-<!ENTITY	windowTitle.label		"設定をファイルにハイライトされたテキスト">
-<!ENTITY	showPreferences.label	"オープン時設定]ダイアログ &quot;ファイルにテキストを保存する&quot; クリックされた?">
-<!ENTITY	fileName.label			"保存したファイル名">
+<!ENTITY	windowTitle.label		"Save Text to File オプション">
+<!ENTITY	showPreferences.label	"&quot;テキストをファイルに保存&quot;をクリック時にオプションを開く">
+<!ENTITY	fileName.label			"保存ファイル名">
 <!ENTITY	pathToFile.label		"ファイルを保存するディレクトリ">
-<!ENTITY	changeDirectory.label	"ディレクトリを変更する">
-<!ENTITY	datestamp.label			"保存したファイル名に日付を追加?">
-<!ENTITY	timestamp.label			"保存したファイル名に時間を追加?">
-<!ENTITY	datestampInLine.label	"保存されたテキストの先頭に日付を追加?">
-<!ENTITY	timestampInLine.label	"保存されたテキストの先頭に時刻を追加?">
-<!ENTITY	lineSeparator.label		"保存したテキストファイルの前にラインセパレーターを追加する?">
-<!ENTITY	currentURL.label		"ファイル内の現在のURLを保存します?">
-<!ENTITY	saveMode.label			"メソッドは、テキストを保存する?">
-<!ENTITY	createFile.label		"新しいファイルを作成します">
+<!ENTITY	changeDirectory.label	"ディレクトリを変更">
+<!ENTITY	datestamp.label			"保存ファイル名に日付を追加">
+<!ENTITY	timestamp.label			"保存ファイル名に時刻を追加">
+<!ENTITY	datestampInLine.label	"保存するテキストの先頭に日付を追加">
+<!ENTITY	timestampInLine.label	"保存するテキストの先頭に時刻を追加">
+<!ENTITY	lineSeparator.label		"保存するテキストの先頭に区切線を追加">
+<!ENTITY	currentURL.label		"保存するテキストの先頭に現在のURLを追加">
+<!ENTITY	saveMode.label			"テキストの保存方法">
+<!ENTITY	createFile.label		"新しいファイルを作成">
 <!ENTITY	appendFile.label		"既存のファイルに追加">

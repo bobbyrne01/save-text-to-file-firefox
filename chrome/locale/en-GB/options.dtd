@@ -1,12 +1,12 @@
 <!ENTITY	windowTitle.label		"Save Text to File preferences">
-<!ENTITY	showPreferences.label	"Open preferences dialog when &quot;Save Text to File&quot; is clicked?">
+<!ENTITY	showPreferences.label		"Open preferences dialog when &quot;Save Text to File&quot; is clicked?">
 <!ENTITY	fileName.label			"Saved file name">
 <!ENTITY	pathToFile.label		"Directory to save files">
-<!ENTITY	changeDirectory.label	"Change directory">
+<!ENTITY	changeDirectory.label		"Change directory">
 <!ENTITY	datestamp.label			"Add date to saved file name?">
 <!ENTITY	timestamp.label			"Add time to saved file name?">
-<!ENTITY	datestampInLine.label	"Add date to the beginning of saved text?">
-<!ENTITY	timestampInLine.label	"Add time to the beginning of saved text?">
+<!ENTITY	datestampInLine.label		"Add date to the beginning of saved text?">
+<!ENTITY	timestampInLine.label		"Add time to the beginning of saved text?">
 <!ENTITY	lineSeparator.label		"Add a line separator to the file before saved text?">
 <!ENTITY	currentURL.label		"Save current URL in file?">
 <!ENTITY	saveMode.label			"Method to save Text?">

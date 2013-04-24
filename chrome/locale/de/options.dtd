@@ -1,14 +1,14 @@
 <!ENTITY	windowTitle.label		"Save Text to File Einstellungen">
-<!ENTITY	showPreferences.label	"Einstellungen öffnen, wenn &quot;Save Text to File&quot; gestarte wird?">
+<!ENTITY	showPreferences.label		"Einstellungen Ã¶ffnen, wenn Save Text to File gestartet wird?">
 <!ENTITY	fileName.label			"Dateiname">
 <!ENTITY	pathToFile.label		"Verzeichnis, um die Dateien zu speichern">
-<!ENTITY	changeDirectory.label	"Verzeichnis wechseln">
-<!ENTITY	datestamp.label			"Datum zum Dateinamen hinzufügen?">
-<!ENTITY	timestamp.label			"Zeit zum Dateinamen hinzufügen?">
-<!ENTITY	datestampInLine.label	"Datum vor dem gesicherten Text einfügen?">
-<!ENTITY	timestampInLine.label	"Zeit vor dem gesicherten Text einfügen?">
-<!ENTITY	lineSeparator.label		"Eine Leerzeile vor dem gesicherten Text einfügen?">
+<!ENTITY	changeDirectory.label		"Verzeichnis wechseln">
+<!ENTITY	datestamp.label			"Datum zum Dateinamen hinzufÃ¼gen?">
+<!ENTITY	timestamp.label			"Zeit zum Dateinamen hinzufÃ¼gen?">
+<!ENTITY	datestampInLine.label		"Datum vor dem gesicherten Text einfÃ¼gen?">
+<!ENTITY	timestampInLine.label		"Zeit vor dem gesicherten Text einfÃ¼gen?">
+<!ENTITY	lineSeparator.label		"Eine Leerzeile vor dem gesicherten Text einfÃ¼gen?">
 <!ENTITY	currentURL.label		"Den aktuellen URL mit dem Text sichern?">
 <!ENTITY	saveMode.label			"Wie soll der Text gesichert werden?">
 <!ENTITY	createFile.label		"Neue Datei erzeugen">
-<!ENTITY	appendFile.label		"An die existierede Datei anfügen">
+<!ENTITY	appendFile.label		"An die existierede Datei anfÃ¼gen">

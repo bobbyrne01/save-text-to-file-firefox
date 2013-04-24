@@ -21,4 +21,8 @@
 	  label     = "&saveTextToFile.context.label;"
 	  oncommand = "SaveTextToFile_Main.run();"/>
   </popup> 
+
+  <keyset>
+    <key id="saveTextToFileShortcut" modifiers="shift" keycode="VK_F1" oncommand="SaveTextToFile_Main.run();"/>
+  </keyset>
 </overlay>
