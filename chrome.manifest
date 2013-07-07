@@ -19,3 +19,4 @@ locale	savetexttofile 					ru		chrome/locale/ru/
 locale	savetexttofile 					it		chrome/locale/it/
 locale	savetexttofile 					ko		chrome/locale/ko/
 locale	savetexttofile 					cs		chrome/locale/cs/
+locale	savetexttofile 					uk		chrome/locale/uk/

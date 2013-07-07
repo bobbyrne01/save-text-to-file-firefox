@@ -102,9 +102,17 @@
             <em:description>突出显示的文本保存到一个文件中指定的目录</em:description>
           </Description>
         </em:localized>
+        
+        <em:localized>
+          <Description>
+            <em:locale>uk</em:locale>
+            <em:name>Save Text To File</em:name>
+            <em:description>Зберігає виділений текст у файл у вказаному каталозі</em:description>
+          </Description>
+        </em:localized>
 	    
 	    <em:name>Save Text To File</em:name>  
-	    <em:version>1.1.4</em:version>  
+	    <em:version>1.1.5</em:version>  
 	    <em:description>Saves highlighted text to a file in a specified directory</em:description>  
 	    <em:creator>Robert Byrne</em:creator>  
 	    <em:homepageURL>http://www.bobbyrne01.blogspot.com</em:homepageURL>
@@ -114,7 +122,7 @@
 			<Description>  
         		<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>  
         		<em:minVersion>2.0</em:minVersion>  
-        		<em:maxVersion>20.*</em:maxVersion>  
+        		<em:maxVersion>22.*</em:maxVersion>  
       		</Description>  
     	</em:targetApplication>
     	

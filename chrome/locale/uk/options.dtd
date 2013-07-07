@@ -1,0 +1,14 @@
+<!ENTITY	windowTitle.label		"Налаштування додатку">
+<!ENTITY	showPreferences.label	"Відкрити діалог налаштування при виборі пункту &quot;Зберігти текст у файл&quot;?">
+<!ENTITY	fileName.label			"Назва збереженого файлу">
+<!ENTITY	pathToFile.label		"Тека для збереження файлів">
+<!ENTITY	changeDirectory.label	"Змінити теку">
+<!ENTITY	datestamp.label			"Додати дату в назву файлу?">
+<!ENTITY	timestamp.label			"Додати час у назву файлу?">
+<!ENTITY	datestampInLine.label	"Додати дату перед збереженним текстом?">
+<!ENTITY	timestampInLine.label	"Додати час перед збереженним текстом?">
+<!ENTITY	lineSeparator.label		"Додати роздільник рядків у файлі перед перед збереженим текстом?">
+<!ENTITY	currentURL.label		"Зберігти в файлі URL-адресу стрінки?">
+<!ENTITY	saveMode.label			"Метод збереження тексту?">
+<!ENTITY	createFile.label		"Створити новий файл">
+<!ENTITY	appendFile.label		"Додати до вже існуючого файлу">
