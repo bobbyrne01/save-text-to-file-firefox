@@ -1,4 +1,9 @@
+'use strict';
+
+const prefs = require("simple-prefs");
+const {Cc,Ci} = require("chrome");
 var contextMenu = require("sdk/context-menu");
+
 
 var menuItem = contextMenu.Item({
 	label: "Save Text to File",
@@ -7,15 +12,14 @@ var menuItem = contextMenu.Item({
        	'  var text = window.getSelection().toString();' +
        	'  self.postMessage(text);' +
        	'});',
-    onMessage: function (selectionText) {
+    onMessage: function (selectedText) {
     
-    	console.log(selectionText);
-    	SaveTextToFile_Main.run();
+    	SaveTextToFile_Main.run(selectedText);
     }
 });
 
 var SaveTextToFile_Main = {
-    run: function() {
+    run: function(selectedText) {
 
         var FileManager = {
         		
@@ -23,9 +27,21 @@ var SaveTextToFile_Main = {
             getPathToFile: function() {
 
                 // check if preferred saved path exists
-            	//var name = "extensions.checkCompatibility.nightly";
-            	//var nightlyCompatChk = require("sdk/preferences/service").get(name);
-        
+            	var userPrefPathToFile = prefs.prefs['extensions.savetexttofile.pathToFile'],
+            		pathToFile;
+            	
+            	if (userPrefPathToFile === "") {
+
+                    // Save file in user's home directory (No preference specified)
+            		var home = Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties).get("Home", Ci.nsIFile);
+                    pathToFile = home.path;
+                    
+                } else {
+
+                    pathToFile = userPrefPathToFile;
+                }
+
+                return pathToFile;
             },
 
             // @returns string - Name of file which will store the highlighted text
@@ -34,8 +50,18 @@ var SaveTextToFile_Main = {
                 	date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear(),
                 	time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
 
-                // check whether file name should include date and/or timestamp
+                // check whether file name should include date and/or time stamps
+                var datestamp = prefs.prefs['extensions.savetexttofile.datestamp'],
+                	timestamp = prefs.prefs['extensions.savetexttofile.timestamp'],
+                	fileName = prefs.prefs['extensions.savetexttofile.fileName'];
+                
+                console.log(datestamp);
+                console.log(timestamp);
+                
 
+                if (datestamp) {fileName += "--" + date;}
+
+                if (timestamp) {fileName += "--" + time;}
 
                 return fileName + ".txt";
             },
@@ -56,16 +82,32 @@ var SaveTextToFile_Main = {
 
         }
 
-        // @return string - Currently highlighted text in web browser
-        function getSelText() {
-            var focusedWindow = document.commandDispatcher.focusedWindow;
-
-            return focusedWindow.getSelection().toString();
-        }
-
         // @param string - Notification for users' attention (status of file/text save)
         function informUser(msg, msgPriority) {
 
         }
+        
+        
+        // execute commands
+        console.log(selectedText);
+        
+        var saveDirectory = FileManager.getPathToFile();
+        console.log(saveDirectory);
+	    
+        var fileName = FileManager.createFileName();
+	    console.log(fileName);
+
+	    
+    	/*saveComplete = stringsBundle.getFormattedString('saveComplete', [saveDirectory, fileName]),
+    	saveError = stringsBundle.getFormattedString('saveError', [saveDirectory, fileName]),*/
+	    	
+	    var lineSeparator = prefs.prefs['extensions.savetexttofile.lineSeparator'],
+	    	saveMode = prefs.prefs['extensions.savetexttofile.saveMode'];
+	    
+	    if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText, saveMode, lineSeparator)) {
+	    	//informUser(saveComplete, nb.PRIORITY_INFO_HIGH);
+	    }else{
+	    	//informUser(saveError, nb.PRIORITY_WARNING_HIGH);
+	    }
     },
 };
