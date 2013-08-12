@@ -1,14 +1,18 @@
 'use strict';
 
-const prefs = require("simple-prefs");
-const {Cc,Ci,Cu,components} = require("chrome");
-const system = require("sdk/system");
-const contextMenu = require("sdk/context-menu");
-const tabs = require('tabs');
+var prefs = require("simple-prefs"),
+	{Cc,Ci,Cu,components} = require("chrome"),
+	system = require("sdk/system"),
+	contextMenu = require("sdk/context-menu"),
+	tabs = require('tabs'),
+	notifications = require("sdk/notifications"),
+	self = require("self"),
+	_ = require("sdk/l10n").get;
 
 
 var menuItem = contextMenu.Item({
-	label: "Save Text to File",
+	
+	label: _("saveTextToFile_id"),
 	context: contextMenu.SelectionContext(),
 	contentScript: 'self.on("click", function () {' +
        	'  var text = window.getSelection().toString();' +
@@ -21,6 +25,7 @@ var menuItem = contextMenu.Item({
 });
 
 var SaveTextToFile_Main = {
+	
     run: function(selectedText) {
 
         var FileManager = {
@@ -56,13 +61,8 @@ var SaveTextToFile_Main = {
                 var datestamp = prefs.prefs['extensions.savetexttofile.datestamp'],
                 	timestamp = prefs.prefs['extensions.savetexttofile.timestamp'],
                 	fileName = prefs.prefs['extensions.savetexttofile.fileName'];
-                
-                console.log(datestamp);
-                console.log(timestamp);
-                
 
                 if (datestamp) {fileName += "--" + date;}
-
                 if (timestamp) {fileName += "--" + time;}
 
                 return fileName + ".txt";
@@ -88,11 +88,7 @@ var SaveTextToFile_Main = {
                 	timestampInLinePref = prefs.prefs['extensions.savetexttofile.timestampInLine'],
                 	currentTime = new Date(),
                 	date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear(),
-                	time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds(),
-                	success;
-                	//stringsBundle = document.getElementById("savetexttofile-overlay-string-bundle"),
-                	//datestampInLineString = stringsBundle.getString('datestampInLine'),
-                	//timestampInLineString = stringsBundle.getString('timestampInLine');
+                	time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
                 
                 
             	if (system.platform.indexOf("Win") != -1) {fileSeparator = "\\";}
@@ -110,29 +106,21 @@ var SaveTextToFile_Main = {
 
                 // The last argument (the callback) is optional.
                 NetUtil.asyncCopy(istream, ostream, function(status) {
+                	
                 	if (!components.isSuccessCode(status)) {
                 		// error!
-                		success = 1;
+                		notifications.notify({
+                			text: _("saveError_id", saveDirectory, fileName),
+                      	});
                 	}else{
-                		success = 0;
+                		
+                		notifications.notify({
+                			text: _("saveComplete_id", saveDirectory, fileName),
+                      	});
                 	}
-
-                	// Data has been written to the file.
                 });
-                
-                return success;
             }
         };
-
-        // @return bool - Whether to 'Save' or 'Cancel' preference updates
-        function showPreferences() {
-
-        }
-
-        // @param string - Notification for users' attention (status of file/text save)
-        function informUser(msg, msgPriority) {
-
-        }
         
         
         // main section
@@ -141,22 +129,6 @@ var SaveTextToFile_Main = {
         	saveMode = prefs.prefs['extensions.savetexttofile.saveMode'],
         	lineSeparator = prefs.prefs['extensions.savetexttofile.lineSeparator'];
 	    
-	    console.log(selectedText);
-	    console.log(saveDirectory);
-	    console.log(fileName);
-
-	    
-    	/*saveComplete = stringsBundle.getFormattedString('saveComplete', [saveDirectory, fileName]),
-    	saveError = stringsBundle.getFormattedString('saveError', [saveDirectory, fileName]),*/
-	    	
-	    
-	    
-	    if (FileManager.writeFileToOS(saveDirectory, fileName, selectedText, saveMode, lineSeparator) == 0) {
-	    	//informUser(saveComplete, nb.PRIORITY_INFO_HIGH);
-	    	console.log('Text saved to file');
-	    }else{
-	    	//informUser(saveError, nb.PRIORITY_WARNING_HIGH);
-	    	console.log('Text failed writing to file');
-	    }
+	    FileManager.writeFileToOS(saveDirectory, fileName, selectedText, saveMode, lineSeparator);
     },
 };

@@ -7,72 +7,56 @@
   "license": "GNU GPL v3",
   "version": "2",
   "preferences": [{
-        "name": "extensions.savetexttofile.showPreferences",
-        "title": "Show preferences?",
-        "description": "Open preferences dialog when 'Save Text to File' is clicked",
-        "type": "bool",
-        "value": true
-    },
-    {
     	"name": "extensions.savetexttofile.fileName",
     	"title": "File name?",
-        "description": "Saved file name",
         "type": "string",
         "value": "HighlightedText"
     },
     {
     	"name": "extensions.savetexttofile.pathToFile",
     	"title": "Path to file?",
-        "description": "Change directory of saved files",
         "type": "directory",
         "value": ""
     },
     {
     	"name": "extensions.savetexttofile.datestamp",
     	"title": "Date stamp?",
-        "description": "Add date to saved file name",
         "type": "bool",
         "value": true
     },
     {
     	"name": "extensions.savetexttofile.timestamp",
     	"title": "Time stamp?",
-        "description": "Add time to saved file name",
         "type": "bool",
         "value": true
     },
     {
     	"name": "extensions.savetexttofile.datestampInLine",
     	"title": "Date stamp in line?",
-        "description": "Add date to the beginning of saved text",
         "type": "bool",
         "value": true
     },
     {
     	"name": "extensions.savetexttofile.timestampInLine",
     	"title": "Time stamp in line?",
-        "description": "Add time to the beginning of saved text?",
         "type": "bool",
         "value": true
     },
     {
     	"name": "extensions.savetexttofile.lineSeparator",
     	"title": "Line separator?",
-        "description": "Add a line separator to the file before saved text",
         "type": "bool",
         "value": true
     },
     {
     	"name": "extensions.savetexttofile.currentURL",
     	"title": "Current URL?",
-        "description": "Save current URL in file",
         "type": "bool",
         "value": true
     },
     {
     	"name": "extensions.savetexttofile.saveMode",
     	"title": "Save mode?",
-        "description": "Method to save Text",
         "type": "menulist",
         "value": 0,
         "options": [
