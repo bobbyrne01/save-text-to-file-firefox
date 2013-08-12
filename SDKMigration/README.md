@@ -1,4 +1,7 @@
 # Change log
+## 2.0
+- Migrated Extension to addon SDK i.e Addon is now restartless during installation
+
 ## 1.1.5
 - Added Ukrainian Locale
 

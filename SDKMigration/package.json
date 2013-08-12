@@ -7,66 +7,66 @@
   "license": "GNU GPL v3",
   "version": "2",
   "preferences": [{
-    	"name": "extensions.savetexttofile.fileName",
+    	"name": "fileName",
     	"title": "File name?",
         "type": "string",
         "value": "HighlightedText"
     },
     {
-    	"name": "extensions.savetexttofile.pathToFile",
+    	"name": "pathToFile",
     	"title": "Path to file?",
         "type": "directory",
         "value": ""
     },
     {
-    	"name": "extensions.savetexttofile.datestamp",
+    	"name": "datestamp",
     	"title": "Date stamp?",
         "type": "bool",
         "value": true
     },
     {
-    	"name": "extensions.savetexttofile.timestamp",
+    	"name": "timestamp",
     	"title": "Time stamp?",
         "type": "bool",
         "value": true
     },
     {
-    	"name": "extensions.savetexttofile.datestampInLine",
+    	"name": "datestampInLine",
     	"title": "Date stamp in line?",
         "type": "bool",
         "value": true
     },
     {
-    	"name": "extensions.savetexttofile.timestampInLine",
+    	"name": "timestampInLine",
     	"title": "Time stamp in line?",
         "type": "bool",
         "value": true
     },
     {
-    	"name": "extensions.savetexttofile.lineSeparator",
+    	"name": "lineSeparator",
     	"title": "Line separator?",
         "type": "bool",
         "value": true
     },
     {
-    	"name": "extensions.savetexttofile.currentURL",
+    	"name": "currentURL",
     	"title": "Current URL?",
         "type": "bool",
         "value": true
     },
     {
-    	"name": "extensions.savetexttofile.saveMode",
+    	"name": "saveMode",
     	"title": "Save mode?",
         "type": "menulist",
         "value": 0,
         "options": [
 	        {
 	            "value": "0",
-	            "label": "Create new file"
+	            "label": "Create"
 	        },
 	        {
 	            "value": "1",
-	            "label": "Append to existing file"
+	            "label": "Append"
 	        }
 	    ]
     }]

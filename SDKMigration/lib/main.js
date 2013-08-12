@@ -34,7 +34,7 @@ var SaveTextToFile_Main = {
             getPathToFile: function() {
 
                 // check if preferred saved path exists
-            	var userPrefPathToFile = prefs.prefs['extensions.savetexttofile.pathToFile'],
+            	var userPrefPathToFile = prefs.prefs['pathToFile'],
             		pathToFile;
             	
             	if (userPrefPathToFile === "") {
@@ -58,9 +58,9 @@ var SaveTextToFile_Main = {
                 	time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
 
                 // check whether file name should include date and/or time stamps
-                var datestamp = prefs.prefs['extensions.savetexttofile.datestamp'],
-                	timestamp = prefs.prefs['extensions.savetexttofile.timestamp'],
-                	fileName = prefs.prefs['extensions.savetexttofile.fileName'];
+                var datestamp = prefs.prefs['datestamp'],
+                	timestamp = prefs.prefs['timestamp'],
+                	fileName = prefs.prefs['fileName'];
 
                 if (datestamp) {fileName += "--" + date;}
                 if (timestamp) {fileName += "--" + time;}
@@ -83,9 +83,9 @@ var SaveTextToFile_Main = {
             		fullPathToFile = saveDirectory + fileSeparator + fileName,
             		fullPathToFile = saveDirectory + fileSeparator + fileName,
                 	file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
-                	currentURL = prefs.prefs['extensions.savetexttofile.currentURL'],
-                	datestampInLinePref = prefs.prefs['extensions.savetexttofile.datestampInLine'],
-                	timestampInLinePref = prefs.prefs['extensions.savetexttofile.timestampInLine'],
+                	currentURL = prefs.prefs['currentURL'],
+                	datestampInLinePref = prefs.prefs['datestampInLine'],
+                	timestampInLinePref = prefs.prefs['timestampInLine'],
                 	currentTime = new Date(),
                 	date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear(),
                 	time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
@@ -126,8 +126,8 @@ var SaveTextToFile_Main = {
         // main section
         var saveDirectory = FileManager.getPathToFile(),
         	fileName = FileManager.createFileName(),
-        	saveMode = prefs.prefs['extensions.savetexttofile.saveMode'],
-        	lineSeparator = prefs.prefs['extensions.savetexttofile.lineSeparator'];
+        	saveMode = prefs.prefs['saveMode'],
+        	lineSeparator = prefs.prefs['lineSeparator'];
 	    
 	    FileManager.writeFileToOS(saveDirectory, fileName, selectedText, saveMode, lineSeparator);
     },
