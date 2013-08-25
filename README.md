@@ -4,7 +4,7 @@ Saves highlighted text to a file in the specified directory (defaulting to the u
 After highlighting some text, right-click and select "Save Text to File" File names have the format userPreference--<todaysdate>-<timestamp>.txt The <todaysdate> and <timestamp> are optional and can be enabled/disabled through the extension's preferences.
 
 ### Compatibility
-- Firefox 2.0 - 22.*
+- Firefox 2.0 - 23.*
 - Sea-Monkey 2.0 - 2.13.* 
 
 ### Features
