@@ -58,12 +58,10 @@ var SaveTextToFile_Main = {
                 	time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
 
                 // check whether file name should include date and/or time stamps
-                var datestamp = prefs.prefs['datestamp'],
-                	timestamp = prefs.prefs['timestamp'],
-                	fileName = prefs.prefs['fileName'];
+                var fileName = prefs.prefs['fileName'];
 
-                if (datestamp) {fileName += "--" + date;}
-                if (timestamp) {fileName += "--" + time;}
+                if (prefs.prefs['datestamp']) {fileName += "--" + date;}
+                if (prefs.prefs['timestamp']) {fileName += "--" + time;}
 
                 return fileName + ".txt";
             },
@@ -74,7 +72,7 @@ var SaveTextToFile_Main = {
             // @param string - Whether to create a new file or append data to existing file
             // @param string - Whether to save a line separator in the file before saving text
             // @return boolean - Whether file has been saved successfully or not
-            writeFileToOS: function(saveDirectory, fileName, selectedText, saveMode, lineSeparator) {
+            writeFileToOS: function(saveDirectory, fileName, selectedText) {
             	
             	Cu.import("resource://gre/modules/NetUtil.jsm");
                 Cu.import("resource://gre/modules/FileUtils.jsm");
@@ -88,21 +86,48 @@ var SaveTextToFile_Main = {
                 	timestampInLinePref = prefs.prefs['timestampInLine'],
                 	currentTime = new Date(),
                 	date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear(),
+                	time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds(),
+                	ostream,
+                	string = '',
+                	currentTime = new Date(),
+                	date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear(),
                 	time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
                 
                 
             	if (system.platform.indexOf("Win") != -1) {fileSeparator = "\\";}
                 
                 file.initWithPath(fullPathToFile);
-
-                // flags available
-                // FileUtils.MODE_WRONLY | FileUtils.MODE_CREATE | FileUtils.MODE_TRUNCATE;
-                var ostream = FileUtils.openSafeFileOutputStream(file)
+                
+                if (prefs.prefs['saveMode'] == 0){
+                	ostream = FileUtils.openSafeFileOutputStream(file, FileUtils.MODE_WRONLY | FileUtils.MODE_CREATE | FileUtils.MODE_TRUNCATE);
+                	
+                }else{
+                	ostream = FileUtils.openFileOutputStream()(file, FileUtils.MODE_WRONLY | FileUtils.MODE_APPEND);
+                }
+                
 
                 var converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].
                                 createInstance(Ci.nsIScriptableUnicodeConverter);
                 converter.charset = "UTF-8";
-                var istream = converter.convertToInputStream(selectedText);
+                
+                if (prefs.prefs['datestampInLine']){
+                	string += date + '\n\n';
+                }
+                
+                if (prefs.prefs['timestampInLine']){
+                	string += time + '\n\n';
+                }
+                
+                if (prefs.prefs['lineSeparator']){
+                	string += '----------------------------------------------------------------------\n\n';
+                }
+                
+                if (prefs.prefs['currentURL']){
+                	string += tabs.activeTab.url + '\n\n';
+                }
+                
+                
+                var istream = converter.convertToInputStream(string + selectedText);
 
                 // The last argument (the callback) is optional.
                 NetUtil.asyncCopy(istream, ostream, function(status) {
@@ -125,10 +150,8 @@ var SaveTextToFile_Main = {
         
         // main section
         var saveDirectory = FileManager.getPathToFile(),
-        	fileName = FileManager.createFileName(),
-        	saveMode = prefs.prefs['saveMode'],
-        	lineSeparator = prefs.prefs['lineSeparator'];
+        	fileName = FileManager.createFileName();
 	    
-	    FileManager.writeFileToOS(saveDirectory, fileName, selectedText, saveMode, lineSeparator);
+	    FileManager.writeFileToOS(saveDirectory, fileName, selectedText);
     },
 };
