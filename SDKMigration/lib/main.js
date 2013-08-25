@@ -88,10 +88,7 @@ var SaveTextToFile_Main = {
                 	date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear(),
                 	time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds(),
                 	ostream,
-                	string = '',
-                	currentTime = new Date(),
-                	date = currentTime.getDate() + "-" + (currentTime.getMonth() + 1) + "-" + currentTime.getFullYear(),
-                	time = currentTime.getHours() + "-" + currentTime.getMinutes() + "-" + currentTime.getSeconds();
+                	string = '';
                 
                 
             	if (system.platform.indexOf("Win") != -1) {fileSeparator = "\\";}
@@ -102,7 +99,7 @@ var SaveTextToFile_Main = {
                 	ostream = FileUtils.openSafeFileOutputStream(file, FileUtils.MODE_WRONLY | FileUtils.MODE_CREATE | FileUtils.MODE_TRUNCATE);
                 	
                 }else{
-                	ostream = FileUtils.openFileOutputStream()(file, FileUtils.MODE_WRONLY | FileUtils.MODE_APPEND);
+                	ostream = FileUtils.openFileOutputStream(file, FileUtils.MODE_WRONLY | FileUtils.MODE_APPEND);
                 }
                 
 
@@ -110,16 +107,18 @@ var SaveTextToFile_Main = {
                                 createInstance(Ci.nsIScriptableUnicodeConverter);
                 converter.charset = "UTF-8";
                 
+                string += '\n\n';
+                
+                if (prefs.prefs['lineSeparator']){
+                	string += '----------------------------------------------------------------------\n\n';
+                }
+                
                 if (prefs.prefs['datestampInLine']){
                 	string += date + '\n\n';
                 }
                 
                 if (prefs.prefs['timestampInLine']){
                 	string += time + '\n\n';
-                }
-                
-                if (prefs.prefs['lineSeparator']){
-                	string += '----------------------------------------------------------------------\n\n';
                 }
                 
                 if (prefs.prefs['currentURL']){
