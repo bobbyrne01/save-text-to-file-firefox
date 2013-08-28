@@ -1,4 +1,7 @@
 # Change log
+## 2.0.1
+- Separated functionality into modules for easier debug and maintenance of code
+
 ## 2.0
 - Migrated Extension to addon SDK i.e Addon is now restartless during installation
 
