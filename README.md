@@ -1,4 +1,10 @@
 # Change log
+## 2.0.3
+- #21 File separator is now automatically determined
+
+## 2.0.2
+- #20 Added hotkey, shift+F1 to automatically save selected text 
+
 ## 2.0.1
 - Separated functionality into modules for easier debug and maintenance of code
 
