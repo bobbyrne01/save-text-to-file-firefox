@@ -1,4 +1,8 @@
 # Change log
+## 2.0.4
+- #25 Parameterized preferenceManager.load(preference)
+- #26 Notification now displays correct file separator
+
 ## 2.0.3
 - #21 File separator is now automatically determined
 
