@@ -13,6 +13,7 @@
 						<div data-l10n-id="fileName_title"></div>
 					</td>
 					<td>
+						<textarea rows="1" cols="20"></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -20,7 +21,10 @@
 						<div data-l10n-id="pathToFile_title"></div>
 					</td>
 					<td>
-						
+						<textarea id="pathToFile" readonly="true"></textarea>
+						<button onclick="SaveTextToFile_Panel.selectDir();">
+							<div data-l10n-id="browse_title"></div>
+						</button>
 					</td>
 				</tr>
 				<tr>
@@ -28,7 +32,7 @@
 						<div data-l10n-id="datestamp_title"></div>
 					</td>
 					<td>
-						
+						<input type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -36,7 +40,7 @@
 						<div data-l10n-id="timestamp_title"></div>
 					</td>
 					<td>
-						
+						<input type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -44,7 +48,7 @@
 						<div data-l10n-id="datestampInLine_title"></div>
 					</td>
 					<td>
-						
+						<input type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -52,7 +56,7 @@
 						<div data-l10n-id="timestampInLine_title"></div>
 					</td>
 					<td>
-						
+						<input type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -60,7 +64,7 @@
 						<div data-l10n-id="lineSeparator_title"></div>
 					</td>
 					<td>
-						
+						<input type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -68,7 +72,7 @@
 						<div data-l10n-id="currentURL_title"></div>
 					</td>
 					<td>
-						
+						<input type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -76,15 +80,18 @@
 						<div data-l10n-id="saveMode_title"></div>
 					</td>
 					<td>
-						
+						<select>
+							<option value="0">Create</option>
+						  	<option value="1">Append</option>
+						</select> 
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<button onclick="save()">Save</button>
+						<button onclick="SaveTextToFile_Panel.save()">Save</button>
 					</td>
 					<td>
-						<button onclick="cancel()">Cancel</button>
+						<button onclick="SaveTextToFile_Panel.cancel()">Cancel</button>
 					</td>
 				</tr>
 			</table>
