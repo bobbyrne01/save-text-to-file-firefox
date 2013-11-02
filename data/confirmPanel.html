@@ -2,10 +2,10 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<script src="confirmDialog.js"></script>
+		<script src="confirmPanel.js"></script>
 	</head>
  
-	<body>
+	<body onload="SaveTextToFile_Panel.getPreferences()">
 		<form>
 			<table>
 				<tr>
@@ -13,7 +13,7 @@
 						<div data-l10n-id="fileName_title"></div>
 					</td>
 					<td>
-						<textarea rows="1" cols="20"></textarea>
+						<textarea id="fileName" rows="1" cols="20"></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -32,7 +32,7 @@
 						<div data-l10n-id="datestamp_title"></div>
 					</td>
 					<td>
-						<input type="checkbox" name="vehicle" value="">
+						<input id="datestamp" type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -40,7 +40,7 @@
 						<div data-l10n-id="timestamp_title"></div>
 					</td>
 					<td>
-						<input type="checkbox" name="vehicle" value="">
+						<input id="timestamp" type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -48,7 +48,7 @@
 						<div data-l10n-id="datestampInLine_title"></div>
 					</td>
 					<td>
-						<input type="checkbox" name="vehicle" value="">
+						<input id="datestampInLine" type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -56,7 +56,7 @@
 						<div data-l10n-id="timestampInLine_title"></div>
 					</td>
 					<td>
-						<input type="checkbox" name="vehicle" value="">
+						<input id="timestampInLine" type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -64,7 +64,7 @@
 						<div data-l10n-id="lineSeparator_title"></div>
 					</td>
 					<td>
-						<input type="checkbox" name="vehicle" value="">
+						<input id="lineSeparator" type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -72,7 +72,7 @@
 						<div data-l10n-id="currentURL_title"></div>
 					</td>
 					<td>
-						<input type="checkbox" name="vehicle" value="">
+						<input id="currentURL" type="checkbox" name="vehicle" value="">
 					</td>
 				</tr>
 				<tr>
@@ -80,7 +80,7 @@
 						<div data-l10n-id="saveMode_title"></div>
 					</td>
 					<td>
-						<select>
+						<select id="saveMode" >
 							<option value="0">Create</option>
 						  	<option value="1">Append</option>
 						</select> 

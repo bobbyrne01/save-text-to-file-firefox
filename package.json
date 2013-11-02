@@ -71,7 +71,7 @@
 	    ]
     },
     {
-    	"name": "confirmDialog",
+    	"name": "confirmPanel",
     	"title": "Confirm settings?",
         "type": "bool",
         "value": true
