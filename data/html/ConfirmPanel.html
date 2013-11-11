@@ -1,11 +1,8 @@
 <html>
-
 	<head>
-		<meta charset="UTF-8" />
-		<script src="confirmPanel.js"></script>
+		<meta charset="UTF-8" />   
 	</head>
- 
-	<body onload="SaveTextToFile_Panel.getPreferences()">
+	<body>
 		<form>
 			<table>
 				<tr>
@@ -22,7 +19,7 @@
 					</td>
 					<td>
 						<textarea id="pathToFile" readonly="true"></textarea>
-						<button onclick="SaveTextToFile_Panel.selectDir();">
+						<button id="pathToFileButton">
 							<div data-l10n-id="browse_title"></div>
 						</button>
 					</td>
@@ -88,10 +85,10 @@
 				</tr>
 				<tr>
 					<td>
-						<button onclick="SaveTextToFile_Panel.save()">Save</button>
+						<button id="saveButton">Save</button>
 					</td>
 					<td>
-						<button onclick="SaveTextToFile_Panel.cancel()">Cancel</button>
+						<button id="cancelButton">Cancel</button>
 					</td>
 				</tr>
 			</table>
