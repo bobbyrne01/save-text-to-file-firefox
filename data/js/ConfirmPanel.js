@@ -1,18 +1,8 @@
-// Panel loaded
-$(document).ready(function(){
-	
-	$( "#pathToFileButton" ).click(function() {
-		SaveTextToFile_Panel.selectDir();
-	});
-	
-	$( "#saveButton" ).click(function() {
-		SaveTextToFile_Panel.save();
-	});
-	
-	$( "#cancelButton" ).click(function() {
-		SaveTextToFile_Panel.cancel();
-	});
-});
+window.onload = function(){
+	document.getElementById('pathToFileButton').addEventListener("click", function() {SaveTextToFile_Panel.selectDir();});
+	document.getElementById('saveButton').addEventListener("click", function() {SaveTextToFile_Panel.save();});
+	document.getElementById('cancelButton').addEventListener("click", function() {SaveTextToFile_Panel.cancel();});
+};
 
 // functions available to Panel
 var SaveTextToFile_Panel = {
@@ -25,8 +15,8 @@ var SaveTextToFile_Panel = {
 			
 			// send path to file and file name back to addon code
 			var selectedPrefs = '{'
-				+'"fileName":"' + $( "#fileName" ).val() + '", '
-			    +'"pathToFile":"' + $( "#pathToFile" ).val() + '"'
+				+'"fileName":"' + document.getElementById("fileName").value + '", '
+			    +'"pathToFile":"' + document.getElementById("pathToFile").value + '"'
 			    +'}';
 
 			self.port.emit("save", selectedPrefs);
@@ -41,13 +31,13 @@ var SaveTextToFile_Panel = {
 self.port.on("prefs", function (prefs) {
 	var parsedPrefs = JSON.parse(prefs);
 	
-	$( "#fileName" ).val(parsedPrefs.fileName);
-	$( "#pathToFile" ).val(parsedPrefs.pathToFile);
-	$( "#datestamp" ).prop('checked', parsedPrefs.datestamp);
-	$( "#timestamp" ).prop('checked', parsedPrefs.timestamp);
-	$( "#datestampInLine" ).prop('checked', parsedPrefs.datestampInLine);
-	$( "#timestampInLine" ).prop('checked', parsedPrefs.timestampInLine);
-	$( "#lineSeparator" ).prop('checked', parsedPrefs.lineSeparator);
-	$( "#currentURL" ).prop('checked', parsedPrefs.currentURL);
-	$( "#saveMode" ).val(parsedPrefs.saveMode);
+	document.getElementById("fileName").value = parsedPrefs.fileName;
+	document.getElementById("pathToFile").value = parsedPrefs.pathToFile;
+	document.getElementById("datestamp").checked = parsedPrefs.datestamp;
+	document.getElementById("timestamp").checked = parsedPrefs.timestamp;
+	document.getElementById("datestampInLine").checked = parsedPrefs.datestampInLine;
+	document.getElementById("timestampInLine").checked = parsedPrefs.timestampInLine;
+	document.getElementById("lineSeparator").checked = parsedPrefs.lineSeparator;
+	document.getElementById("currentURL").checked = parsedPrefs.currentURL;
+	document.getElementById("saveMode").value = parsedPrefs.saveMode;
 });
