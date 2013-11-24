@@ -1,5 +1,4 @@
 self.on("click", function () {
 	
-	var text = window.getSelection().toString();
-	self.postMessage(text);
+	self.postMessage(window.getSelection().toString());
 });

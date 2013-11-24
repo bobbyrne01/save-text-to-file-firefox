@@ -1,8 +1,25 @@
-window.onload = function(){
-	document.getElementById('pathToFileButton').addEventListener("click", function() {SaveTextToFile_Panel.selectDir();});
-	document.getElementById('saveButton').addEventListener("click", function() {SaveTextToFile_Panel.save();});
-	document.getElementById('cancelButton').addEventListener("click", function() {SaveTextToFile_Panel.cancel();});
-};
+window.addEventListener('click', function(event) {
+	
+	console.log('clicked');
+	
+	if (event.target.id.indexOf('pathToFileButton') == 0){
+		console.log('selectDir');
+		
+		SaveTextToFile_Panel.selectDir();
+		
+	}else if (event.target.id.indexOf('saveButton') == 0){
+		console.log('save');
+		
+		SaveTextToFile_Panel.save();
+		
+	}else if (event.target.id.indexOf('cancelButton') == 0){
+		console.log('cancel');
+		
+		SaveTextToFile_Panel.cancel();
+		
+	}
+}, false);
+
 
 // functions available to Panel
 var SaveTextToFile_Panel = {
@@ -23,12 +40,14 @@ var SaveTextToFile_Panel = {
 		},
 		
 		cancel: function() {
+			console.log('cancel in contentscript call function');
 			self.port.emit("cancel", '');
 		}
 };
 
 // listen for preferences message from addon code and set values of Panel UI
 self.port.on("prefs", function (prefs) {
+	console.log("got prefs");
 	var parsedPrefs = JSON.parse(prefs);
 	
 	document.getElementById("fileName").value = parsedPrefs.fileName;
