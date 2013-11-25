@@ -1,4 +1,7 @@
 # Change log
+## 2.1
+- #18 Pop-up window to confirm/edit preferences before file is saved is now shown
+
 ## 2.0.4
 - #25 Parameterized preferenceManager.load(preference)
 - #26 Notification now displays correct file separator
