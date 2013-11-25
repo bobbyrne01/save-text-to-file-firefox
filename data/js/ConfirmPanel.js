@@ -51,8 +51,6 @@ var SaveTextToFile_Panel = {
 self.port.on("prefs", function (prefs) {
 	var parsedPrefs = JSON.parse(prefs);
 	
-	console.log(parsedPrefs.fileName);
-	
 	document.getElementById("fileName").value = parsedPrefs.fileName;
 	document.getElementById("pathToFile").value = parsedPrefs.pathToFile;
 	document.getElementById("datestamp").checked = parsedPrefs.datestamp;
