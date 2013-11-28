@@ -28,7 +28,7 @@ var SaveTextToFile_Panel = {
 			// send path to file and file name back to addon code
 			var selectedPrefs = '{'
 				+'"fileName":"' + document.getElementById("fileName").value + '", '
-			    +'"pathToFile":"' + document.getElementById("pathToFile").value + '", '
+			    +'"pathToFile":"' + document.getElementById("pathToFile").value.replace(/\\/g,"\\\\") + '", '
 			    +'"datestamp":"' + document.getElementById("datestamp").checked + '", '
 			    +'"timestamp":"' + document.getElementById("timestamp").checked + '", '
 			    +'"datestampInLine":"' + document.getElementById("datestampInLine").checked + '", '
