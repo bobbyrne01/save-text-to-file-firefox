@@ -1,7 +1,7 @@
-# Firefox addon, Save Text to File
+#Save Text to File
 
 ## Usage
-Saves highlighted text to a file in a directory (defaulting to the user's home directory)
+Firefox addon which saves highlighted text to a file in a directory (defaulting to the user's home directory)
 After highlighting some text, right-click and select "Save Text to File"
 File names have the format "userPreference--<todaysdate>-<timestamp>.txt"
 
