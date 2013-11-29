@@ -6,6 +6,7 @@
   "author": "Robert Byrne",
   "license": "GNU GPL v3",
   "version": "2.1.4",
+  "permissions": {"private-browsing": true},
   "preferences": [{
     	"name": "fileName",
     	"title": "File name?",
