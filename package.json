@@ -56,6 +56,12 @@
         "value": true
     },
     {
+    	"name": "pagenameForFilename",
+    	"title": "Use pagename as filename?",
+        "type": "bool",
+        "value": false
+    },
+    {
     	"name": "saveMode",
     	"title": "Save mode?",
         "type": "menulist",
