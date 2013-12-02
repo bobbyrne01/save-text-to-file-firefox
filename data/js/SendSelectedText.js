@@ -1,4 +1,4 @@
-self.on("click", function () {
+function getText(){
 	
 	self.postMessage(window.getSelection().toString());
-});
+}
