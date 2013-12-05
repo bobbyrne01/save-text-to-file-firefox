@@ -26,19 +26,19 @@ var SaveTextToFile_Panel = {
 		save: function() {
 			
 			// send path to file and file name back to addon code
-			var selectedPrefs = '{'
-				+'"fileName":"' + document.getElementById("fileName").value + '", '
-			    +'"pathToFile":"' + document.getElementById("pathToFile").value.replace(/\\/g,"\\\\") + '", '
-			    +'"datestamp":"' + document.getElementById("datestamp").checked + '", '
-			    +'"timestamp":"' + document.getElementById("timestamp").checked + '", '
-			    +'"datestampInLine":"' + document.getElementById("datestampInLine").checked + '", '
-			    +'"timestampInLine":"' + document.getElementById("timestampInLine").checked + '", '
-			    +'"lineSeparator":"' + document.getElementById("lineSeparator").checked + '", '
-			    +'"currentURL":"' + document.getElementById("currentURL").checked + '", '
-			    +'"pagenameForFilename":"' + document.getElementById("pagenameForFilename").checked + '", '
-			    +'"saveMode":"' + document.getElementById("saveMode").value + '", '
-			    +'"confirmPanel":"' + document.getElementById("confirmPanel").checked + '"'
-			    +'}';
+			var selectedPrefs = JSON.stringify({
+				fileName: document.getElementById("fileName").value,
+				pathToFile: document.getElementById("pathToFile").value,
+			    datestamp: document.getElementById("datestamp").checked,
+			    timestamp: document.getElementById("timestamp").checked,
+			    datestampInLine: document.getElementById("datestampInLine").checked,
+			    timestampInLine: document.getElementById("timestampInLine").checked,
+			    lineSeparator: document.getElementById("lineSeparator").checked,
+			    currentURL: document.getElementById("currentURL").checked,
+			    pagenameForFilename: document.getElementById("pagenameForFilename").checked,
+			    saveMode: document.getElementById("saveMode").value,
+			    confirmPanel: document.getElementById("confirmPanel").checked
+		    });
 
 			self.port.emit("save", selectedPrefs);
 		},
