@@ -18,17 +18,22 @@ File names can have the following pre-defined formats:
 - Save current URL in file
 - Text encoded using UTF-8 (Unicode) so all international characters can be stored correctly
 - Ability to either append text to existing file or create a new file
+- Set filename same as pagename
 - Optional preference confirmation panel triggered when `Save Text to File` is clicked
 
 ## Localization
-- English (en-US)
+- Czech (cs-CZ)
+- German (de-DE)
 - Chinese (zh-CN)
-- French (fr)
-- German (de)
-- Japanese (ja)
-- Polish (pl)
-- Russian (ru)
+- English (en-US) (en-GB)
 - Spanish (es-ES)
+- French (fr-FR)
+- Italian (it-IT)
+- Japanese (ja-JP)
+- Korean (ko-KR)
+- Polish (pl-PL)
+- Russian (ru-RU)
+- Ukrainian (uk-UA)
 
 ## Demo
 http://www.youtube.com/watch?v=w4zQGVLfm7o
