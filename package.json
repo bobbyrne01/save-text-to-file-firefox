@@ -62,6 +62,12 @@
         "value": false
     },
     {
+    	"name": "hideWidget",
+    	"title": "Hide widget?",
+        "type": "bool",
+        "value": false
+    },
+    {
     	"name": "saveMode",
     	"title": "Save mode?",
         "type": "menulist",
