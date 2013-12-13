@@ -44,6 +44,30 @@
         "value": true
     },
     {
+    	"name": "dateFormat",
+    	"title": "Date format?",
+        "type": "menulist",
+        "value": 0,
+        "options": [
+	        {
+	            "value": "0",
+	            "label": "DD-MM-YYY"
+	        },
+	        {
+	            "value": "1",
+	            "label": "MM-DD-YYYY"
+	        },
+	        {
+	            "value": "2",
+	            "label": "YYYY-MM-DD"
+	        },
+	        {
+	            "value": "3",
+	            "label": "YYYY-DD-MM"
+	        }
+	    ]
+    },
+    {
     	"name": "lineSeparator",
     	"title": "Line separator?",
         "type": "bool",
