@@ -86,10 +86,10 @@
         "value": false
     },
     {
-    	"name": "hideWidget",
-    	"title": "Hide widget?",
+    	"name": "showWidget",
+    	"title": "Show widget?",
         "type": "bool",
-        "value": false
+        "value": true
     },
     {
     	"name": "saveMode",

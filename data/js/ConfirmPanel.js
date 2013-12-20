@@ -38,7 +38,7 @@ var SaveTextToFile_Panel = {
 			    pagenameForFilename: document.getElementById("pagenameForFilename").checked,
 			    saveMode: document.getElementById("saveMode").value,
 			    confirmPanel: document.getElementById("confirmPanel").checked,
-			    hideWidget: document.getElementById("hideWidget").checked
+			    showWidget: document.getElementById("showWidget").checked
 		    });
 
 			self.port.emit("save", selectedPrefs);
@@ -64,5 +64,5 @@ self.port.on("prefs", function (prefs) {
 	document.getElementById("pagenameForFilename").checked = parsedPrefs.pagenameForFilename;
 	document.getElementById("saveMode").value = parsedPrefs.saveMode;
 	document.getElementById("confirmPanel").checked = parsedPrefs.confirmPanel;
-	document.getElementById("hideWidget").checked = parsedPrefs.hideWidget;	
+	document.getElementById("showWidget").checked = parsedPrefs.showWidget;	
 });
