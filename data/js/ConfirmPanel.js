@@ -33,6 +33,7 @@ var SaveTextToFile_Panel = {
 			    timestamp: document.getElementById("timestamp").checked,
 			    datestampInLine: document.getElementById("datestampInLine").checked,
 			    timestampInLine: document.getElementById("timestampInLine").checked,
+			    dateFormat: document.getElementById("dateFormat").value,
 			    lineSeparator: document.getElementById("lineSeparator").checked,
 			    currentURL: document.getElementById("currentURL").checked,
 			    pagenameForFilename: document.getElementById("pagenameForFilename").checked,
@@ -59,6 +60,7 @@ self.port.on("prefs", function (prefs) {
 	document.getElementById("timestamp").checked = parsedPrefs.timestamp;
 	document.getElementById("datestampInLine").checked = parsedPrefs.datestampInLine;
 	document.getElementById("timestampInLine").checked = parsedPrefs.timestampInLine;
+	document.getElementById("dateFormat").value = parsedPrefs.dateFormat;
 	document.getElementById("lineSeparator").checked = parsedPrefs.lineSeparator;
 	document.getElementById("currentURL").checked = parsedPrefs.currentURL;
 	document.getElementById("pagenameForFilename").checked = parsedPrefs.pagenameForFilename;

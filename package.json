@@ -51,7 +51,7 @@
         "options": [
 	        {
 	            "value": "0",
-	            "label": "DD-MM-YYY"
+	            "label": "DD-MM-YYYY"
 	        },
 	        {
 	            "value": "1",
