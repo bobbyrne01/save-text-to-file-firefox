@@ -14,11 +14,13 @@ File names can have the following pre-defined formats:
 - Add time to saved file name
 - Add date to the beginning of saved text
 - Add time to the beginning of saved text
+- Various date formats to choose from
 - Add a line separator to the file before saved text
 - Save current URL in file
 - Text encoded using UTF-8 (Unicode) so all international characters can be stored correctly
 - Ability to either append text to existing file or create a new file
 - Set filename same as pagename
+- Show/hide widget icon
 - Optional preference confirmation panel triggered when `Save Text to File` is clicked
 
 ## Localization
