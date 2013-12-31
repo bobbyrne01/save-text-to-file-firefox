@@ -2,6 +2,7 @@
 
 ## Usage
 Firefox addon which saves highlighted text to a file in a directory (defaulting to the user's home directory)<br/>
+Goal is to simplify note taking on web pages so users can refer to data at a later stage offline, without the need to remember URL's etc.<br/>
 After highlighting some text, right-click and select `Save Text to File`<br/>
 File names can have the following pre-defined formats:
 - `userPreference.txt`
