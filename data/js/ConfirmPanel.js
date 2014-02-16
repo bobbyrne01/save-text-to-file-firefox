@@ -29,6 +29,7 @@ var SaveTextToFile_Panel = {
 			var selectedPrefs = JSON.stringify({
 				fileName: document.getElementById("fileName").value,
 				pathToFile: document.getElementById("pathToFile").value,
+				format: document.getElementById("format").value,
 			    datestamp: document.getElementById("datestamp").checked,
 			    timestamp: document.getElementById("timestamp").checked,
 			    datestampInLine: document.getElementById("datestampInLine").checked,
@@ -57,6 +58,7 @@ self.port.on("prefs", function (prefs) {
 	
 	document.getElementById("fileName").value = parsedPrefs.fileName;
 	document.getElementById("pathToFile").value = parsedPrefs.pathToFile;
+	document.getElementById("format").value = parsedPrefs.format;
 	document.getElementById("datestamp").checked = parsedPrefs.datestamp;
 	document.getElementById("timestamp").checked = parsedPrefs.timestamp;
 	document.getElementById("datestampInLine").checked = parsedPrefs.datestampInLine;

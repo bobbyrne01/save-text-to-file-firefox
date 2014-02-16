@@ -5,7 +5,7 @@
   "description": "Saves highlighted text to a file in a specified directory",
   "author": "Robert Byrne",
   "license": "GNU GPL v3",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "permissions": {"private-browsing": true},
   "preferences": [{
     	"name": "fileName",
@@ -18,6 +18,22 @@
     	"title": "Path to file?",
         "type": "directory",
         "value": ""
+    },
+    {
+    	"name": "format",
+    	"title": "File format?",
+        "type": "menulist",
+        "value": 0,
+        "options": [
+	        {
+	            "value": "0",
+	            "label": ".txt"
+	        },
+	        {
+	            "value": "1",
+	            "label": ".csv"
+	        }
+	    ]
     },
     {
     	"name": "datestamp",
