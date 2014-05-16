@@ -13,11 +13,26 @@ window.addEventListener('click', function(event) {
 		SaveTextToFile_Panel.cancel();	
 	}
 	
+	if (document.getElementById("saveMode").selectedIndex == 1){
+		
+		document.getElementById("timestamp").disabled = true;
+	
+	}else{
+		
+		document.getElementById("timestamp").disabled = false;
+	}
+	
 }, false);
+
+
 
 
 // functions available to Panel
 var SaveTextToFile_Panel = {
+		
+		updateTimestampInFilename: function() {
+			alert('c');
+		},
 		
 		selectDir: function() {
 			self.port.emit("selectDir", '');
@@ -71,4 +86,13 @@ self.port.on("prefs", function (prefs) {
 	document.getElementById("confirmPanel").checked = parsedPrefs.confirmPanel;
 	document.getElementById("showWidget").checked = parsedPrefs.showWidget;	
 	document.getElementById("showNotifications").checked = parsedPrefs.showNotifications;	
+	
+	if (parsedPrefs.saveMode == 1){
+		
+		document.getElementById("timestamp").disabled = true;
+	
+	}else{
+		
+		document.getElementById("timestamp").disabled = false;
+	}
 });

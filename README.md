@@ -12,7 +12,7 @@ File names can have the following pre-defined formats:
 
 ## Features
 - Add date to saved file name
-- Add time to saved file name
+- Add time to saved file name (disabled if 'saveMode' is 'Append')
 - Add date to the beginning of saved text
 - Add time to the beginning of saved text
 - Various date formats to choose from
