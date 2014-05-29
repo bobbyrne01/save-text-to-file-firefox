@@ -5,7 +5,7 @@
   "description": "Saves highlighted text to a file in a specified directory",
   "author": "Robert Byrne",
   "license": "GNU GPL v3",
-  "version": "2.2.5",
+  "version": "2.3",
   "permissions": {"private-browsing": true},
   "preferences": [{
     	"name": "fileName",
@@ -134,5 +134,11 @@
     	"title": "Confirm settings?",
         "type": "bool",
         "value": true
+    },
+    {
+    	"name": "html",
+    	"title": "Save selected html text?",
+        "type": "bool",
+        "value": false
     }]
 }

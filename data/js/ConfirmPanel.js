@@ -30,10 +30,6 @@ window.addEventListener('click', function(event) {
 // functions available to Panel
 var SaveTextToFile_Panel = {
 		
-		updateTimestampInFilename: function() {
-			alert('c');
-		},
-		
 		selectDir: function() {
 			self.port.emit("selectDir", '');
 		},
@@ -55,6 +51,7 @@ var SaveTextToFile_Panel = {
 			    pagenameForFilename: document.getElementById("pagenameForFilename").checked,
 			    saveMode: document.getElementById("saveMode").value,
 			    confirmPanel: document.getElementById("confirmPanel").checked,
+			    html: document.getElementById("html").checked,
 			    showWidget: document.getElementById("showWidget").checked,
 			    showNotifications: document.getElementById("showNotifications").checked
 		    });
@@ -84,6 +81,7 @@ self.port.on("prefs", function (prefs) {
 	document.getElementById("pagenameForFilename").checked = parsedPrefs.pagenameForFilename;
 	document.getElementById("saveMode").value = parsedPrefs.saveMode;
 	document.getElementById("confirmPanel").checked = parsedPrefs.confirmPanel;
+	document.getElementById("html").checked = parsedPrefs.html;
 	document.getElementById("showWidget").checked = parsedPrefs.showWidget;	
 	document.getElementById("showNotifications").checked = parsedPrefs.showNotifications;	
 	
