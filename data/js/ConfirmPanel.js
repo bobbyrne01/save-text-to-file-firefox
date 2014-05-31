@@ -1,3 +1,5 @@
+var text;
+
 window.addEventListener('click', function(event) {
 	
 	if (event.target.id.indexOf('pathToFileButton') == 0){
@@ -20,6 +22,18 @@ window.addEventListener('click', function(event) {
 	}else{
 		
 		document.getElementById("timestamp").disabled = false;
+	}
+	
+	if (document.getElementById("html").checked){
+		document.getElementById("previewArea").value = JSON.parse(text).html;
+	}else{
+		document.getElementById("previewArea").value = JSON.parse(text).plain
+	}
+	
+	if (document.getElementById("preview").checked){
+		document.getElementById("previewArea").style.visibility = "visible";
+	}else{
+		document.getElementById("previewArea").style.visibility = "hidden";
 	}
 	
 }, false);
@@ -53,7 +67,9 @@ var SaveTextToFile_Panel = {
 			    confirmPanel: document.getElementById("confirmPanel").checked,
 			    html: document.getElementById("html").checked,
 			    showWidget: document.getElementById("showWidget").checked,
-			    showNotifications: document.getElementById("showNotifications").checked
+			    showNotifications: document.getElementById("showNotifications").checked,
+			    preview: document.getElementById("preview").checked,
+			    text: document.getElementById("previewArea").value
 		    });
 
 			self.port.emit("save", selectedPrefs);
@@ -84,6 +100,8 @@ self.port.on("prefs", function (prefs) {
 	document.getElementById("html").checked = parsedPrefs.html;
 	document.getElementById("showWidget").checked = parsedPrefs.showWidget;	
 	document.getElementById("showNotifications").checked = parsedPrefs.showNotifications;	
+	document.getElementById("preview").checked = parsedPrefs.preview;
+	text = parsedPrefs.text;
 	
 	if (parsedPrefs.saveMode == 1){
 		
@@ -92,5 +110,17 @@ self.port.on("prefs", function (prefs) {
 	}else{
 		
 		document.getElementById("timestamp").disabled = false;
+	}
+	
+	if (parsedPrefs.html){
+		document.getElementById("previewArea").value = JSON.parse(text).html;
+	}else{
+		document.getElementById("previewArea").value = JSON.parse(text).plain;
+	}
+	
+	if (document.getElementById("preview").checked){
+		document.getElementById("previewArea").style.visibility = "visible" ;
+	}else{
+		document.getElementById("previewArea").style.visibility = "hidden";
 	}
 });

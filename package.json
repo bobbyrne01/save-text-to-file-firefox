@@ -5,7 +5,7 @@
   "description": "Saves highlighted text to a file in a specified directory",
   "author": "Robert Byrne",
   "license": "GNU GPL v3",
-  "version": "2.3",
+  "version": "2.4",
   "permissions": {"private-browsing": true},
   "preferences": [{
     	"name": "fileName",
@@ -114,6 +114,24 @@
         "value": true
     },
     {
+    	"name": "confirmPanel",
+    	"title": "Confirm settings?",
+        "type": "bool",
+        "value": true
+    },
+    {
+    	"name": "html",
+    	"title": "Save selected html text?",
+        "type": "bool",
+        "value": false
+    },
+    {
+    	"name": "preview",
+    	"title": "Preview text?",
+        "type": "bool",
+        "value": true
+    },
+    {
     	"name": "saveMode",
     	"title": "Save mode?",
         "type": "menulist",
@@ -128,17 +146,5 @@
 	            "label": "Append"
 	        }
 	    ]
-    },
-    {
-    	"name": "confirmPanel",
-    	"title": "Confirm settings?",
-        "type": "bool",
-        "value": true
-    },
-    {
-    	"name": "html",
-    	"title": "Save selected html text?",
-        "type": "bool",
-        "value": false
     }]
 }
