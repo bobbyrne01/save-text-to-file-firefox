@@ -2,11 +2,11 @@ var text;
 
 window.addEventListener('click', function(event) {
 	
-	if (event.target.id.indexOf('pathToFileButton') == 0){
+	if (event.target.id.indexOf('pathToFile') == 0){
 		
 		SaveTextToFile_Panel.selectDir();
 		
-	}else if (event.target.id.indexOf('saveButton') == 0){
+	} else if (event.target.id.indexOf('saveButton') == 0){
 		
 		SaveTextToFile_Panel.save();
 		
@@ -37,8 +37,6 @@ window.addEventListener('click', function(event) {
 	}
 	
 }, false);
-
-
 
 
 // functions available to Panel
