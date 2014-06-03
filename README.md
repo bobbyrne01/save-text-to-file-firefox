@@ -1,7 +1,7 @@
 #Save Text to File
 
 ## Usage
-Firefox addon which saves highlighted text to a file in a directory (defaulting to the user's home directory)<br/>
+Firefox addon which saves selected text to a file in a directory (defaulting to the user's home directory).<br/>
 Goal is to simplify note taking on web pages so users can refer to data at a later stage offline, without the need to remember URL's etc.<br/>
 After highlighting some text, right-click and select `Save Text to File`<br/>
 File names can have the following pre-defined formats:
@@ -23,6 +23,8 @@ File names can have the following pre-defined formats:
 - Set filename same as pagename
 - Show/hide widget icon
 - Optional preference confirmation panel triggered when `Save Text to File` is clicked
+- Option to save selected html text
+- Can edit text before saving
 
 ## Localization
 - Czech (cs-CZ)
