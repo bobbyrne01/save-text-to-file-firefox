@@ -1,5 +1,7 @@
 #Save Text to File
 
+Continuous integration status: [![Build Status](https://travis-ci.org/bobbyrne01/save-text-to-file-firefox.svg?branch=master)](https://travis-ci.org/bobbyrne01/save-text-to-file-firefox)
+
 ## Usage
 Firefox addon which saves selected text to a file in a directory (defaulting to the user's home directory).<br/>
 Goal is to simplify note taking on web pages so users can refer to data at a later stage offline, without the need to remember URL's etc.<br/>
