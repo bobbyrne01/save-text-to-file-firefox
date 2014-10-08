@@ -4,7 +4,8 @@ var {Cc,Ci,Cu,components} = require("chrome"),
 	Notification = require("./Notification"),
 	Localisation = require("./Localisation"),
 	Panel = require("./Panel"),
-	System = require("./System");
+	System = require("./System"),
+	Utils = require("./Utils");
 
 exports.getHomeDir = function() {
 	
@@ -77,11 +78,11 @@ function createFileObject(saveDirectory, fileName) {
 
 	if (Preference.get('format') == 0){
 		
-		fileName = fileName.replace(/[\/\\|":*?<>]/g,'_') + ".txt";
+		fileName = Utils.sanitizeFilename(fileName) + ".txt";
 		
 	}else{
 		
-		fileName = fileName.replace(/[\/\\|":*?<>]/g,'_') + ".csv";
+		fileName = Utils.sanitizeFilename(fileName) + ".csv";
 	}
 	
 	
