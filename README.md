@@ -1,6 +1,6 @@
 #Save Text to File
 
-Continuous integration status: [![Build Status](https://travis-ci.org/bobbyrne01/save-text-to-file-firefox.svg?branch=master)](https://travis-ci.org/bobbyrne01/save-text-to-file-firefox)
+[![Build Status](https://travis-ci.org/bobbyrne01/save-text-to-file-firefox.svg?branch=master)](https://travis-ci.org/bobbyrne01/save-text-to-file-firefox)
 
 ## Usage
 Firefox addon which saves selected text to a file in a directory (defaulting to the user's home directory).<br/>
@@ -17,7 +17,7 @@ File names can have the following pre-defined formats:
 - Add time to saved file name (disabled if 'saveMode' is 'Append')
 - Add date to the beginning of saved text
 - Add time to the beginning of saved text
-- Various date formats to choose from
+- Various date formats to choose from (.txt, .csv)
 - Add a line separator to the file before saved text
 - Save current URL in file
 - Text encoded using UTF-8 (Unicode) so all international characters can be stored correctly
