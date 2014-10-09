@@ -26,9 +26,4 @@ exports["test createDateString"] = function(assert) {
   assert.ok(Utils.createDateString(3, new Date(100000000)) == "1970-02-01", "createDateString .. Input: 3, new Date(100000000), Output: " + Utils.createDateString(3, new Date(100000000)));
 };
 
-//function(currentDate) .. new Date(100000000) == Fri Jan 02 1970 04:46:40 GMT+0100 (IST)
-exports["test createTimeString"] = function(assert) {
-  assert.ok(Utils.createTimeString(new Date(100000000)) == "04-46-40", "createTimeString .. Input: new Date(100000000), Output: " + Utils.createTimeString(new Date(100000000)));
-};
-
 require("sdk/test").run(exports);
