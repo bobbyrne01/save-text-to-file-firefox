@@ -32,47 +32,14 @@ exports.selectDir = function(selectedText) {
 
 function createFileObject(saveDirectory, fileName) {
 	
-	var currentTime = new Date(),
-		date = '',
- 		time = 
- 			((currentTime.getHours() < 10 ? "0" : "") + currentTime.getHours()) + "-" +	
- 			((currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes()) + "-" + 
- 			((currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds());
-	
-	//create date format based on user's preference
-    if (Preference.get('dateFormat') == 0){
-    	
-    	date = 
-    		(currentTime.getDate() < 10 ? "0" : "") + currentTime.getDate() + "-" + 
-    		((currentTime.getMonth() + 1) < 10 ? "0" : "") + (currentTime.getMonth() + 1) + "-" + 
-    		currentTime.getFullYear();
-    	
-    }else if (Preference.get('dateFormat') == 1){
-    	
-    	date = 
-    		((currentTime.getMonth() + 1) < 10 ? "0" : "") + (currentTime.getMonth() + 1) + "-" + 
-    		(currentTime.getDate() < 10 ? "0" : "") + currentTime.getDate() + "-" + 
-    		currentTime.getFullYear();
-    	
-    }else if (Preference.get('dateFormat') == 2){
-    	
-    	date = 
-    		currentTime.getFullYear() + "-" + 
-    		((currentTime.getMonth() + 1) < 10 ? "0" : "") + (currentTime.getMonth() + 1) + "-" + 
-    		(currentTime.getDate() < 10 ? "0" : "") + currentTime.getDate();
-    	
-    }else if (Preference.get('dateFormat') == 3){
-    	
-    	date = 
-    		currentTime.getFullYear() + "-" + 
-    		(currentTime.getDate() < 10 ? "0" : "") + currentTime.getDate() + "-" + 
-    		((currentTime.getMonth() + 1) < 10 ? "0" : "") + (currentTime.getMonth() + 1);
-    }
+	var currentDate = new Date(),
+		dateString = Utils.createDateString(Preference.get('dateFormat'), currentDate),
+		timeString = Utils.createTimeString(currentDate);
 
 	// check whether file name should include date and/or time stamps
-	if (Preference.get('datestamp')) {fileName += "--" + date;}
+	if (Preference.get('datestamp')) {fileName += "--" + dateString;}
 	if (Preference.get('saveMode') == 0){
-		if (Preference.get('timestamp')) {fileName += "--" + time;}
+		if (Preference.get('timestamp')) {fileName += "--" + timeString;}
 	}
 	
 
@@ -118,44 +85,10 @@ exports.saveTo = function(selectedText){
 
     var ostream,
     	string = '\n\n',
-    	currentTime = new Date(),
-    	date = '',
-    	time = 
- 			((currentTime.getHours() < 10 ? "0" : "") + currentTime.getHours()) + "-" +	
- 			((currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes()) + "-" + 
- 			((currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds()),
+    	currentDate = new Date(),
+    	dateString = Utils.createDateString(Preference.get('dateFormat'), currentDate),
+    	timeString = Utils.createTimeString(currentDate),
     	file = createFileObject(Preference.get('pathToFile'), filename);
-    
-    
-    //create date format based on user's preference
-    if (Preference.get('dateFormat') == 0){
-    	
-    	date = 
-    		(currentTime.getDate() < 10 ? "0" : "") + currentTime.getDate() + "-" + 
-    		((currentTime.getMonth() + 1) < 10 ? "0" : "") + (currentTime.getMonth() + 1) + "-" + 
-    		currentTime.getFullYear();
-    	
-    }else if (Preference.get('dateFormat') == 1){
-    	
-    	date = 
-    		((currentTime.getMonth() + 1) < 10 ? "0" : "") + (currentTime.getMonth() + 1) + "-" + 
-    		(currentTime.getDate() < 10 ? "0" : "") + currentTime.getDate() + "-" + 
-    		currentTime.getFullYear();
-    	
-    }else if (Preference.get('dateFormat') == 2){
-    	
-    	date = 
-    		currentTime.getFullYear() + "-" + 
-    		((currentTime.getMonth() + 1) < 10 ? "0" : "") + (currentTime.getMonth() + 1) + "-" + 
-    		(currentTime.getDate() < 10 ? "0" : "") + currentTime.getDate();
-    	
-    }else if (Preference.get('dateFormat') == 3){
-    	
-    	date = 
-    		currentTime.getFullYear() + "-" + 
-    		(currentTime.getDate() < 10 ? "0" : "") + currentTime.getDate() + "-" + 
-    		((currentTime.getMonth() + 1) < 10 ? "0" : "") + (currentTime.getMonth() + 1);
-    }
 	
 	try{        
         
@@ -177,11 +110,11 @@ exports.saveTo = function(selectedText){
         }
         
         if (Preference.get('datestampInLine')){
-        	string += date + '\n\n';
+        	string += dateString + '\n\n';
         }
         
         if (Preference.get('timestampInLine')){
-        	string += time + '\n\n';
+        	string += timeString + '\n\n';
         }
         
         if (Preference.get('currentURL')){
