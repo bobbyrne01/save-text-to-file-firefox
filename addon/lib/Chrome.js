@@ -84,11 +84,12 @@ exports.saveTo = function(selectedText){
     
 
     var ostream,
-    	string = '\n\n',
+    	string = '\n',
     	currentDate = new Date(),
     	dateString = Utils.createDateString(Preference.get('dateFormat'), currentDate),
     	timeString = Utils.createTimeString(currentDate),
-    	file = createFileObject(Preference.get('pathToFile'), filename);
+    	file = createFileObject(Preference.get('pathToFile'), filename),
+    	separator = (Preference.get('format') == 0 ? "\n" : ",");
 	
 	try{        
         
@@ -106,19 +107,19 @@ exports.saveTo = function(selectedText){
         converter.charset = "UTF-8";
         
         if (Preference.get('lineSeparator')){
-        	string += '\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\n\n';
+        	string += '\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014' + separator;
         }
         
         if (Preference.get('datestampInLine')){
-        	string += dateString + '\n\n';
+        	string += Localisation.getCustomString("datestamp_title") + ': ' + dateString + separator;
         }
         
         if (Preference.get('timestampInLine')){
-        	string += timeString + '\n\n';
+        	string += Localisation.getCustomString("timestamp_title") + ': ' + timeString + separator;
         }
         
         if (Preference.get('currentURL')){
-        	string += Tab.getURL() + '\n\n';
+        	string += Tab.getURL() + separator + separator;
         }
         
         var combinedString = string + selectedText;
