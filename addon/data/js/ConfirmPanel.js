@@ -24,10 +24,13 @@ window.addEventListener('click', function(event) {
 		document.getElementById("timestamp").disabled = false;
 	}
 	
-	if (document.getElementById("html").checked){
-		document.getElementById("previewArea").value = JSON.parse(text).html;
-	}else{
-		document.getElementById("previewArea").value = JSON.parse(text).plain
+	if(event.target.id.indexOf('html') == 0)
+	{
+	  if (document.getElementById("html").checked){
+		  document.getElementById("previewArea").value = JSON.parse(text).html;
+	  }else{
+		  document.getElementById("previewArea").value = JSON.parse(text).plain;
+	  }
 	}
 	
 	if (document.getElementById("preview").checked){
