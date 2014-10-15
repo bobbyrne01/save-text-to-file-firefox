@@ -1,5 +1,10 @@
 language: 
     - node_js
+    
+# whitelist
+branches:
+  only:
+    - master
 
 before_script:
     - sh -e /etc/init.d/xvfb start
