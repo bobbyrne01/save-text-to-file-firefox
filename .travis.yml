@@ -1,0 +1,20 @@
+language: 
+    - node_js
+
+# whitelist
+branches:
+  only:
+    - master
+
+before_script:
+    - sh -e /etc/init.d/xvfb start
+    - git submodule update --init
+    - cd addon-sdk
+    - . bin/activate
+    - cd ../addon
+
+env:
+    - DISPLAY=':99.0'
+
+script: 
+    - cfx test --verbose
