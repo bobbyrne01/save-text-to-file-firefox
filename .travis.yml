@@ -9,8 +9,9 @@ branches:
 before_script:
     - sh -e /etc/init.d/xvfb start
     - git submodule update --init
-    - . addon-sdk/bin/activate
-    - cd addon
+    - cd addon-sdk
+    - . bin/activate
+    - cd ../addon
 
 env:
     - DISPLAY=':99.0'
