@@ -6,20 +6,9 @@ var Chrome = require("./Chrome"),
 function getPathToFile() {
 	
 	// check if preferred saved path exists
-	var userPrefPathToFile = Preference.get('pathToFile'),
-		pathToFile;
-	
-	if (userPrefPathToFile === "") {
+	var userPrefPathToFile = Preference.get('pathToFile');
 
-        // Save file in user's home directory (No preference specified)
-        pathToFile = Chrome.getHomeDir().path;
-        
-    } else {
-
-        pathToFile = userPrefPathToFile;
-    }
-
-    return pathToFile;	
+    return (userPrefPathToFile === "" ? Chrome.getHomeDir().path : userPrefPathToFile);	
 }
  
 exports.getPathToFile = function() {
@@ -36,13 +25,7 @@ exports.saveTo = function(selectedText) {
 	
 	}else{ // save text without showing confirmation Panel
 		
-		var text;
-		
-		if (Preference.get('html')){
-			text = JSON.parse(selectedText).html;
-		}else{
-			text = JSON.parse(selectedText).plain;
-		}
+		var text = (Preference.get('html') ? JSON.parse(selectedText).html : JSON.parse(selectedText).plain);
 		
 		if(text === "" || text === null){
 

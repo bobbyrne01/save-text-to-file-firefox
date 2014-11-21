@@ -34,7 +34,8 @@ function createFileObject(saveDirectory, fileName) {
 	
 	var currentDate = new Date(),
 		dateString = Utils.createDateString(Preference.get('dateFormat'), currentDate),
-		timeString = Utils.createTimeString(currentDate);
+		timeString = Utils.createTimeString(currentDate),
+		file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
 
 	// check whether file name should include date and/or time stamps
 	if (Preference.get('datestamp')) {fileName += "--" + dateString;}
@@ -42,18 +43,8 @@ function createFileObject(saveDirectory, fileName) {
 		if (Preference.get('timestamp')) {fileName += "--" + timeString;}
 	}
 	
-
-	if (Preference.get('format') == 0){
-		
-		fileName = Utils.sanitizeFilename(fileName) + ".txt";
-		
-	}else{
-		
-		fileName = Utils.sanitizeFilename(fileName) + ".csv";
-	}
-	
-	
-	var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+	fileName = (Preference.get('format') == 0 ? 
+			Utils.sanitizeFilename(fileName) + ".txt" : Utils.sanitizeFilename(fileName) + ".csv");
 	
 	file.initWithPath(saveDirectory);
     file.append(fileName);
@@ -71,19 +62,8 @@ exports.saveTo = function(selectedText){
 	Cu.import("resource://gre/modules/NetUtil.jsm");
     Cu.import("resource://gre/modules/FileUtils.jsm");
     
-    var filename;
-    
-    if (Preference.get('pagenameForFilename')){
-    	
-    	filename = Tab.getTitle();
-    	
-    }else{
-    	
-    	filename = Preference.get('fileName');
-    }
-    
-
-    var ostream,
+    var filename = (Preference.get('pagenameForFilename') ? Tab.getTitle() : Preference.get('fileName')),
+    	ostream,
     	string = '\n',
     	currentDate = new Date(),
     	dateString = Utils.createDateString(Preference.get('dateFormat'), currentDate),
@@ -95,13 +75,8 @@ exports.saveTo = function(selectedText){
         
     	if (file.exists() === false) {file.create(Ci.nsIFile.NORMAL_FILE_TYPE, 420);}
         
-        if (Preference.get('saveMode') == 0){
-        	ostream = FileUtils.openSafeFileOutputStream(file, FileUtils.MODE_WRONLY | FileUtils.MODE_CREATE | FileUtils.MODE_TRUNCATE);
-        	
-        }else{
-        	ostream = FileUtils.openFileOutputStream(file, FileUtils.MODE_WRONLY | FileUtils.MODE_APPEND);
-        }
-        
+    	ostream = (Preference.get('saveMode') == 0 ? 
+    			FileUtils.openSafeFileOutputStream(file, FileUtils.MODE_WRONLY | FileUtils.MODE_CREATE | FileUtils.MODE_TRUNCATE) : FileUtils.openFileOutputStream(file, FileUtils.MODE_WRONLY | FileUtils.MODE_APPEND));        
 
         var converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
         converter.charset = "UTF-8";

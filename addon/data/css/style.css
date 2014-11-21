@@ -4,3 +4,69 @@ table {
 #previewArea, #fileName, #pathToFile {
 	width:100%;
 }
+
+
+
+/* Attribution for Tabs functionality to .. http://www.menucool.com/tabbed-content */
+ul.tabs
+{
+    padding: 7px 0;
+    margin:0;
+    font-size: 0;
+    list-style-type: none;
+    text-align: left; /*set to left, center, or right to align the tabs as desired*/
+    padding-left:20px; /* Offset of the first tab */
+}
+        
+ul.tabs li
+{
+    display: inline;
+    margin: 0;/*no distance between tabs*/
+    background: White;
+    margin-left: -4px;
+}
+        
+ul.tabs li a
+{
+    font: normal 12px Verdana;
+    text-decoration: none;
+    position: relative;
+    padding: 7px 22px;
+    color: #000;
+    outline:none;
+    background: #F6F6F9;
+    border:1px solid #CCC;
+    border-right:0;
+}
+
+ul.tabs li:last-child a
+{
+    border-right:1px solid #CCC;
+}
+  
+        
+ul.tabs li a:hover
+{
+    color: #000;
+    background: white;
+}
+        
+ul.tabs li.selected a, ul.tabs li.selected a:hover
+{
+    top: 0px;
+    font-weight:normal;
+    background: #FFF;
+    border-bottom: 1px solid #FFF;
+    color: #000;
+}
+        
+        
+ul.tabs li.selected a:hover
+{
+    text-decoration: none;
+}
+
+div.tabcontents
+{
+    border-top: 1px solid #CCC; padding: 30px 10px;
+}

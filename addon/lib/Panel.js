@@ -11,9 +11,10 @@ exports.init = function() {
 	
 	panel = Panel.Panel({
 		width: 490,
-		height: 615,
-		contentURL: Data.get("html/ConfirmPanel.html"),
-	    contentScriptFile: Data.get("js/ConfirmPanel.js"),
+		height: 700,
+		contentURL: Data.get("html/view.html"),
+	    contentScriptFile: [ Data.get('lib/tabcontent.js'),
+	                         Data.get("js/controller.js") ],
         onShow: function() { 
         	getPreferences();
         }
@@ -78,6 +79,14 @@ exports.init = function() {
 		selectedText = "";
 	});
 	
+	panel.port.on("prefUpdate", function (updatedPref) {
+		
+		var json = JSON.parse(updatedPref);
+		
+		Preference.set(json.pref, json.value);
+		console.log('pref updated');
+	});
+	
 	return panel;
 };
 
@@ -105,6 +114,15 @@ function getPreferences() {
 		    showWidget: Preference.get('showWidget'),
 		    showNotifications: Preference.get('showNotifications'),
 		    preview: Preference.get('preview'),
+		    panelBackgroundColor: Preference.get('panelBackgroundColor'),
+		    textareaBackgroundColor: Preference.get('textareaBackgroundColor'),
+		    textareaColor: Preference.get('textareaColor'),
+		    labelColor: Preference.get('labelColor'),
+		    buttonBackgroundColor: Preference.get('buttonBackgroundColor'),
+		    buttonColor: Preference.get('buttonColor'),
+		    liBackgroundColor: Preference.get('liBackgroundColor'),
+		    liColor: Preference.get('liColor'),
+		    selectColor: Preference.get('selectColor'),
 		    text: selectedText
 	    });
 	

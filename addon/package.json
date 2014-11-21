@@ -5,7 +5,7 @@
   "description": "Saves highlighted text to a file in a specified directory",
   "author": "Robert Byrne",
   "license": "GNU GPL v3",
-  "version": "2.4.8",
+  "version": "2.5",
   "permissions": {"private-browsing": true},
   "preferences": [{
     	"name": "fileName",
@@ -146,5 +146,59 @@
 	            "label": "Append"
 	        }
 	    ]
+    },
+    {
+    	"name": "panelBackgroundColor",
+    	"title": "Panel background color? (Please provide 7-character hex value, including '#')",
+    	"type": "string",
+    	"value": ""
+    },
+    {
+    	"name": "textareaBackgroundColor",
+    	"title": "Textarea background color? (Please provide 7-character hex value, including '#')",
+    	"type": "string",
+    	"value": ""
+    },
+    {
+    	"name": "textareaColor",
+    	"title": "Textarea text color? (Please provide 7-character hex value, including '#')",
+    	"type": "string",
+    	"value": ""
+    },
+    {
+    	"name": "labelColor",
+    	"title": "Label color? (Please provide 7-character hex value, including '#')",
+    	"type": "string",
+    	"value": ""
+    },
+    {
+    	"name": "buttonBackgroundColor",
+    	"title": "Button background color? (Please provide 7-character hex value, including '#')",
+    	"type": "string",
+    	"value": ""
+    },
+    {
+    	"name": "buttonColor",
+    	"title": "Button text color? (Please provide 7-character hex value, including '#')",
+    	"type": "string",
+    	"value": ""
+    },
+    {
+    	"name": "liBackgroundColor",
+    	"title": "Tab background color? (Please provide 7-character hex value, including '#')",
+    	"type": "string",
+    	"value": ""
+    },
+    {
+    	"name": "liColor",
+    	"title": "Tab text color? (Please provide 7-character hex value, including '#')",
+    	"type": "string",
+    	"value": ""
+    },
+    {
+    	"name": "selectColor",
+    	"title": "Drop-down text color? (Please provide 7-character hex value, including '#')",
+    	"type": "string",
+    	"value": ""
     }]
 }
