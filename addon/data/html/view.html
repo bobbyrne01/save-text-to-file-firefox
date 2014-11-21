@@ -2,6 +2,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" type="text/css" media="all" href="../css/style.css"/>
+		<script type="text/javascript" src="../lib/jscolor.js"></script>
 	</head>
 	<body>
 	
@@ -26,7 +27,7 @@
 									<label data-l10n-id="fileName_title"></label>
 								</td>
 								<td>
-									<textarea id="fileName" rows="1" cols="20"></textarea>
+									<input id="fileName" size="20" />
 								</td>
 							</tr>
 							<tr>
@@ -34,7 +35,7 @@
 									<label data-l10n-id="pathToFile_title"></label>
 								</td>
 								<td>
-									<textarea id="pathToFile" readonly="true" rows="2" cols="20"></textarea>
+									<input id="pathToFile" readonly="true" size="20" />
 								</td>
 							</tr>
 							<tr>
@@ -194,15 +195,33 @@
 								<label data-l10n-id="panelBackgroundColor_title"></label>
 							</td>
 							<td>
-								<textarea id="panelBackgroundColor" rows="1" cols="20"></textarea>
+								<input id="panelBackgroundColor" class="color {hash:true}" size="10" />
 							</td>
 						</tr>
+						
+						<tr>
+							<td align="right">
+								<label data-l10n-id="inputBackgroundColor_title"></label>
+							</td>
+							<td>
+								<input id="inputBackgroundColor" class="color {hash:true}" size="10" />
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<label data-l10n-id="inputColor_title"></label>
+							</td>
+							<td>
+								<input id="inputColor" class="color {hash:true}" size="10" />
+							</td>
+						</tr>
+						
 						<tr>
 							<td align="right">
 								<label data-l10n-id="textareaBackgroundColor_title"></label>
 							</td>
 							<td>
-								<textarea id="textareaBackgroundColor" rows="1" cols="20"></textarea>
+								<input id="textareaBackgroundColor" class="color {hash:true}" size="10" />
 							</td>
 						</tr>
 						<tr>
@@ -210,7 +229,7 @@
 								<label data-l10n-id="textareaColor_title"></label>
 							</td>
 							<td>
-								<textarea id="textareaColor" rows="1" cols="20"></textarea>
+								<input id="textareaColor" class="color {hash:true}" size="10" />
 							</td>
 						</tr>
 						<tr>
@@ -218,7 +237,7 @@
 								<label data-l10n-id="labelColor_title"></label>
 							</td>
 							<td>
-								<textarea id="labelColor" rows="1" cols="20"></textarea>
+								<input id="labelColor" class="color {hash:true}" size="10" />
 							</td>
 						</tr>
 						<tr>
@@ -226,7 +245,7 @@
 								<label data-l10n-id="buttonBackgroundColor_title"></label>
 							</td>
 							<td>
-								<textarea id="buttonBackgroundColor" rows="1" cols="20"></textarea>
+								<input id="buttonBackgroundColor" class="color {hash:true}" size="10" />
 							</td>
 						</tr>
 						<tr>
@@ -234,7 +253,7 @@
 								<label data-l10n-id="buttonColor_title"></label>
 							</td>
 							<td>
-								<textarea id="buttonColor" rows="1" cols="20"></textarea>
+								<input id="buttonColor" class="color {hash:true}" size="10" />
 							</td>
 						</tr>
 						<tr>
@@ -242,7 +261,7 @@
 								<label data-l10n-id="liBackgroundColor_title"></label>
 							</td>
 							<td>
-								<textarea id="liBackgroundColor" rows="1" cols="20"></textarea>
+								<input id="liBackgroundColor" class="color {hash:true}" size="10" />
 							</td>
 						</tr>
 						<tr>
@@ -250,7 +269,7 @@
 								<label data-l10n-id="liColor_title"></label>
 							</td>
 							<td>
-								<textarea id="liColor" rows="1" cols="20"></textarea>
+								<input id="liColor" class="color {hash:true}" size="10" />
 							</td>
 						</tr>
 						<tr>
@@ -258,7 +277,7 @@
 								<label data-l10n-id="selectColor_title"></label>
 							</td>
 							<td>
-								<textarea id="selectColor" rows="1" cols="20"></textarea>
+								<input id="selectColor" class="color {hash:true}" size="10" />
 							</td>
 						</tr>
 					</table>

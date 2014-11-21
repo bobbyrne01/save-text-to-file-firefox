@@ -1,13 +1,6 @@
 window.onload = function() {
 	var preferencesTabs = new ddtabcontent('preferencesTabs');
 	preferencesTabs.init();
-	
-	//var sections = document.getElementsByTagName('label');
-	//var mySection = null;
-	//for(var i = 0; i < sections.length; ++i) {
-	  // console.log(sections[i].style.color);
-	  // console.log(sections[i].style.background);
-	//}
 };
 
 
@@ -77,6 +70,36 @@ function updateTextareaColorPref(){
 	var updatedPref = JSON.stringify({
 		pref: 'textareaColor',
 	    value: document.getElementById("textareaColor").value
+    });
+
+	self.port.emit("prefUpdate", updatedPref);
+}
+
+function updateInputBackgroundColorPref(){
+	
+	var elements = document.getElementsByTagName('input');
+	for(var i = 0; i < elements.length; ++i) {
+		elements[i].style.background = document.getElementById("inputBackgroundColor").value;
+	}
+	
+	var updatedPref = JSON.stringify({
+		pref: 'inputBackgroundColor',
+	    value: document.getElementById("inputBackgroundColor").value
+    });
+
+	self.port.emit("prefUpdate", updatedPref);
+}
+
+function updateInputColorPref(){
+	
+	var elements = document.getElementsByTagName('input');
+	for(var i = 0; i < elements.length; ++i) {
+		elements[i].style.color = document.getElementById("inputColor").value;
+	}
+	
+	var updatedPref = JSON.stringify({
+		pref: 'inputColor',
+	    value: document.getElementById("inputColor").value
     });
 
 	self.port.emit("prefUpdate", updatedPref);
@@ -179,6 +202,12 @@ function updateSelectColorPref(){
 var panelBackgroundColor = document.getElementById('panelBackgroundColor');
 panelBackgroundColor.onchange = updatePanelBackgroundColorPref;
 panelBackgroundColor.onkeyup = updatePanelBackgroundColorPref;
+var inputBackgroundColor = document.getElementById('inputBackgroundColor');
+inputBackgroundColor.onchange = updateInputBackgroundColorPref;
+inputBackgroundColor.onkeyup = updateInputBackgroundColorPref;
+var inputColor = document.getElementById('inputColor');
+inputColor.onchange = updateInputColorPref;
+inputColor.onkeyup = updateInputColorPref;
 var textareaBackgroundColor = document.getElementById('textareaBackgroundColor');
 textareaBackgroundColor.onchange = updateTextareaBackgroundColorPref;
 textareaBackgroundColor.onkeyup = updateTextareaBackgroundColorPref;
@@ -214,6 +243,22 @@ selectColor.onkeyup = updateSelectColorPref;
 function updatePanelBackgroundColor(color){
 	
 	document.body.style.background = color;
+}
+
+function updateInputBackgroundColor(color){
+	
+	var elements = document.getElementsByTagName('input');
+	for(var i = 0; i < elements.length; ++i) {
+		elements[i].style.background = color;
+	}
+}
+
+function updateInputColor(color){
+	
+	var elements = document.getElementsByTagName('input');
+	for(var i = 0; i < elements.length; ++i) {
+		elements[i].style.color = color;
+	}
 }
 
 function updateTextareaBackgroundColor(color){
@@ -356,6 +401,10 @@ self.port.on("prefs", function (prefs) {
 	
 	updatePanelBackgroundColor(parsedPrefs.panelBackgroundColor);
 	document.getElementById('panelBackgroundColor').value = parsedPrefs.panelBackgroundColor;
+	updateInputBackgroundColor(parsedPrefs.inputBackgroundColor);
+	document.getElementById('inputBackgroundColor').value = parsedPrefs.inputBackgroundColor;
+	updateInputColor(parsedPrefs.inputColor);
+	document.getElementById('inputColor').value = parsedPrefs.inputColor;
 	updateTextareaBackgroundColor(parsedPrefs.textareaBackgroundColor);
 	document.getElementById('textareaBackgroundColor').value = parsedPrefs.textareaBackgroundColor;
 	updateTextareaColor(parsedPrefs.textareaColor);
@@ -372,10 +421,4 @@ self.port.on("prefs", function (prefs) {
 	document.getElementById('labelColor').value = parsedPrefs.labelColor;
 	updateSelectColor(parsedPrefs.selectColor);
 	document.getElementById('selectColor').value = parsedPrefs.selectColor;
-});
-
-self.port.on("prefUpdate", function(value) {
-	
-	var parsedUpdatedPrefs = JSON.parse(value);
-	document.body.style.background = value;
 });

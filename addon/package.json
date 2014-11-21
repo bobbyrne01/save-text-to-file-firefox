@@ -5,7 +5,7 @@
   "description": "Saves highlighted text to a file in a specified directory",
   "author": "Robert Byrne",
   "license": "GNU GPL v3",
-  "version": "2.5",
+  "version": "2.5.1",
   "permissions": {"private-browsing": true},
   "preferences": [{
     	"name": "fileName",
@@ -149,55 +149,67 @@
     },
     {
     	"name": "panelBackgroundColor",
-    	"title": "Panel background color? (Please provide 7-character hex value, including '#')",
+    	"title": "Panel background color?",
+    	"type": "string",
+    	"value": ""
+    },
+    {
+    	"name": "inputBackgroundColor",
+    	"title": "Input background color?",
+    	"type": "string",
+    	"value": ""
+    },
+    {
+    	"name": "inputColor",
+    	"title": "Input text color?",
     	"type": "string",
     	"value": ""
     },
     {
     	"name": "textareaBackgroundColor",
-    	"title": "Textarea background color? (Please provide 7-character hex value, including '#')",
+    	"title": "Textarea background color?",
     	"type": "string",
     	"value": ""
     },
     {
     	"name": "textareaColor",
-    	"title": "Textarea text color? (Please provide 7-character hex value, including '#')",
+    	"title": "Textarea text color?",
     	"type": "string",
     	"value": ""
     },
     {
     	"name": "labelColor",
-    	"title": "Label color? (Please provide 7-character hex value, including '#')",
+    	"title": "Label color?",
     	"type": "string",
     	"value": ""
     },
     {
     	"name": "buttonBackgroundColor",
-    	"title": "Button background color? (Please provide 7-character hex value, including '#')",
+    	"title": "Button background color?",
     	"type": "string",
     	"value": ""
     },
     {
     	"name": "buttonColor",
-    	"title": "Button text color? (Please provide 7-character hex value, including '#')",
+    	"title": "Button text color?",
     	"type": "string",
     	"value": ""
     },
     {
     	"name": "liBackgroundColor",
-    	"title": "Tab background color? (Please provide 7-character hex value, including '#')",
+    	"title": "Tab background color?",
     	"type": "string",
     	"value": ""
     },
     {
     	"name": "liColor",
-    	"title": "Tab text color? (Please provide 7-character hex value, including '#')",
+    	"title": "Tab text color?",
     	"type": "string",
     	"value": ""
     },
     {
     	"name": "selectColor",
-    	"title": "Drop-down text color? (Please provide 7-character hex value, including '#')",
+    	"title": "Drop-down text color?",
     	"type": "string",
     	"value": ""
     }]

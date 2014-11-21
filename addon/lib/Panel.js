@@ -11,7 +11,7 @@ exports.init = function() {
 	
 	panel = Panel.Panel({
 		width: 490,
-		height: 700,
+		height: 665,
 		contentURL: Data.get("html/view.html"),
 	    contentScriptFile: [ Data.get('lib/tabcontent.js'),
 	                         Data.get("js/controller.js") ],
@@ -81,10 +81,7 @@ exports.init = function() {
 	
 	panel.port.on("prefUpdate", function (updatedPref) {
 		
-		var json = JSON.parse(updatedPref);
-		
-		Preference.set(json.pref, json.value);
-		console.log('pref updated');
+		Preference.set(JSON.parse(updatedPref).pref, JSON.parse(updatedPref).value);
 	});
 	
 	return panel;
@@ -117,6 +114,8 @@ function getPreferences() {
 		    panelBackgroundColor: Preference.get('panelBackgroundColor'),
 		    textareaBackgroundColor: Preference.get('textareaBackgroundColor'),
 		    textareaColor: Preference.get('textareaColor'),
+		    inputBackgroundColor: Preference.get('inputBackgroundColor'),
+		    inputColor: Preference.get('inputColor'),
 		    labelColor: Preference.get('labelColor'),
 		    buttonBackgroundColor: Preference.get('buttonBackgroundColor'),
 		    buttonColor: Preference.get('buttonColor'),
