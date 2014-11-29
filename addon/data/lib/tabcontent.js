@@ -1,3 +1,6 @@
+// Modified 29112014
+// Removed setCookie()
+
 //** Tab Content script v2.0- © Dynamic Drive DHTML code library (http://www.dynamicdrive.com)
 //** Updated Oct 7th, 07 to version 2.0. Contains numerous improvements:
 //   -Added Auto Mode: Script auto rotates the tabs based on an interval, until a tab is explicitly selected
@@ -12,7 +15,7 @@
 function ddtabcontent(tabinterfaceid){
 	this.tabinterfaceid=tabinterfaceid //ID of Tab Menu main container
 	this.tabs=document.getElementById(tabinterfaceid).getElementsByTagName("a") //Get all tab links within container
-	this.enabletabpersistence=true
+	this.enabletabpersistence=false;
 	this.hottabspositions=[] //Array to store position of tabs that have a "rel" attr defined, relative to all tab links, within container
 	this.currentTabIndex=0 //Index of currently selected hot tab (tab with sub content) within hottabspositions[] array
 	this.subcontentids=[] //Array to store ids of the sub contents ("rel" attr values)
@@ -25,10 +28,6 @@ ddtabcontent.getCookie=function(Name){
 	if (document.cookie.match(re)) //if cookie found
 		return document.cookie.match(re)[0].split("=")[1] //return its value
 	return ""
-}
-
-ddtabcontent.setCookie=function(name, value){
-	document.cookie = name+"="+value+";path=/" //cookie value is domain wide (path=/)
 }
 
 ddtabcontent.prototype={
@@ -85,8 +84,6 @@ ddtabcontent.prototype={
 		for (var i=0; i<this.tabs.length; i++){ //Loop through all tabs, and assign only the selected tab the CSS class "selected"
 			this.getselectedClassTarget(this.tabs[i]).className=(this.tabs[i].getAttribute("rel")==subcontentid)? "selected" : ""
 		}
-		if (this.enabletabpersistence) //if persistence enabled, save selected tab position(int) relative to its peers
-			ddtabcontent.setCookie(this.tabinterfaceid, tabref.tabposition)
 		this.setcurrenttabindex(tabref.tabposition) //remember position of selected tab within hottabspositions[] array
 	},
 
