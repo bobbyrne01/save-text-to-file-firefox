@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/bobbyrne01/save-text-to-file-firefox.svg?branch=master)](https://travis-ci.org/bobbyrne01/save-text-to-file-firefox)
 
 ## Usage
+
 Firefox addon which saves selected text to a file in a directory (defaulting to the user's home directory).<br/>
 Goal is to simplify note taking on web pages so users can refer to data at a later stage offline, without the need to remember URL's etc.<br/>
 After highlighting some text, right-click and select `Save Text to File`<br/>
@@ -13,6 +14,7 @@ File names can have the following pre-defined formats:
 - `userPreference--<todaysdate>-<timestamp>.txt`
 
 ## Features
+
 - Add date to saved file name
 - Add time to saved file name (disabled if 'saveMode' is 'Append')
 - Add date to the beginning of saved text
@@ -27,8 +29,10 @@ File names can have the following pre-defined formats:
 - Optional preference confirmation panel triggered when `Save Text to File` is clicked
 - Option to save selected html text
 - Can edit text before saving
+- User can style preferences panel
 
 ## Localization
+
 - Czech (cs-CZ)
 - German (de-DE)
 - Chinese (zh-CN)
@@ -43,4 +47,5 @@ File names can have the following pre-defined formats:
 - Ukrainian (uk-UA)
 
 ## Demo
+
 http://www.youtube.com/watch?v=w4zQGVLfm7o
