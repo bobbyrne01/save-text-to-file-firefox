@@ -29,7 +29,7 @@ File names can have the following pre-defined formats:
 - Optional preference confirmation panel triggered when `Save Text to File` is clicked
 - Option to save selected html text
 - Can edit text before saving
-- User can style preferences panel
+- User can style preferences panel using a color-picker
 
 ## Localization
 
