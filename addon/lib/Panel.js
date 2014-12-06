@@ -17,7 +17,8 @@ exports.init = function() {
 	                         Data.get("js/controller.js") ],
         onShow: function() { 
         	getPreferences();
-        }
+        },
+        contextMenu: true
 	});
 	
 	panel.port.on("selectDir", function () {
