@@ -1,6 +1,7 @@
 #Save Text to File
 
 [![Build Status](https://travis-ci.org/bobbyrne01/save-text-to-file-firefox.svg?branch=master)](https://travis-ci.org/bobbyrne01/save-text-to-file-firefox)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 ## Usage
 

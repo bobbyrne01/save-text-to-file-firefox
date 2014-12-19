@@ -9,7 +9,7 @@ exports.sendMsg = function(stringId) {
 		text: Localisation.getCustomString(stringId),
 		iconURL: Data.get("images/ico.png")
 	});
-}
+};
 
 exports.sendMsg = function(stringId, path) {
 	
@@ -18,4 +18,4 @@ exports.sendMsg = function(stringId, path) {
 		text: Localisation.getCustomString(stringId, path),
 		iconURL: Data.get("images/ico.png")
 	});
-}
+};

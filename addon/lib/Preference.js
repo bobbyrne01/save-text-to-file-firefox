@@ -9,7 +9,7 @@ function onPrefChange(name) {
 	}else{
 		actionButton.remove();
 	}
-};
+}
 
 exports.registerListener = function(){
 	preference.on("showWidget", onPrefChange);

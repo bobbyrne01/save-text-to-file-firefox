@@ -1,4 +1,4 @@
-var system = require("sdk/system")
+var system = require("sdk/system");
 
 function getPlatform() {
 
@@ -8,4 +8,4 @@ function getPlatform() {
 exports.getPlatform = function() {
 	
 	return getPlatform();
-}
+};

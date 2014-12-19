@@ -10,7 +10,7 @@ var {Cc,Ci,Cu,components} = require("chrome"),
 exports.getHomeDir = function() {
 	
 	return Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties).get("Home", Ci.nsIFile);
-}
+};
 
 exports.selectDir = function(selectedText) {
 	
@@ -27,8 +27,8 @@ exports.selectDir = function(selectedText) {
     	
     	Preference.set("pathToFile", fp.file.path);
     	Panel.show(selectedText);
-    };
-}
+    }
+};
 
 function createFileObject(saveDirectory, fileName) {
 	
@@ -39,11 +39,11 @@ function createFileObject(saveDirectory, fileName) {
 
 	// check whether file name should include date and/or time stamps
 	if (Preference.get('datestamp')) {fileName += "--" + dateString;}
-	if (Preference.get('saveMode') == 0){
+	if (Preference.get('saveMode') === 0){
 		if (Preference.get('timestamp')) {fileName += "--" + timeString;}
 	}
 	
-	fileName = (Preference.get('format') == 0 ? 
+	fileName = (Preference.get('format') === 0 ? 
 			Utils.sanitizeFilename(fileName) + ".txt" : Utils.sanitizeFilename(fileName) + ".csv");
 	
 	file.initWithPath(saveDirectory);
@@ -55,7 +55,7 @@ function createFileObject(saveDirectory, fileName) {
 exports.createFileObject = function(saveDirectory, fileName) {
 	
 	return createFileObject(saveDirectory, fileName);
-}
+};
 
 exports.saveTo = function(selectedText){
 	
@@ -69,13 +69,13 @@ exports.saveTo = function(selectedText){
     	dateString = Utils.createDateString(Preference.get('dateFormat'), currentDate),
     	timeString = Utils.createTimeString(currentDate),
     	file = createFileObject(Preference.get('pathToFile'), filename),
-    	separator = (Preference.get('format') == 0 ? "\n" : ",");
+    	separator = (Preference.get('format') === 0 ? "\n" : ",");
 	
 	try{        
         
     	if (file.exists() === false) {file.create(Ci.nsIFile.NORMAL_FILE_TYPE, 420);}
         
-    	ostream = (Preference.get('saveMode') == 0 ? 
+    	ostream = (Preference.get('saveMode') === 0 ? 
     			FileUtils.openSafeFileOutputStream(file, FileUtils.MODE_WRONLY | FileUtils.MODE_CREATE | FileUtils.MODE_TRUNCATE) : FileUtils.openFileOutputStream(file, FileUtils.MODE_WRONLY | FileUtils.MODE_APPEND));        
 
         var converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
@@ -126,4 +126,4 @@ exports.saveTo = function(selectedText){
 	} catch (e) {
         return false;
     }
-}
+};

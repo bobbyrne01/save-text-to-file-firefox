@@ -1,6 +1,6 @@
 exports.sanitizeFilename = function(filename) {
 	return filename.replace(/[\/\\|":*?<>]/g,'_');
-}
+};
 
 
 exports.createDateString = function(preferedFormat, currentDate) {
@@ -8,7 +8,7 @@ exports.createDateString = function(preferedFormat, currentDate) {
 	var dateString;
 	
 	//create date string in format of user's preference
-    if (preferedFormat == 0){
+    if (preferedFormat === 0){
     	
     	dateString = 
     		(currentDate.getDate() < 10 ? "0" : "") + currentDate.getDate() + "-" + 
@@ -38,7 +38,7 @@ exports.createDateString = function(preferedFormat, currentDate) {
     }
     
     return dateString;
-}
+};
 
 
 exports.createTimeString = function(currentDate) {
@@ -49,4 +49,4 @@ exports.createTimeString = function(currentDate) {
 			((currentDate.getSeconds() < 10 ? "0" : "") + currentDate.getSeconds());
 	
 	return timeString;
-}
+};

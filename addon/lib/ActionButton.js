@@ -16,7 +16,7 @@ exports.init = function() {
 			Tab.getSelectedText();
 		}
 	});
-}
+};
 
 exports.remove = function(){
 	actionButton.destroy();

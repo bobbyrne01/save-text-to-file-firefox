@@ -6,6 +6,9 @@ branches:
   only:
     - master
 
+before_install: npm install -g grunt-cli
+install: npm install
+
 before_script:
     - sh -e /etc/init.d/xvfb start
     - git submodule update --init
@@ -17,4 +20,5 @@ env:
     - DISPLAY=':99.0'
 
 script: 
+    - grunt
     - cfx test --verbose
