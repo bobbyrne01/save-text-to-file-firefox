@@ -1,25 +1,26 @@
 {
-  "name": "save-text-to-file-firefox",
-  "version": "2.5.3",
-  "description": "Saves highlighted text to a file in a specified directory",
-  "main": "addon/lib/main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bobbyrne01/save-text-to-file-firefox.git"
-  },
-  "author": "Robert Byrne",
-  "license": "GNU GPL v3",
-  "bugs": {
-    "url": "https://github.com/bobbyrne01/save-text-to-file-firefox/issues"
-  },
-  "homepage": "https://github.com/bobbyrne01/save-text-to-file-firefox",
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-notify": "^0.4.1"
-  }
+    "license": "GNU GPL v3", 
+    "name": "save-text-to-file-firefox", 
+    "repository": {
+        "url": "https://github.com/bobbyrne01/save-text-to-file-firefox.git", 
+        "type": "git"
+    }, 
+    "author": "Robert Byrne", 
+    "bugs": {
+        "url": "https://github.com/bobbyrne01/save-text-to-file-firefox/issues"
+    }, 
+    "version": "2.6", 
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }, 
+    "devDependencies": {
+        "grunt-contrib-watch": "^0.6.1", 
+        "grunt-contrib-jshint": "^0.10.0", 
+        "grunt-notify": "^0.4.1", 
+        "grunt": "^0.4.5"
+    }, 
+    "main": "addon/lib/main.js", 
+    "homepage": "https://github.com/bobbyrne01/save-text-to-file-firefox", 
+    "id": "jid1-AeNkwuJ6QIQnmQ", 
+    "description": "Saves highlighted text to a file in a specified directory"
 }

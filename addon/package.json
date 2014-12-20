@@ -5,7 +5,7 @@
   "description": "Saves highlighted text to a file in a specified directory",
   "author": "Robert Byrne",
   "license": "GNU GPL v3",
-  "version": "2.5.3",
+  "version": "2.6",
   "permissions": {"private-browsing": true},
   "preferences": [{
     	"name": "fileName",
@@ -144,6 +144,10 @@
 	        {
 	            "value": "1",
 	            "label": "Append"
+	        },
+	        {
+	            "value": "2",
+	            "label": "Prepend"
 	        }
 	    ]
     },

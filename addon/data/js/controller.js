@@ -9,20 +9,20 @@ var text;
 window.addEventListener('click', function(event) {
 	
 	if (event.target.id.indexOf('pathToFile') === 0){
-		
 		SaveTextToFile_Panel.selectDir();
 		
 	} else if (event.target.id.indexOf('saveButton') === 0){
-		
 		SaveTextToFile_Panel.save();
 		
 	}else if (event.target.id.indexOf('cancelButton') === 0){
-		
 		SaveTextToFile_Panel.cancel();
 	}
 	
-	document.getElementById("timestamp").disabled = 
-		(document.getElementById("saveMode").selectedIndex == 1 ? true : false);
+	if (document.getElementById("saveMode").selectedIndex > 0){
+		document.getElementById("timestamp").disabled = true;
+	}else{
+		document.getElementById("timestamp").disabled = false;
+	}
 	
 	document.getElementById("previewArea").value = 
 		(document.getElementById("html").checked ? JSON.parse(text).html : JSON.parse(text).plain);
@@ -390,8 +390,11 @@ self.port.on("prefs", function (prefs) {
 	document.getElementById("preview").checked = parsedPrefs.preview;
 	text = parsedPrefs.text;
 	
-	document.getElementById("timestamp").disabled = 
-		(parsedPrefs.saveMode == 1 ? true : false);
+	if (parsedPrefs.saveMode > 0){
+		document.getElementById("timestamp").disabled = true;
+	}else{
+		document.getElementById("timestamp").disabled = false;
+	}
 	
 	document.getElementById("previewArea").value = 
 		(parsedPrefs.html ? JSON.parse(text).html : JSON.parse(text).plain);
