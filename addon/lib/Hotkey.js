@@ -1,12 +1,14 @@
-var { Hotkey } = require("sdk/hotkeys"),
+var {
+	Hotkey
+} = require("sdk/hotkeys"),
 	Tab = require("./Tab");
 
-exports.init = function() {
-	
+exports.init = function () {
+
 	Hotkey({
 		combo: "shift-f1",
-		onPress: function() {
-			
+		onPress: function () {
+
 			Tab.getSelectedTextHotkey();
 		}
 	});

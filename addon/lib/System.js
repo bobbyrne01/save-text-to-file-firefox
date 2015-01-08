@@ -2,10 +2,10 @@ var system = require("sdk/system");
 
 function getPlatform() {
 
-    return system.platform;
+	return system.platform;
 }
 
-exports.getPlatform = function() {
-	
+exports.getPlatform = function () {
+
 	return getPlatform();
 };

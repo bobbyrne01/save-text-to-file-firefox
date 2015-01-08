@@ -7,29 +7,30 @@ var Panel = require("sdk/panel"),
 	panel,
 	selectedText;
 
-exports.init = function() {
-	
+exports.init = function () {
+
 	panel = Panel.Panel({
 		width: 490,
 		height: 665,
 		contentURL: Data.get("html/view.html"),
-	    contentScriptFile: [ Data.get('lib/tabcontent.js'),
-	                         Data.get("js/controller.js") ],
-        onShow: function() { 
-        	getPreferences();
-        },
-        contextMenu: true
+		contentScriptFile: [Data.get('lib/tabcontent.js'),
+			Data.get("js/controller.js")
+		],
+		onShow: function () {
+			getPreferences();
+		},
+		contextMenu: true
 	});
-	
+
 	panel.port.on("selectDir", function () {
 		Chrome.selectDir(selectedText);
 		panel.show();
 	});
 
 	panel.port.on("save", function (selectedPrefs) {
-		
+
 		var parsedPrefs = JSON.parse(selectedPrefs);
-		
+
 		Preference.set('fileName', parsedPrefs.fileName);
 		Preference.set('pathToFile', parsedPrefs.pathToFile);
 		Preference.set('format', parseInt(parsedPrefs.format));
@@ -47,94 +48,94 @@ exports.init = function() {
 		Preference.set('showWidget', parsedPrefs.showWidget);
 		Preference.set('showNotifications', parsedPrefs.showNotifications);
 		Preference.set('preview', parsedPrefs.preview);
-		
-		selectedText = parsedPrefs.text;
-		
-		
-		if(selectedText === "" || selectedText === null){
 
-			if (Preference.get('showNotifications')){
-				
+		selectedText = parsedPrefs.text;
+
+
+		if (selectedText === "" || selectedText === null) {
+
+			if (Preference.get('showNotifications')) {
+
 				Notification.sendMsg("noTextSelected_id");
 			}
-			
+
 			panel.hide();
-		
-		}else{			
-			
+
+		} else {
+
 			Chrome.saveTo(selectedText);
 			panel.hide();
 		}
-		
+
 		selectedText = "";
 	});
-	
+
 	panel.port.on("cancel", function () {
-		
-		if (Preference.get('showNotifications')){
-		
+
+		if (Preference.get('showNotifications')) {
+
 			Notification.sendMsg("saveCancel_id");
 		}
-		
+
 		panel.hide();
 		selectedText = "";
 	});
-	
+
 	panel.port.on("prefUpdate", function (updatedPref) {
-		
+
 		Preference.set(JSON.parse(updatedPref).pref, JSON.parse(updatedPref).value);
 	});
-	
+
 	return panel;
 };
 
-exports.get = function(){
+exports.get = function () {
 	return panel;
 };
 
 function getPreferences() {
-	
+
 	var prefs = JSON.stringify({
-			fileName: Preference.get('fileName'),
-			pathToFile: File.getPathToFile(),
-			format: Preference.get('format'),
-		    datestamp: Preference.get('datestamp'),
-		    timestamp: Preference.get('timestamp'),
-		    datestampInLine: Preference.get('datestampInLine'),
-		    timestampInLine: Preference.get('timestampInLine'),
-		    dateFormat: Preference.get('dateFormat'),
-		    lineSeparator: Preference.get('lineSeparator'),
-		    currentURL: Preference.get('currentURL'),
-		    pagenameForFilename: Preference.get('pagenameForFilename'),
-		    saveMode: Preference.get('saveMode'),
-		    confirmPanel: Preference.get('confirmPanel'),
-		    html: Preference.get('html'),
-		    showWidget: Preference.get('showWidget'),
-		    showNotifications: Preference.get('showNotifications'),
-		    preview: Preference.get('preview'),
-		    panelBackgroundColor: Preference.get('panelBackgroundColor'),
-		    textareaBackgroundColor: Preference.get('textareaBackgroundColor'),
-		    textareaColor: Preference.get('textareaColor'),
-		    inputBackgroundColor: Preference.get('inputBackgroundColor'),
-		    inputColor: Preference.get('inputColor'),
-		    labelColor: Preference.get('labelColor'),
-		    buttonBackgroundColor: Preference.get('buttonBackgroundColor'),
-		    buttonColor: Preference.get('buttonColor'),
-		    liBackgroundColor: Preference.get('liBackgroundColor'),
-		    liColor: Preference.get('liColor'),
-		    selectColor: Preference.get('selectColor'),
-		    text: selectedText
-	    });
-	
+		fileName: Preference.get('fileName'),
+		pathToFile: File.getPathToFile(),
+		format: Preference.get('format'),
+		datestamp: Preference.get('datestamp'),
+		timestamp: Preference.get('timestamp'),
+		datestampInLine: Preference.get('datestampInLine'),
+		timestampInLine: Preference.get('timestampInLine'),
+		dateFormat: Preference.get('dateFormat'),
+		lineSeparator: Preference.get('lineSeparator'),
+		currentURL: Preference.get('currentURL'),
+		pagenameForFilename: Preference.get('pagenameForFilename'),
+		saveMode: Preference.get('saveMode'),
+		confirmPanel: Preference.get('confirmPanel'),
+		html: Preference.get('html'),
+		showWidget: Preference.get('showWidget'),
+		showNotifications: Preference.get('showNotifications'),
+		preview: Preference.get('preview'),
+		panelBackgroundColor: Preference.get('panelBackgroundColor'),
+		textareaBackgroundColor: Preference.get('textareaBackgroundColor'),
+		textareaColor: Preference.get('textareaColor'),
+		inputBackgroundColor: Preference.get('inputBackgroundColor'),
+		inputColor: Preference.get('inputColor'),
+		labelColor: Preference.get('labelColor'),
+		buttonBackgroundColor: Preference.get('buttonBackgroundColor'),
+		buttonColor: Preference.get('buttonColor'),
+		liBackgroundColor: Preference.get('liBackgroundColor'),
+		liColor: Preference.get('liColor'),
+		selectColor: Preference.get('selectColor'),
+		text: selectedText
+	});
+
 	panel.port.emit("prefs", prefs);
 }
 
-exports.show = function(selectedTextTemp) {
-	
+exports.show = function (selectedTextTemp) {
+
 	selectedText = selectedTextTemp;
 	panel.show();
 };
 
-exports.getPreferences = function() {
+exports.getPreferences = function () {
 	return getPreferences();
 };

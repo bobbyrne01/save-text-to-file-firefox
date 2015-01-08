@@ -3,46 +3,48 @@ var tab = require('sdk/tabs'),
 	File = require("./File"),
 	Notification = require("./Notification");
 
-exports.getTitle = function() {
-	
-    return tab.activeTab.title;
+exports.getTitle = function () {
+
+	return tab.activeTab.title;
 };
 
-exports.getURL = function() {
-	
-    return tab.activeTab.url;
+exports.getURL = function () {
+
+	return tab.activeTab.url;
 };
 
-exports.getSelectedText = function() {
-	
+exports.getSelectedText = function () {
+
 	tab.activeTab.attach({
 		contentScriptFile: [
-		                    Data.get("js/SendSelectedText.js"), 
-                            Data.get("js/GetSelectedText.js") ],
-	    onMessage: function(selectedText) {
-	    	File.saveTo(selectedText);
-	    }
+			Data.get("js/SendSelectedText.js"),
+			Data.get("js/GetSelectedText.js")
+		],
+		onMessage: function (selectedText) {
+			File.saveTo(selectedText);
+		}
 	});
 };
 
 // on hotkey, attach scripts to tab and save selected text to file
-exports.getSelectedTextHotkey = function() {
-	
+exports.getSelectedTextHotkey = function () {
+
 	tab.activeTab.attach({
 		contentScriptFile: [
-		                    Data.get("js/SendSelectedText.js"), 
-		                    Data.get("js/GetSelectedText.js") ],
-	    onMessage: function(selectedText) {
-	    	
-	    	if(selectedText === "" || selectedText === null){
+			Data.get("js/SendSelectedText.js"),
+			Data.get("js/GetSelectedText.js")
+		],
+		onMessage: function (selectedText) {
 
-	    		if (Preference.get('showNotifications')){
-	    			Notification.sendMsg("noTextSelected_id");
-	    		}
-			
-			}else{
+			if (selectedText === "" || selectedText === null) {
+
+				if (Preference.get('showNotifications')) {
+					Notification.sendMsg("noTextSelected_id");
+				}
+
+			} else {
 				File.saveTo(selectedText);
 			}
-	    }
+		}
 	});
 };

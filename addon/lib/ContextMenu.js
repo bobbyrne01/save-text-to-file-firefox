@@ -4,16 +4,16 @@ var ContextMenu = require("sdk/context-menu"),
 	Data = require("./Data"),
 	Preference = require("./Preference");
 
-exports.init = function() {
-	
+exports.init = function () {
+
 	ContextMenu.Item({
-		
+
 		label: Localisation.getString("saveTextToFile_id"),
 		context: ContextMenu.SelectionContext(),
-		contentScriptFile: [ Data.get("js/ListenForContextClick.js"), Data.get("js/SendSelectedText.js") ],
-	    onMessage: function (text) {	    	
-	    	
-	    	File.saveTo(text);
-	    }
+		contentScriptFile: [Data.get("js/ListenForContextClick.js"), Data.get("js/SendSelectedText.js")],
+		onMessage: function (text) {
+
+			File.saveTo(text);
+		}
 	});
 };
