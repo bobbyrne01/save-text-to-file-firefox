@@ -1,290 +1,297 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" media="all" href="../css/style.css"/>
-		<script type="text/javascript" src="../lib/jscolor.js"></script>
-	</head>
-	<body>
-	
-		<div>
-			<ul id="preferencesTabs" class="tabs"> 
-				<li><a href="#" rel="behaviour">Behaviour</a></li>
-				<li><a href="#" rel="appearance">Appearance</a></li>
-			</ul>
-			
-			<div class="tabcontents"> 
-				<div id="behaviour">
-				
-					<form>
-						<table>
-							<tr>
-								<td colspan="2">
-									<textarea id="previewArea"></textarea>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="fileName_title"></label>
-								</td>
-								<td>
-									<input id="fileName" size="20" />
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="pathToFile_title"></label>
-								</td>
-								<td>
-									<input id="pathToFile" readonly="true" size="20" />
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="format_title"></label>
-								</td>
-								<td>
-									<select id="format">
-										<option value="0">.txt</option>
-									  	<option value="1">.csv</option>
-									</select> 
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="datestamp_title"></label>
-								</td>
-								<td>
-									<input id="datestamp" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="timestamp_title"></label>
-								</td>
-								<td>
-									<input id="timestamp" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="datestampInLine_title"></label>
-								</td>
-								<td>
-									<input id="datestampInLine" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="timestampInLine_title"></label>
-								</td>
-								<td>
-									<input id="timestampInLine" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="dateFormat_title"></label>
-								</td>
-								<td>
-									<select id="dateFormat">
-										<option value="0">DD-MM-YYYY</option>
-									  	<option value="1">MM-DD-YYYY</option>
-									  	<option value="2">YYYY-MM-DD</option>
-									  	<option value="3">YYYY-DD-MM</option>
-									</select> 
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="lineSeparator_title"></label>
-								</td>
-								<td>
-									<input id="lineSeparator" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="currentURL_title"></label>
-								</td>
-								<td>
-									<input id="currentURL" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="pagenameForFilename_title"></label>
-								</td>
-								<td>
-									<input id="pagenameForFilename" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="confirmPanel_title"></label>
-								</td>
-								<td>
-									<input id="confirmPanel" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="html_title"></label>
-								</td>
-								<td>
-									<input id="html" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="showWidget_title"></label>
-								</td>
-								<td>
-									<input id="showWidget" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="showNotifications_title"></label>
-								</td>
-								<td>
-									<input id="showNotifications" type="checkbox">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<label data-l10n-id="preview_title"></label>
-								</td>
-								<td>
-									<input id="preview" type="checkbox">
-								</td>
-							</tr>
-							
-							<tr>
-								<td align="right">
-									<label data-l10n-id="saveMode_title"></label>
-								</td>
-								<td>
-									<select id="saveMode">
-										<option value="0">Create</option>
-									  	<option value="1">Append</option>
-									  	<option value="2">Prepend</option>
-									</select> 
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<hr>
-								</td>
-							</tr>
-							<tr>
-								<td align="center">
-									<button type="button" id="saveButton">Save</button>
-								</td>
-								<td align="center">
-									<button type="button" id="cancelButton">Cancel</button>
-								</td>
-							</tr>
-						</table>
-					</form>
-				
-				</div>
-				<div id="appearance">
-				
-					<table>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" media="all" href="../css/style.css" />
+	<script type="text/javascript" src="../lib/jscolor.js"></script>
+	<title>Save Text to File</title>
+</head>
+
+<body>
+
+	<div>
+		<ul id="preferencesTabs" class="tabs">
+			<li><a href="#" rel="prev">Behaviour</a>
+			</li>
+			<li><a href="#" rel="next">Appearance</a>
+			</li>
+		</ul>
+
+		<div class="tabcontents">
+			<div id="prev">
+
+				<form>
+					<table class="fullWidth">
 						<tr>
-							<td align="right">
-								<label data-l10n-id="panelBackgroundColor_title"></label>
-							</td>
-							<td>
-								<input id="panelBackgroundColor" class="color {hash:true}" size="10" />
-							</td>
-						</tr>
-						
-						<tr>
-							<td align="right">
-								<label data-l10n-id="inputBackgroundColor_title"></label>
-							</td>
-							<td>
-								<input id="inputBackgroundColor" class="color {hash:true}" size="10" />
+							<td colspan="2">
+								<textarea id="previewArea" class="fullWidth"></textarea>
 							</td>
 						</tr>
 						<tr>
-							<td align="right">
-								<label data-l10n-id="inputColor_title"></label>
+							<td class="alignRight">
+								<label data-l10n-id="fileName_title"></label>
 							</td>
 							<td>
-								<input id="inputColor" class="color {hash:true}" size="10" />
-							</td>
-						</tr>
-						
-						<tr>
-							<td align="right">
-								<label data-l10n-id="textareaBackgroundColor_title"></label>
-							</td>
-							<td>
-								<input id="textareaBackgroundColor" class="color {hash:true}" size="10" />
+								<input id="fileName" class="fullWidth" size="20" />
 							</td>
 						</tr>
 						<tr>
-							<td align="right">
-								<label data-l10n-id="textareaColor_title"></label>
+							<td class="alignRight">
+								<label data-l10n-id="pathToFile_title"></label>
 							</td>
 							<td>
-								<input id="textareaColor" class="color {hash:true}" size="10" />
+								<input id="pathToFile" size="20" class="fullWidth" readonly />
 							</td>
 						</tr>
 						<tr>
-							<td align="right">
-								<label data-l10n-id="labelColor_title"></label>
+							<td class="alignRight">
+								<label data-l10n-id="format_title"></label>
 							</td>
 							<td>
-								<input id="labelColor" class="color {hash:true}" size="10" />
+								<select id="format">
+									<option value="0">.txt</option>
+									<option value="1">.csv</option>
+								</select>
 							</td>
 						</tr>
 						<tr>
-							<td align="right">
-								<label data-l10n-id="buttonBackgroundColor_title"></label>
+							<td class="alignRight">
+								<label data-l10n-id="datestamp_title"></label>
 							</td>
 							<td>
-								<input id="buttonBackgroundColor" class="color {hash:true}" size="10" />
+								<input id="datestamp" type="checkbox">
 							</td>
 						</tr>
 						<tr>
-							<td align="right">
-								<label data-l10n-id="buttonColor_title"></label>
+							<td class="alignRight">
+								<label data-l10n-id="timestamp_title"></label>
 							</td>
 							<td>
-								<input id="buttonColor" class="color {hash:true}" size="10" />
+								<input id="timestamp" type="checkbox">
 							</td>
 						</tr>
 						<tr>
-							<td align="right">
-								<label data-l10n-id="liBackgroundColor_title"></label>
+							<td class="alignRight">
+								<label data-l10n-id="datestampInLine_title"></label>
 							</td>
 							<td>
-								<input id="liBackgroundColor" class="color {hash:true}" size="10" />
+								<input id="datestampInLine" type="checkbox">
 							</td>
 						</tr>
 						<tr>
-							<td align="right">
-								<label data-l10n-id="liColor_title"></label>
+							<td class="alignRight">
+								<label data-l10n-id="timestampInLine_title"></label>
 							</td>
 							<td>
-								<input id="liColor" class="color {hash:true}" size="10" />
+								<input id="timestampInLine" type="checkbox">
 							</td>
 						</tr>
 						<tr>
-							<td align="right">
-								<label data-l10n-id="selectColor_title"></label>
+							<td class="alignRight">
+								<label data-l10n-id="dateFormat_title"></label>
 							</td>
 							<td>
-								<input id="selectColor" class="color {hash:true}" size="10" />
+								<select id="dateFormat">
+									<option value="0">DD-MM-YYYY</option>
+									<option value="1">MM-DD-YYYY</option>
+									<option value="2">YYYY-MM-DD</option>
+									<option value="3">YYYY-DD-MM</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="alignRight">
+								<label data-l10n-id="lineSeparator_title"></label>
+							</td>
+							<td>
+								<input id="lineSeparator" type="checkbox">
+							</td>
+						</tr>
+						<tr>
+							<td class="alignRight">
+								<label data-l10n-id="currentURL_title"></label>
+							</td>
+							<td>
+								<input id="currentURL" type="checkbox">
+							</td>
+						</tr>
+						<tr>
+							<td class="alignRight">
+								<label data-l10n-id="pagenameForFilename_title"></label>
+							</td>
+							<td>
+								<input id="pagenameForFilename" type="checkbox">
+							</td>
+						</tr>
+						<tr>
+							<td class="alignRight">
+								<label data-l10n-id="confirmPanel_title"></label>
+							</td>
+							<td>
+								<input id="confirmPanel" type="checkbox">
+							</td>
+						</tr>
+						<tr>
+							<td class="alignRight">
+								<label data-l10n-id="html_title"></label>
+							</td>
+							<td>
+								<input id="html" type="checkbox">
+							</td>
+						</tr>
+						<tr>
+							<td class="alignRight">
+								<label data-l10n-id="showWidget_title"></label>
+							</td>
+							<td>
+								<input id="showWidget" type="checkbox">
+							</td>
+						</tr>
+						<tr>
+							<td class="alignRight">
+								<label data-l10n-id="showNotifications_title"></label>
+							</td>
+							<td>
+								<input id="showNotifications" type="checkbox">
+							</td>
+						</tr>
+						<tr>
+							<td class="alignRight">
+								<label data-l10n-id="preview_title"></label>
+							</td>
+							<td>
+								<input id="preview" type="checkbox">
+							</td>
+						</tr>
+
+						<tr>
+							<td class="alignRight">
+								<label data-l10n-id="saveMode_title"></label>
+							</td>
+							<td>
+								<select id="saveMode">
+									<option value="0">Create</option>
+									<option value="1">Append</option>
+									<option value="2">Prepend</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<hr>
+							</td>
+						</tr>
+						<tr>
+							<td class="alignCenter">
+								<button type="button" id="saveButton">Save</button>
+							</td>
+							<td class="alignCenter">
+								<button type="button" id="cancelButton">Cancel</button>
 							</td>
 						</tr>
 					</table>
-				
-				</div>
+				</form>
+
+			</div>
+			<div id="next">
+
+				<table class="fullWidth">
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="panelBackgroundColor_title"></label>
+						</td>
+						<td>
+							<input id="panelBackgroundColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="inputBackgroundColor_title"></label>
+						</td>
+						<td>
+							<input id="inputBackgroundColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="inputColor_title"></label>
+						</td>
+						<td>
+							<input id="inputColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="textareaBackgroundColor_title"></label>
+						</td>
+						<td>
+							<input id="textareaBackgroundColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="textareaColor_title"></label>
+						</td>
+						<td>
+							<input id="textareaColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="labelColor_title"></label>
+						</td>
+						<td>
+							<input id="labelColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="buttonBackgroundColor_title"></label>
+						</td>
+						<td>
+							<input id="buttonBackgroundColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="buttonColor_title"></label>
+						</td>
+						<td>
+							<input id="buttonColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="liBackgroundColor_title"></label>
+						</td>
+						<td>
+							<input id="liBackgroundColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="liColor_title"></label>
+						</td>
+						<td>
+							<input id="liColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+					<tr>
+						<td class="alignRight">
+							<label data-l10n-id="selectColor_title"></label>
+						</td>
+						<td>
+							<input id="selectColor" class="color {hash:true}" size="10" />
+						</td>
+					</tr>
+				</table>
+
 			</div>
 		</div>
-	</body> 
+	</div>
+</body>
+
 </html>
