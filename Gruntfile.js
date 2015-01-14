@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		jshint: {
-			files: ['Gruntfile.js', 'package.json', 'addon/package.json', 'addon/lib/*.js', 'addon/test/test-utils.js', 'addon/data/js/*.js'],
+			files: ['Gruntfile.js', 'package.json', 'addon/package.json', 'addon/lib/*.js', 'addon/data/js/*.js'],
 			options: {
 				moz: true,
 				force: true, // don't stop when there is an error
@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 			}
 		},
 		jsbeautifier: {
-			files: ['<%= jshint.files %>'],
+			files: ['<%= jshint.files %>', 'addon/data/html/view.html', 'addon/data/css/style.css'],
 			options: {
 				js: {
 					braceStyle: "collapse",
@@ -31,7 +31,38 @@ module.exports = function (grunt) {
 					spaceInParen: false,
 					unescapeStrings: false,
 					wrapLineLength: 0
-				}
+				},
+				html: {
+					braceStyle: "collapse",
+					indentChar: "\t",
+					indentScripts: "keep",
+					indentSize: 1,
+					maxPreserveNewlines: 10,
+					preserveNewlines: true,
+					unformatted: ["a", "sub", "sup", "b", "i", "u"],
+					wrapLineLength: 0
+				},
+				css: {
+					indentChar: "\t",
+					indentSize: 1
+				},
+			}
+		},
+		validation: {
+			options: {
+				stoponerror: false,
+				reset: true
+			},
+			files: {
+				src: ['addon/data/html/*.html']
+			}
+		},
+		csslint: {
+			strict: {
+				options: {
+					import: 2
+				},
+				src: ['addon/data/css/*.css']
 			}
 		},
 		watch: {
@@ -44,14 +75,36 @@ module.exports = function (grunt) {
 				max_jshint_notifications: 2,
 				success: true
 			}
+		},
+		release: {
+			options: {
+				file: 'package.json',
+				additionalFiles: ['addon/package.json'],
+				bump: true,
+				add: true,
+				commit: true,
+				tag: true,
+				push: true,
+				pushTags: true,
+				npm: false,
+				npmtag: false,
+				github: {
+					repo: 'bobbyrne01/save-text-to-file-firefox',
+					usernameVar: 'GITHUB_USERNAME',
+					passwordVar: 'GITHUB_PASSWORD'
+				}
+			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-notify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks("grunt-jsbeautifier");
+	grunt.loadNpmTasks('grunt-html-validation');
+	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-release');
 
-	grunt.registerTask('default', ['jsbeautifier', 'jshint']);
+	grunt.registerTask('default', ['jsbeautifier', 'jshint', 'validation', 'csslint']);
 	grunt.task.run('notify_hooks');
 };
