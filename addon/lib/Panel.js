@@ -4,6 +4,7 @@ var Panel = require("sdk/panel"),
 	Data = require("./Data"),
 	Notification = require("./Notification"),
 	File = require("./File"),
+	Hotkey = require("./Hotkey"),
 	panel,
 	selectedText;
 
@@ -11,7 +12,7 @@ exports.init = function () {
 
 	panel = Panel.Panel({
 		width: 490,
-		height: 665,
+		height: 675,
 		contentURL: Data.get("html/view.html"),
 		contentScriptFile: [Data.get('lib/tabcontent.js'),
 			Data.get("js/controller.js")
@@ -86,6 +87,11 @@ exports.init = function () {
 		Preference.set(JSON.parse(updatedPref).pref, JSON.parse(updatedPref).value);
 	});
 
+	panel.port.on("updateHotkey", function (value) {
+		Preference.set('hotkey', value);
+		panel.port.emit("hotkeyStatus", Hotkey.reinit());
+	});
+
 	return panel;
 };
 
@@ -124,6 +130,7 @@ function getPreferences() {
 		liBackgroundColor: Preference.get('liBackgroundColor'),
 		liColor: Preference.get('liColor'),
 		selectColor: Preference.get('selectColor'),
+		hotkey: Preference.get('hotkey'),
 		text: selectedText
 	});
 

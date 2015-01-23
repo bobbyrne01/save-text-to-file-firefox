@@ -45,7 +45,7 @@ module.exports = function (grunt) {
 				css: {
 					indentChar: "\t",
 					indentSize: 1
-				},
+				}
 			}
 		},
 		validation: {

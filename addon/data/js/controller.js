@@ -32,6 +32,10 @@ window.addEventListener('click', function (event) {
 
 }, false);
 
+document.getElementById('hotkeyPref').onkeyup = function (event) {
+	self.port.emit("updateHotkey", this.value);
+};
+
 
 function updatePanelBackgroundColorPref() {
 
@@ -388,6 +392,7 @@ self.port.on("prefs", function (prefs) {
 	document.getElementById("showWidget").checked = parsedPrefs.showWidget;
 	document.getElementById("showNotifications").checked = parsedPrefs.showNotifications;
 	document.getElementById("preview").checked = parsedPrefs.preview;
+	document.getElementById("hotkeyPref").value = parsedPrefs.hotkey;
 	text = parsedPrefs.text;
 
 	if (parsedPrefs.saveMode > 0) {
@@ -424,4 +429,12 @@ self.port.on("prefs", function (prefs) {
 	document.getElementById('labelColor').value = parsedPrefs.labelColor;
 	updateSelectColor(parsedPrefs.selectColor);
 	document.getElementById('selectColor').value = parsedPrefs.selectColor;
+});
+
+self.port.on('hotkeyStatus', function (value) {
+	if (value === true) {
+		document.getElementById('hotkeyPref').className = 'green';
+	} else {
+		document.getElementById('hotkeyPref').className = 'red';
+	}
 });

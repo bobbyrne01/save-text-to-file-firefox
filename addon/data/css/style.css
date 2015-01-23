@@ -7,6 +7,12 @@
 .alignCenter {
 	text-align: center;
 }
+.green {
+	background-color: #99FF66;
+}
+.red {
+	background-color: #FF5050;
+}
 /* Attribution for Tabs functionality to .. http://www.menucool.com/tabbed-content */
 
 ul.tabs {
