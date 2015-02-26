@@ -14,9 +14,7 @@ exports.init = function () {
 		width: 490,
 		height: 675,
 		contentURL: Data.get("html/view.html"),
-		contentScriptFile: [Data.get('lib/tabcontent.js'),
-			Data.get("js/controller.js")
-		],
+		contentScriptFile: [Data.get("js/controller.js")],
 		onShow: function () {
 			getPreferences();
 		},

@@ -13,49 +13,43 @@
 .red {
 	background-color: #FF5050;
 }
-/* Attribution for Tabs functionality to .. http://www.menucool.com/tabbed-content */
+/*
+ * Tabs
+ */
 
-ul.tabs {
-	padding: 7px 0;
-	margin: 0;
-	font-size: 0;
-	list-style-type: none;
-	text-align: left;
-	padding-left: 20px;
-}
-ul.tabs li {
-	display: inline;
-	background: White;
-	margin-left: -4px;
-}
-ul.tabs li a {
-	font: normal 12px Verdana;
-	text-decoration: none;
+.tabs {
 	position: relative;
-	padding: 7px 22px;
-	color: #000;
-	background: #F6F6F9;
-	border: 1px solid #CCC;
-	border-right: 0;
+	height: 100%;
+	clear: both;
+	margin: 35px 0 25px;
 }
-ul.tabs li:last-child a {
-	border-right: 1px solid #CCC;
+.tab {
+	float: left;
 }
-ul.tabs li a:hover {
-	color: #000;
+.tabLabel {
+	background: #eee;
+	padding: 10px;
+	border: 1px solid #ccc;
+	margin-left: -1px;
+	position: relative;
+	left: 1px;
+	top: -20px;
+}
+.content {
+	position: absolute;
+	top: 2px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 20px;
+	opacity: 0;
+}
+[type=radio]:checked ~ label {
 	background: white;
+	border-bottom: 1px solid white;
+	z-index: 2;
 }
-ul.tabs li.selected a,
-ul.tabs li.selected a:hover {
-	font-weight: normal;
-	background: #FFF;
-	border-bottom: 1px solid #FFF;
-	color: #000;
-}
-ul.tabs li.selected a:hover {
-	text-decoration: none;
-}
-.tabcontents {
-	border-top: 1px solid #CCC;
-	padding: 30px 10px;
+[type=radio]:checked ~ label ~ .content {
+	z-index: 1;
+	opacity: 1;
 }

@@ -10,17 +10,12 @@
 
 <body>
 
-	<div>
-		<ul id="preferencesTabs" class="tabs">
-			<li><a href="#" rel="prev">Behaviour</a>
-			</li>
-			<li><a href="#" rel="next">Appearance</a>
-			</li>
-		</ul>
+	<div class="tabs">
 
-		<div class="tabcontents">
-			<div id="prev">
-
+		<div class="tab">
+			<input type="radio" id="tab-1" name="tab-group-1" hidden checked />
+			<label class="tabLabel" for="tab-1">Behaviour</label>
+			<div class="content">
 				<form>
 					<table class="fullWidth">
 						<tr>
@@ -202,10 +197,13 @@
 						</tr>
 					</table>
 				</form>
-
 			</div>
-			<div id="next">
+		</div>
 
+		<div class="tab">
+			<input type="radio" id="tab-2" name="tab-group-1" hidden checked />
+			<label class="tabLabel" for="tab-2">Appearance</label>
+			<div class="content">
 				<table class="fullWidth">
 					<tr>
 						<td class="alignRight">
@@ -298,7 +296,6 @@
 						</td>
 					</tr>
 				</table>
-
 			</div>
 		</div>
 	</div>

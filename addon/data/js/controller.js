@@ -1,9 +1,3 @@
-window.onload = function () {
-	var preferencesTabs = new ddtabcontent('preferencesTabs');
-	preferencesTabs.init();
-};
-
-
 var text;
 
 window.addEventListener('click', function (event) {
