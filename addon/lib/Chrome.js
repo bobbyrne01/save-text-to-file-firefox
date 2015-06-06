@@ -72,7 +72,7 @@ exports.saveTo = function (selectedText) {
 
 	// add user preferences to selected text
 	if (Preference.get('lineSeparator')) {
-		string += '\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014' + separator;
+		string += Preference.get('lineSeparatorText') + separator;
 	}
 
 	if (Preference.get('datestampInLine')) {

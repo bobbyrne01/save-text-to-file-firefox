@@ -39,6 +39,7 @@ exports.init = function () {
 		Preference.set('timestampInLine', parsedPrefs.timestampInLine);
 		Preference.set('dateFormat', parseInt(parsedPrefs.dateFormat));
 		Preference.set('lineSeparator', parsedPrefs.lineSeparator);
+		Preference.set('lineSeparatorText', parsedPrefs.lineSeparatorText);
 		Preference.set('currentURL', parsedPrefs.currentURL);
 		Preference.set('pagenameForFilename', parsedPrefs.pagenameForFilename);
 		Preference.set('saveMode', parseInt(parsedPrefs.saveMode));
@@ -109,6 +110,7 @@ function getPreferences() {
 		timestampInLine: Preference.get('timestampInLine'),
 		dateFormat: Preference.get('dateFormat'),
 		lineSeparator: Preference.get('lineSeparator'),
+		lineSeparatorText: Preference.get('lineSeparatorText'),
 		currentURL: Preference.get('currentURL'),
 		pagenameForFilename: Preference.get('pagenameForFilename'),
 		saveMode: Preference.get('saveMode'),

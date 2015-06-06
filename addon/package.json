@@ -80,6 +80,11 @@
 		"type": "bool",
 		"value": true
 	}, {
+		"name": "lineSeparatorText",
+		"title": "Line separator text?",
+		"type": "string",
+		"value": "---------------------------------------------------------"
+	},{
 		"name": "currentURL",
 		"title": "Current URL?",
 		"type": "bool",

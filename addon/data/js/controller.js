@@ -17,6 +17,9 @@ window.addEventListener('click', function (event) {
 	} else {
 		document.getElementById("timestamp").disabled = false;
 	}
+	
+	document.getElementById("lineSeparatorText").disabled =
+		(document.getElementById("lineSeparator").checked ? false : true);
 
 	document.getElementById("previewArea").value =
 		(document.getElementById("html").checked ? JSON.parse(text).html : JSON.parse(text).plain);
@@ -346,6 +349,7 @@ var SaveTextToFile_Panel = {
 			timestampInLine: document.getElementById("timestampInLine").checked,
 			dateFormat: document.getElementById("dateFormat").value,
 			lineSeparator: document.getElementById("lineSeparator").checked,
+			lineSeparatorText: document.getElementById("lineSeparatorText").value,
 			currentURL: document.getElementById("currentURL").checked,
 			pagenameForFilename: document.getElementById("pagenameForFilename").checked,
 			saveMode: document.getElementById("saveMode").value,
@@ -378,6 +382,7 @@ self.port.on("prefs", function (prefs) {
 	document.getElementById("timestampInLine").checked = parsedPrefs.timestampInLine;
 	document.getElementById("dateFormat").value = parsedPrefs.dateFormat;
 	document.getElementById("lineSeparator").checked = parsedPrefs.lineSeparator;
+	document.getElementById("lineSeparatorText").value = parsedPrefs.lineSeparatorText;
 	document.getElementById("currentURL").checked = parsedPrefs.currentURL;
 	document.getElementById("pagenameForFilename").checked = parsedPrefs.pagenameForFilename;
 	document.getElementById("saveMode").value = parsedPrefs.saveMode;
@@ -394,6 +399,9 @@ self.port.on("prefs", function (prefs) {
 	} else {
 		document.getElementById("timestamp").disabled = false;
 	}
+	
+	document.getElementById("lineSeparatorText").disabled =
+		(document.getElementById("lineSeparator").checked ? false : true);
 
 	document.getElementById("previewArea").value =
 		(parsedPrefs.html ? JSON.parse(text).html : JSON.parse(text).plain);
