@@ -119,17 +119,6 @@ function getPreferences() {
 		showWidget: Preference.get('showWidget'),
 		showNotifications: Preference.get('showNotifications'),
 		preview: Preference.get('preview'),
-		panelBackgroundColor: Preference.get('panelBackgroundColor'),
-		textareaBackgroundColor: Preference.get('textareaBackgroundColor'),
-		textareaColor: Preference.get('textareaColor'),
-		inputBackgroundColor: Preference.get('inputBackgroundColor'),
-		inputColor: Preference.get('inputColor'),
-		labelColor: Preference.get('labelColor'),
-		buttonBackgroundColor: Preference.get('buttonBackgroundColor'),
-		buttonColor: Preference.get('buttonColor'),
-		liBackgroundColor: Preference.get('liBackgroundColor'),
-		liColor: Preference.get('liColor'),
-		selectColor: Preference.get('selectColor'),
 		hotkey: Preference.get('hotkey'),
 		text: selectedText
 	});
