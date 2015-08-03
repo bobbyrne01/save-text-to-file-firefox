@@ -6,6 +6,7 @@
 	"author": "Robert Byrne",
 	"license": "GNU GPL v3",
 	"version": "2.6.9",
+	"main": "lib/main.js",
 	"permissions": {
 		"private-browsing": true
 	},

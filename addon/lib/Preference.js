@@ -1,5 +1,5 @@
 var preference = require("sdk/simple-prefs"),
-	actionButton = require("ActionButton");
+	actionButton = require("./ActionButton");
 
 function onPrefChange(name) {
 
