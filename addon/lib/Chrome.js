@@ -5,24 +5,23 @@ var {
 	Tab = require("./Tab"),
 	Notification = require("./Notification"),
 	Localisation = require("./Localisation"),
-	Panel = require("./Panel"),
 	System = require("./System"),
-	Utils = require("./Utils"),
-	window = require("./Window");
+	Utils = require("./Utils");
 
 const {
 	TextDecoder, TextEncoder, OS
 } = Cu.import("resource://gre/modules/osfile.jsm", {});
 
 exports.getHomeDir = function () {
-	return Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties).get("Home", Ci.nsIFile);
+	return Cc["@mozilla.org/file/directory_service;1"]
+		.getService(Ci.nsIProperties).get("Home", Ci.nsIFile);
 };
 
 exports.selectDir = function (selectedText) {
 	var nsIFilePicker = Ci.nsIFilePicker,
 		fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
 
-	fp.init(window.get(),
+	fp.init(require("./Window").get(),
 		Localisation.getString("browse_title"),
 		nsIFilePicker.modeGetFolder);
 
@@ -30,7 +29,7 @@ exports.selectDir = function (selectedText) {
 
 	if (ret == nsIFilePicker.returnOK || ret == nsIFilePicker.returnReplace) {
 		Preference.set("pathToFile", fp.file.path);
-		Panel.show(selectedText);
+		require("./Panel").show(selectedText);
 	}
 };
 

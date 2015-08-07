@@ -1,6 +1,5 @@
 function getText() {
 
-
 	var html = "";
 	if (typeof window.getSelection != "undefined") {
 		var sel = window.getSelection();

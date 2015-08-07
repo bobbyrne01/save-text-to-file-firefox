@@ -1,7 +1,6 @@
 var tab = require('sdk/tabs'),
 	Data = require("./Data"),
-	File = require("./File"),
-	Notification = require("./Notification");
+	File = require("./File");
 
 exports.getTitle = function () {
 
@@ -39,7 +38,7 @@ exports.getSelectedTextHotkey = function () {
 			if (selectedText === "" || selectedText === null) {
 
 				if (Preference.get('showNotifications')) {
-					Notification.sendMsg("noTextSelected_id");
+					require("./Notification").sendMsg("noTextSelected_id");
 				}
 
 			} else {

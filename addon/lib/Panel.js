@@ -1,19 +1,16 @@
-var Panel = require("sdk/panel"),
-	Preference = require("./Preference"),
+var Preference = require("./Preference"),
 	Chrome = require("./Chrome"),
 	Data = require("./Data"),
 	Notification = require("./Notification"),
-	File = require("./File"),
-	Hotkey = require("./Hotkey"),
 	panel,
 	selectedText;
 
 exports.init = function () {
 
-	panel = Panel.Panel({
+	panel = require("sdk/panel").Panel({
 		width: 490,
 		height: 675,
-		contentURL: Data.get("html/view.html"),
+		contentURL: Data.get("html/panel.html"),
 		contentScriptFile: [Data.get("js/controller.js")],
 		onShow: function () {
 			getPreferences();
@@ -88,7 +85,7 @@ exports.init = function () {
 
 	panel.port.on("updateHotkey", function (value) {
 		Preference.set('hotkey', value);
-		panel.port.emit("hotkeyStatus", Hotkey.reinit());
+		panel.port.emit("hotkeyStatus", require("./Hotkey").reinit());
 	});
 
 	return panel;
@@ -102,7 +99,7 @@ function getPreferences() {
 
 	var prefs = JSON.stringify({
 		fileName: Preference.get('fileName'),
-		pathToFile: File.getPathToFile(),
+		pathToFile: require("./File").getPathToFile(),
 		format: Preference.get('format'),
 		datestamp: Preference.get('datestamp'),
 		timestamp: Preference.get('timestamp'),

@@ -1,7 +1,5 @@
 var Chrome = require("./Chrome"),
-	Preference = require("./Preference"),
-	Panel = require("./Panel"),
-	Notification = require("./Notification");
+	Preference = require("./Preference");
 
 function getPathToFile() {
 
@@ -12,7 +10,6 @@ function getPathToFile() {
 }
 
 exports.getPathToFile = function () {
-
 	return getPathToFile();
 };
 
@@ -21,7 +18,7 @@ exports.saveTo = function (selectedText) {
 
 	if (Preference.get('confirmPanel')) {
 
-		Panel.show(selectedText);
+		require("./Panel").show(selectedText);
 
 	} else { // save text without showing confirmation Panel
 
@@ -31,7 +28,7 @@ exports.saveTo = function (selectedText) {
 
 			if (Preference.get('showNotifications')) {
 
-				Notification.sendMsg("noTextSelected_id");
+				require("./Notification").sendMsg("noTextSelected_id");
 			}
 
 		} else {

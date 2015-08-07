@@ -1,5 +1,3 @@
-var window = require("sdk/window/utils");
-
 exports.get = function () {
-	return window.getMostRecentBrowserWindow();
+	return require("sdk/window/utils").getMostRecentBrowserWindow();
 };

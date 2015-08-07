@@ -1,19 +1,14 @@
-var ui = require("sdk/ui"),
-	Localisation = require("./Localisation"),
-	Data = require("./Data"),
-	Tab = require("./Tab"),
-	actionButton;
+var actionButton;
 
 
 exports.init = function () {
 
-	actionButton = ui.ActionButton({
+	actionButton = require("sdk/ui").ActionButton({
 		id: "save-text-to-file-widget",
-		label: Localisation.getString("saveTextToFile_id"),
-		icon: Data.get("images/ico.png"),
+		label: require("./Localisation").getString("saveTextToFile_id"),
+		icon: require("./Data").get("images/ico.png"),
 		onClick: function (state) {
-
-			Tab.getSelectedText();
+			require("./Tab").getSelectedText();
 		}
 	});
 };

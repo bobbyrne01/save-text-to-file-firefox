@@ -2,7 +2,6 @@ exports.sanitizeFilename = function (filename) {
 	return filename.replace(/[\/\\|":*?<>]/g, '_');
 };
 
-
 exports.createDateString = function (preferedFormat, currentDate) {
 
 	var dateString;
@@ -39,7 +38,6 @@ exports.createDateString = function (preferedFormat, currentDate) {
 
 	return dateString;
 };
-
 
 exports.createTimeString = function (currentDate) {
 
