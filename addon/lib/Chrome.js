@@ -7,7 +7,6 @@ var {
 	Localisation = require("./Localisation"),
 	System = require("./System"),
 	Utils = require("./Utils");
-
 const {
 	TextDecoder, TextEncoder, OS
 } = Cu.import("resource://gre/modules/osfile.jsm", {});
@@ -61,60 +60,44 @@ exports.createFilePath = function (saveDirectory, fileName) {
 
 exports.saveTo = function (selectedText) {
 	var filePath = createFilePath(
-		Preference.get('pathToFile'), (Preference.get('pagenameForFilename') ? Tab.getTitle() : Preference.get('fileName')));
-
-	var string = '\n',
+			Preference.get('pathToFile'), (Preference.get('pagenameForFilename') ? Tab.getTitle() : Preference.get('fileName'))),
+		string = '\n',
 		currentDate = new Date(),
 		dateString = Utils.createDateString(Preference.get('dateFormat'), currentDate),
 		timeString = Utils.createTimeString(currentDate),
 		separator = (Preference.get('format') === 0 ? "\n" : ",");
 
 	// add user preferences to selected text
-	if (Preference.get('lineSeparator')) {
+	if (Preference.get('lineSeparator'))
 		string += Preference.get('lineSeparatorText') + separator;
-	}
 
-	if (Preference.get('datestampInLine')) {
+	if (Preference.get('datestampInLine'))
 		string += Localisation.getCustomString("datestamp_title") + ': ' + dateString + separator;
-	}
 
-	if (Preference.get('timestampInLine')) {
+	if (Preference.get('timestampInLine'))
 		string += Localisation.getCustomString("timestamp_title") + ': ' + timeString + separator;
-	}
 
-	if (Preference.get('currentURL')) {
+	if (Preference.get('currentURL'))
 		string += Tab.getURL() + separator + separator;
-	}
 
 	var combinedString = string + selectedText;
 
 	if (Preference.get('saveMode') === 0) {
 
-		let encodedArray = new TextEncoder().encode(combinedString);
-		let promise = OS.File.writeAtomic(filePath, encodedArray);
-		promise.then(
-			function () {
-				if (Preference.get('showNotifications')) {
-					Notification.sendMsg("saveComplete_id", filePath);
-				}
-			},
-			function (ex) {
-				if (Preference.get('showNotifications')) {
-					Notification.sendMsg("saveError_id", filePath);
-				}
-			}
-		);
+		newFileWithText(combinedString, filePath);
 
 	} else if (Preference.get('saveMode') === 1) {
 
 		let promise = OS.File.read(filePath);
 		promise = promise.then(function onSuccess(contents) {
 				let text = new TextDecoder().decode(contents);
-				combinedString = text + '\n\n' + combinedString;
+				combinedString = '\n\n' + combinedString;
 
 				if (System.getPlatform().indexOf('win') >= 0) {
 					combinedString = combinedString.replace(/[\n]/g, '\r\n');
 				}
+
+				combinedString = text + combinedString;
 
 				let encodedArray = new TextEncoder().encode(combinedString);
 				let promise = OS.File.writeAtomic(filePath, encodedArray);
@@ -131,24 +114,8 @@ exports.saveTo = function (selectedText) {
 					}
 				);
 			},
-			function onError(reason) {
-				if (System.getPlatform().indexOf('win') >= 0) {
-					combinedString = combinedString.replace(/[\n]/g, '\r\n');
-				}
-				let encodedArray = new TextEncoder().encode(combinedString);
-				let promise = OS.File.writeAtomic(filePath, encodedArray);
-				promise.then(
-					function () {
-						if (Preference.get('showNotifications')) {
-							Notification.sendMsg("saveComplete_id", filePath);
-						}
-					},
-					function (ex) {
-						if (Preference.get('showNotifications')) {
-							Notification.sendMsg("saveError_id", filePath);
-						}
-					}
-				);
+			function onError(reason) { // if no existing file present to append to, create new file
+				newFileWithText(combinedString, filePath);
 			});
 
 	} else {
@@ -156,11 +123,13 @@ exports.saveTo = function (selectedText) {
 		let promise = OS.File.read(filePath);
 		promise = promise.then(function onSuccess(contents) {
 				let text = new TextDecoder().decode(contents);
-				combinedString = combinedString + '\n\n' + text;
+				combinedString = combinedString + '\n\n';
 
 				if (System.getPlatform().indexOf('win') >= 0) {
 					combinedString = combinedString.replace(/[\n]/g, '\r\n');
 				}
+
+				combinedString = combinedString + text;
 
 				let encodedArray = new TextEncoder().encode(combinedString);
 				let promise = OS.File.writeAtomic(filePath, encodedArray);
@@ -177,24 +146,30 @@ exports.saveTo = function (selectedText) {
 					}
 				);
 			},
-			function onError(reason) {
-				if (System.getPlatform().indexOf('win') >= 0) {
-					combinedString = combinedString.replace(/[\n]/g, '\r\n');
-				}
-				let encodedArray = new TextEncoder().encode(combinedString);
-				let promise = OS.File.writeAtomic(filePath, encodedArray);
-				promise.then(
-					function () {
-						if (Preference.get('showNotifications')) {
-							Notification.sendMsg("saveComplete_id", filePath);
-						}
-					},
-					function (ex) {
-						if (Preference.get('showNotifications')) {
-							Notification.sendMsg("saveError_id", filePath);
-						}
-					}
-				);
+			function onError(reason) { // if no existing file present to append to, create new file				
+				newFileWithText(combinedString, filePath);
 			});
 	}
 };
+
+function newFileWithText(combinedString, filePath) {
+
+	if (System.getPlatform().indexOf('win') >= 0) {
+		combinedString = combinedString.replace(/[\n]/g, '\r\n');
+	}
+
+	let encodedArray = new TextEncoder().encode(combinedString);
+	let promise = OS.File.writeAtomic(filePath, encodedArray);
+	promise.then(
+		function () {
+			if (Preference.get('showNotifications')) {
+				Notification.sendMsg("saveComplete_id", filePath);
+			}
+		},
+		function (ex) {
+			if (Preference.get('showNotifications')) {
+				Notification.sendMsg("saveError_id", filePath);
+			}
+		}
+	);
+}
