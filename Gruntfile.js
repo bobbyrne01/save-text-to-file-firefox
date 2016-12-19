@@ -48,14 +48,6 @@ module.exports = function (grunt) {
 				}
 			}
 		},
-		htmllint: {
-			all: {
-				options: {
-					ignore: 'Empty heading.'
-				},
-				src: "addon/data/html/*.html"
-			}
-		},
 		csslint: {
 			strict: {
 				options: {
@@ -70,35 +62,14 @@ module.exports = function (grunt) {
 				max_jshint_notifications: 2,
 				success: true
 			}
-		},
-		release: {
-			options: {
-				file: 'package.json',
-				additionalFiles: ['addon/package.json'],
-				bump: true,
-				add: true,
-				commit: true,
-				tag: true,
-				push: true,
-				pushTags: true,
-				npm: false,
-				npmtag: false,
-				github: {
-					repo: 'bobbyrne01/save-text-to-file-firefox',
-					usernameVar: 'GITHUB_USERNAME',
-					passwordVar: 'GITHUB_PASSWORD'
-				}
-			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-notify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks("grunt-jsbeautifier");
-	grunt.loadNpmTasks('grunt-html');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
-	grunt.loadNpmTasks('grunt-release');
 
-	grunt.registerTask('default', ['jsbeautifier', 'jshint', 'htmllint', 'csslint']);
+	grunt.registerTask('default', ['jsbeautifier', 'jshint', 'csslint']);
 	grunt.task.run('notify_hooks');
 };

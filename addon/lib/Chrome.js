@@ -1,5 +1,8 @@
 var {
-	Cc, Ci, Cu, components
+	Cc,
+	Ci,
+	Cu,
+	components
 } = require("chrome"),
 	Preference = require("./Preference"),
 	Tab = require("./Tab"),
@@ -8,7 +11,9 @@ var {
 	System = require("./System"),
 	Utils = require("./Utils");
 const {
-	TextDecoder, TextEncoder, OS
+	TextDecoder,
+	TextEncoder,
+	OS
 } = Cu.import("resource://gre/modules/osfile.jsm", {});
 
 exports.getHomeDir = function () {
