@@ -1,6 +1,6 @@
 {
 	"name": "save-text-to-file-firefox",
-	"version": "2.7.1",
+	"version": "2.7.3",
 	"description": "Saves highlighted text to a file in a specified directory",
 	"main": "addon/lib/main.js",
 	"scripts": {
