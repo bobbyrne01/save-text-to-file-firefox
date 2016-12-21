@@ -9,7 +9,7 @@ exports.init = function () {
 
 	panel = require("sdk/panel").Panel({
 		width: 490,
-		height: 675,
+		height: 750,
 		contentURL: Data.get("html/panel.html"),
 		contentScriptFile: [Data.get("js/controller.js")],
 		onShow: function () {
@@ -48,18 +48,12 @@ exports.init = function () {
 
 		selectedText = parsedPrefs.text;
 
-
 		if (selectedText === "" || selectedText === null) {
-
 			if (Preference.get('showNotifications')) {
-
 				Notification.sendMsg("noTextSelected_id");
 			}
-
 			panel.hide();
-
 		} else {
-
 			Chrome.saveTo(selectedText);
 			panel.hide();
 		}
@@ -70,7 +64,6 @@ exports.init = function () {
 	panel.port.on("cancel", function () {
 
 		if (Preference.get('showNotifications')) {
-
 			Notification.sendMsg("saveCancel_id");
 		}
 
@@ -79,7 +72,6 @@ exports.init = function () {
 	});
 
 	panel.port.on("prefUpdate", function (updatedPref) {
-
 		Preference.set(JSON.parse(updatedPref).pref, JSON.parse(updatedPref).value);
 	});
 

@@ -1,19 +1,54 @@
 .fullWidth {
 	width: 100%;
 }
-
 .alignRight {
 	text-align: right;
 }
-
 .alignCenter {
 	text-align: center;
 }
-
 .green {
 	background-color: #99FF66;
 }
-
 .red {
 	background-color: #FF5050;
+}
+.boldFont {
+	font-weight: bold;
+}
+input[type=text],
+textarea,
+select {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: 1px solid #BEBEBE;
+	padding: 7px;
+	margin: 0px;
+	-moz-transition: all 0.30s ease-in-out;
+	outline: none;
+}
+input[type=text]:focus,
+textarea:focus,
+select:focus {
+	-moz-box-shadow: 0 0 8px #88D5E9;
+	box-shadow: 0 0 8px #88D5E9;
+	border: 1px solid #88D5E9;
+}
+.directorySelection {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	padding: 7px;
+	margin: 0px;
+	outline: none;
+}
+button {
+  background: #4B99AD;
+  padding: 8px 15px 8px 15px;
+  border: none;
+  color: #fff;
+}
+button:hover{
+  background: #4691A4;
+  box-shadow:none;
+  -moz-box-shadow:none;
 }
