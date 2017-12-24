@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Save text to file options</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <ul>
+    <li>
+      <label class="boldFont">Filename prefix</label>
+      <input type="text" id="fileNamePrefix" size="50" placeholder="save-text-to-file--" value="save-text-to-file--" />
+    </li>
+    <li>
+      <label class="boldFont">Add date or epoch to filename</label>
+      <select id="dateFormat">
+        <option value="0">Epoch</option>
+        <option value="1">DD-MM-YYYY</option>
+				<option value="2">MM-DD-YYYY</option>
+        <option value="3">YYYY-MM-DD</option>
+        <option value="4">YYYY-DD-MM</option>
+        <option value="5">None</option>
+      </select>
+    </li>
+    <li>
+      <label class="boldFont">Save current URL in file</label>
+      <input type="checkbox" id="urlInFile" />
+    </li>
+    <li>
+      <label class="boldFont">Show directory selection dialog</label>
+      <input type="checkbox" id="directorySelectionDialog" />
+    </li>
+    <li>
+      <label class="boldFont">Show notifications</label>
+      <input type="checkbox" id="notifications" checked />
+    </li>
+    <li>
+      <label class="boldFont">If file exists</label>
+      <select id="conflictAction">
+        <option value="uniquify">Uniquify</option>
+				<option value="overwrite">Overwrite</option>
+        <option value="prompt">Prompt</option>
+      </select>
+    </li>
+
+    <li>
+      <button id="save">Save</button>
+      <div id="status"></div>
+    </li>
+  </ul>
+
+  <script src="options.js"></script>
+</body>
+
+</html>
