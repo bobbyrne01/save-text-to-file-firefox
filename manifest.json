@@ -4,7 +4,8 @@
   "version": "3.0",
   "applications": {
     "gecko": {
-      "id": "HighlightedTextToFile@bobbyrne01.org"
+      "id": "HighlightedTextToFile@bobbyrne01.org",
+      "strict_min_version": "57.0"
     }
   },
   "permissions": ["contextMenus", "downloads", "storage", "notifications", "tabs"],
