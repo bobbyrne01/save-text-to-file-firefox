@@ -153,8 +153,6 @@ browser.storage.sync.get({
   notifications: true,
   conflictAction: 'uniquify'
 }, function(items) {
-  console.log('BOB');
-  console.log(items);
   fileNamePrefix = items.fileNamePrefix;
   dateFormat = items.dateFormat;
   urlInFile = items.urlInFile;
