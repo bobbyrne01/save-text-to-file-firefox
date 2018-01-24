@@ -117,8 +117,17 @@ function startDownloadOfTextToFile(url, fileName) {
   } else {
     options.saveAs = true;
   }
-  browser.downloads.download(options, function() {
-    notify('Text saved.');
+  browser.downloads.download(options, function(downloadId) {
+    if (downloadId) {
+      notify('Text saved.');
+    } else {
+      var error = browser.runtime.lastError.toString();
+      if (error.indexOf('Download canceled by the user') >= 0) {
+        notify('Save canceled.');
+      } else {
+        notify('Error occured.');
+      }
+    }
   });
 }
 
@@ -149,7 +158,7 @@ browser.storage.sync.get({
   fileNamePrefix: DEFAULT_FILE_NAME_PREFIX,
   dateFormat: 0,
   urlInFile: false,
-  showDirSelectionDialog: false,
+  directorySelectionDialog: false,
   notifications: true,
   conflictAction: 'uniquify'
 }, function(items) {
