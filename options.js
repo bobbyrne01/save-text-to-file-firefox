@@ -22,6 +22,7 @@ function saveOptions() {
   browser.storage.sync.set({
     fileNamePrefix: document.getElementById('fileNamePrefix').value,
     dateFormat: document.getElementById('dateFormat').value,
+    prefixPageTitleInFileName: document.getElementById('prefixPageTitleInFileName').checked,
     urlInFile: document.getElementById('urlInFile').checked,
     directorySelectionDialog: document.getElementById('directorySelectionDialog').checked,
     notifications: document.getElementById('notifications').checked,
@@ -41,6 +42,7 @@ function restoreOptions() {
   browser.storage.sync.get({
     fileNamePrefix: DEFAULT_FILE_NAME_PREFIX,
     dateFormat: 0,
+    prefixPageTitleInFileName: false,
     urlInFile: false,
     directorySelectionDialog: false,
     notifications: true,
@@ -48,6 +50,7 @@ function restoreOptions() {
   }, function(items) {
     document.getElementById('fileNamePrefix').value = items.fileNamePrefix;
     document.getElementById('dateFormat').value = items.dateFormat;
+    document.getElementById('prefixPageTitleInFileName').checked = items.prefixPageTitleInFileName;
     document.getElementById('urlInFile').checked = items.urlInFile;
     document.getElementById('directorySelectionDialog').checked = items.directorySelectionDialog;
     document.getElementById('notifications').checked = items.notifications;

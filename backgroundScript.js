@@ -27,6 +27,7 @@ const YYYYMMDD = '3';
 const YYYYDDMM = '4';
 var fileNamePrefix;
 var dateFormat;
+var prefixPageTitleInFileName;
 var urlInFile;
 var directorySelectionDialog;
 var notifications;
@@ -38,9 +39,15 @@ function saveTextToFile(info) {
       type: 'text/plain'
     });
     var url = URL.createObjectURL(blob);
-    var fileName = createFileName();
-    startDownloadOfTextToFile(url, fileName);
+    createFileName(function(fileName) {
+      var sanitizedFileName = sanitizeFileName(fileName);
+      startDownloadOfTextToFile(url, sanitizedFileName);
+    });
   });
+}
+
+function sanitizeFileName(fileName) {
+  return fileName.replace(/[\/\\|":*?<>]/g, '_');
 }
 
 function createFileContents(selectionText, callback) {
@@ -58,18 +65,34 @@ function createFileContents(selectionText, callback) {
   }
 }
 
-function createFileName() {
+function createFileName(callback) {
   var fileName = '';
-  _addPrefix();
-  _addDate();
-  _addExtension();
-  return fileName;
+  _addPageTitleToFileName(function(pageTitle) {
+    fileName += pageTitle;
+    _addPrefix();
+    _addDate();
+    _addExtension();
+    callback(fileName);
+  });
 
   function _addPrefix() {
     if (fileNamePrefix !== '') {
       fileName += fileNamePrefix;
     } else {
       fileName += DEFAULT_FILE_NAME_PREFIX;
+    }
+  }
+
+  function _addPageTitleToFileName(callback) {
+    if (prefixPageTitleInFileName) {
+      browser.tabs.query({
+        'active': true,
+        'lastFocusedWindow': true
+      }, function(tabs) {
+        callback(tabs[0].title + '-');
+      });
+    } else {
+      callback('');
     }
   }
 
@@ -157,6 +180,7 @@ function notify(message) {
 browser.storage.sync.get({
   fileNamePrefix: DEFAULT_FILE_NAME_PREFIX,
   dateFormat: 0,
+  prefixPageTitleInFileName: false,
   urlInFile: false,
   directorySelectionDialog: false,
   notifications: true,
@@ -164,6 +188,7 @@ browser.storage.sync.get({
 }, function(items) {
   fileNamePrefix = items.fileNamePrefix;
   dateFormat = items.dateFormat;
+  prefixPageTitleInFileName = items.prefixPageTitleInFileName;
   urlInFile = items.urlInFile;
   directorySelectionDialog = items.directorySelectionDialog;
   notifications = items.notifications;
@@ -173,6 +198,7 @@ browser.storage.sync.get({
 browser.storage.onChanged.addListener(function(changes) {
   _updatePrefixOnChange();
   _updateDateFormatOnChange();
+  _updatePageTitleInFileNameOnChange();
   _updateUrlInFileOnChange();
   _updateDirectorySelectionOnChange();
   _updateNotificationsOnChange();
@@ -190,6 +216,14 @@ browser.storage.onChanged.addListener(function(changes) {
     if (changes.dateFormat) {
       if (changes.dateFormat.newValue !== changes.dateFormat.oldValue) {
         dateFormat = changes.dateFormat.newValue;
+      }
+    }
+  }
+
+  function _updatePageTitleInFileNameOnChange() {
+    if (changes.prefixPageTitleInFileName) {
+      if (changes.prefixPageTitleInFileName.newValue !== changes.prefixPageTitleInFileName.oldValue) {
+        prefixPageTitleInFileName = changes.prefixPageTitleInFileName.newValue;
       }
     }
   }
