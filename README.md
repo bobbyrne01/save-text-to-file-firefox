@@ -6,6 +6,10 @@ save-text-to-file-firefox
 3. Select `Save text to file`
 4. Text is saved to a `.txt` file in `~/Downloads/`
 
+## Additional features
+
+1. Keyboard shortcut - `Shift+Ctrl+Y` or `Shift+Cmd+Y` (Mac)
+
 ## Options
 
 Extensions -> Save text to file -> Options

@@ -1,6 +1,5 @@
 'use strict';
 /*******************************************************************************
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,7 +17,6 @@ const MENU_ITEM_ID = 'save-text-to-file-menu-item';
 const NOTIFICATION_ID = 'save-text-to-file-notification';
 const EXTENSION_TITLE = 'Save text to file';
 const DEFAULT_FILE_NAME_PREFIX = 'save-text-to-file--';
-const EPOCH = '0';
 const DDMMYYYY = '1';
 const MMDDYYYY = '2';
 const YYYYMMDD = '3';
@@ -51,8 +49,8 @@ function sanitizeFileName(fileName) {
 function createFileContents(selectionText, callback) {
   if (urlInFile) {
     browser.tabs.query({
-      'active': true,
-      'lastFocusedWindow': true
+      active: true,
+      lastFocusedWindow: true
     }, function(tabs) {
       var url = tabs[0].url;
       var text = url + '\n\n' + selectionText;
@@ -84,8 +82,8 @@ function createFileName(callback) {
   function _addPageTitleToFileName(callback) {
     if (prefixPageTitleInFileName) {
       browser.tabs.query({
-        'active': true,
-        'lastFocusedWindow': true
+        active: true,
+        lastFocusedWindow: true
       }, function(tabs) {
         callback(tabs[0].title + '-');
       });
@@ -107,7 +105,7 @@ function createFileName(callback) {
       fileName += year + '-' + month + '-' + day;
     } else if (dateFormat === YYYYDDMM) {
       fileName += year + '-' + day + '-' + month;
-    } else if (dateFormat === EPOCH) {
+    } else {
       fileName += currentDate.getTime();
     }
 
@@ -177,7 +175,7 @@ function notify(message) {
 
 browser.storage.sync.get({
   fileNamePrefix: DEFAULT_FILE_NAME_PREFIX,
-  dateFormat: 0,
+  dateFormat: '0',
   prefixPageTitleInFileName: false,
   urlInFile: false,
   directorySelectionDialog: false,
@@ -191,6 +189,32 @@ browser.storage.sync.get({
   directorySelectionDialog = items.directorySelectionDialog;
   notifications = items.notifications;
   conflictAction = items.conflictAction;
+});
+
+function getSelectionText() {
+  var text = '';
+  var activeEl = document.activeElement;
+  var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
+  if (window.getSelection) {
+    text = window.getSelection().toString();
+  }
+  return text;
+}
+
+browser.commands.onCommand.addListener(function(command) {
+  if (command === 'save-text-to-file') {
+    chrome.tabs.executeScript({
+      code: '(' + getSelectionText.toString() + ')()',
+      allFrames: true,
+      matchAboutBlank: true
+    }, function (results) {
+      if (results[0]) {
+          saveTextToFile({
+            selectionText: results[0] 
+          });
+      }
+    });
+  }
 });
 
 browser.storage.onChanged.addListener(function(changes) {

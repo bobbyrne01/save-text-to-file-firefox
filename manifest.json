@@ -1,14 +1,14 @@
 {
   "name": "Save text to file",
   "description": "Saves highlighted text to a file.",
-  "version": "3.1",
+  "version": "3.2",
   "applications": {
     "gecko": {
       "id": "HighlightedTextToFile@bobbyrne01.org",
       "strict_min_version": "57.0"
     }
   },
-  "permissions": ["contextMenus", "downloads", "storage", "notifications", "tabs"],
+  "permissions": ["contextMenus", "downloads", "storage", "notifications", "tabs", "activeTab"],
   "background": {"scripts": ["backgroundScript.js"]},
   "manifest_version": 2,
   "icons": {
@@ -20,5 +20,11 @@
   },
   "browser_action": {
     "default_icon": "images/ico.png"
+  },
+  "commands": {
+    "save-text-to-file": {
+      "suggested_key": { "default": "Ctrl+Shift+Y" },
+      "description": "Saves the selected text from the active tab to a file."
+    }
   }
 }
