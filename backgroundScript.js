@@ -72,11 +72,7 @@ function createFileName(callback) {
   });
 
   function _addPrefix() {
-    if (fileNamePrefix !== '') {
-      fileName += fileNamePrefix;
-    } else {
-      fileName += DEFAULT_FILE_NAME_PREFIX;
-    }
+    fileName += fileNamePrefix;
   }
 
   function _addPageTitleToFileName(callback) {
