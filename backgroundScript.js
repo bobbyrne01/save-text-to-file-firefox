@@ -30,15 +30,23 @@ var notifications;
 var conflictAction;
 
 function saveTextToFile(info) {
-  createFileContents(info.selectionText, function(fileContents) {
-    var blob = new Blob([fileContents], {
-      type: 'text/plain'
-    });
-    var url = URL.createObjectURL(blob);
-    createFileName(function(fileName) {
-      var sanitizedFileName = sanitizeFileName(fileName);
-      startDownloadOfTextToFile(url, sanitizedFileName);
-    });
+  chrome.tabs.executeScript({
+    code: '(' + getSelectionText.toString() + ')()',
+    allFrames: true,
+    matchAboutBlank: true
+  }, function (results) {
+    if (results[0]) {
+      createFileContents(results[0], function(fileContents) {
+        var blob = new Blob([fileContents], {
+          type: 'text/plain'
+        });
+        var url = URL.createObjectURL(blob);
+        createFileName(function(fileName) {
+          var sanitizedFileName = sanitizeFileName(fileName);
+          startDownloadOfTextToFile(url, sanitizedFileName);
+        });
+      });
+    }
   });
 }
 
