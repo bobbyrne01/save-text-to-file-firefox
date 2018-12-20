@@ -21,6 +21,7 @@ const DDMMYYYY = '1';
 const MMDDYYYY = '2';
 const YYYYMMDD = '3';
 const YYYYDDMM = '4';
+const NONE = '5';
 var fileNamePrefix;
 var dateFormat;
 var prefixPageTitleInFileName;
@@ -109,6 +110,8 @@ function createFileName(callback) {
       fileName += year + '-' + month + '-' + day;
     } else if (dateFormat === YYYYDDMM) {
       fileName += year + '-' + day + '-' + month;
+    } else if (dateFormat === NONE) {
+      fileName += '';
     } else {
       fileName += currentDate.getTime();
     }
