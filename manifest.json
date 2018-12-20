@@ -1,7 +1,7 @@
 {
   "name": "Save text to file",
   "description": "Saves highlighted text to a file.",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "applications": {
     "gecko": {
       "id": "HighlightedTextToFile@bobbyrne01.org",
@@ -17,9 +17,6 @@
   "options_ui": {
     "page": "options.html",
     "chrome_style": true
-  },
-  "browser_action": {
-    "default_icon": "images/ico.png"
   },
   "commands": {
     "save-text-to-file": {
