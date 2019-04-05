@@ -10,8 +10,19 @@
 
   <ul>
     <li>
-      <label class="boldFont">Filename prefix</label>
-      <input type="text" id="fileNamePrefix" size="50" placeholder="save-text-to-file--" value="save-text-to-file--" />
+      <label class="boldFont">Filename component order</label>
+      <select id="fileNameComponentOrder">
+        <option value="0">Date-CustomText-PageTitle</option>
+        <option value="1">Date-PageTitle-CustomText</option>
+        <option value="2">CustomText-Date-PageTitle</option>
+        <option value="3">CustomText-PageTitle-Date</option>
+        <option value="4">PageTitle-CustomText-Date</option>
+        <option value="5">PageTitle-Date-CustomText</option>
+      </select>
+    </li>
+    <li>
+      <label class="boldFont">Filename custom text</label>
+      <input type="text" id="fileNamePrefix" size="50" placeholder="save-text-to-file" value="save-text-to-file" />
     </li>
     <li>
       <label class="boldFont">Add date or epoch to filename</label>

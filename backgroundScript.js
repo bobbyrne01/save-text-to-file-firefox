@@ -22,8 +22,15 @@ const MMDDYYYY = '2';
 const YYYYMMDD = '3';
 const YYYYDDMM = '4';
 const NONE = '5';
+const DATE_CUSTOM_TITLE = '0';
+const DATE_TITLE_CUSTOM = '1';
+const CUSTOM_DATE_TITLE = '2';
+const CUSTOM_TITLE_DATE = '3';
+const TITLE_CUSTOM_DATE = '4';
+const TITLE_DATE_CUSTOM = '5';
 var fileNamePrefix;
 var dateFormat;
+var fileNameComponentOrder;
 var prefixPageTitleInFileName;
 var urlInFile;
 var directorySelectionDialog;
@@ -72,48 +79,63 @@ function createFileContents(selectionText, callback) {
 
 function createFileName(callback) {
   var fileName = '';
-  _addPageTitleToFileName(function(pageTitle) {
-    fileName += pageTitle;
-    _addPrefix();
-    _addDate();
-    _addExtension();
-    callback(fileName);
+  var pageTitle = '';
+  var date = _getDate();
+  var extension = _getExtension();
+  var customText = fileNamePrefix;
+  _getPageTitleToFileName(function() {
+    if (fileNameComponentOrder === DATE_CUSTOM_TITLE) {
+      fileName = date + (date === '' ? '' : '-') + customText + (pageTitle === '' ? '' : '-') + pageTitle;
+    } else if (fileNameComponentOrder === DATE_TITLE_CUSTOM) {
+      fileName = date + (date === '' ? '' : '-') + pageTitle + (pageTitle === '' ? '' : '-') + customText;
+    } else if (fileNameComponentOrder === CUSTOM_DATE_TITLE) {
+      fileName = customText + (date === '' ? '' : '-') + date + (pageTitle === '' ? '' : '-') + pageTitle;
+    } else if (fileNameComponentOrder === CUSTOM_TITLE_DATE) {
+      fileName = customText + (pageTitle === '' ? '' : '-') + pageTitle + (date === '' ? '' : '-') + date;
+    } else if (fileNameComponentOrder === TITLE_CUSTOM_DATE) {
+      fileName = pageTitle + (pageTitle === '' ? '' : '-') + customText + (date === '' ? '' : '-') + date;
+    } else if (fileNameComponentOrder === TITLE_DATE_CUSTOM) {
+      fileName = pageTitle + (pageTitle === '' ? '' : '-') + date + (date === '' ? '' : '-') + customText;
+    }
+    if (fileName === '') {
+      notify('Error: Filename cannot be empty, please review preferences.');
+    } else {
+      fileName += extension;
+      callback(fileName);
+    }
   });
 
-  function _addPrefix() {
-    fileName += fileNamePrefix;
-  }
-
-  function _addPageTitleToFileName(callback) {
+  function _getPageTitleToFileName(callback) {
     if (prefixPageTitleInFileName) {
       browser.tabs.query({
         active: true,
         lastFocusedWindow: true
       }, function(tabs) {
-        callback(tabs[0].title + '-');
+        pageTitle = tabs[0].title;
+        callback();
       });
     } else {
-      callback('');
+      callback();
     }
   }
 
-  function _addDate() {
+  function _getDate() {
     var currentDate = new Date();
     var day = _determineDay();
     var month = _determineMonth();
     var year = currentDate.getFullYear();
     if (dateFormat === DDMMYYYY) {
-      fileName += day + '-' + month + '-' + year;
+      return day + '-' + month + '-' + year;
     } else if (dateFormat === MMDDYYYY) {
-      fileName += month + '-' + day + '-' + year;
+      return month + '-' + day + '-' + year;
     } else if (dateFormat === YYYYMMDD) {
-      fileName += year + '-' + month + '-' + day;
+      return year + '-' + month + '-' + day;
     } else if (dateFormat === YYYYDDMM) {
-      fileName += year + '-' + day + '-' + month;
+      return year + '-' + day + '-' + month;
     } else if (dateFormat === NONE) {
-      fileName += '';
+      return '';
     } else {
-      fileName += currentDate.getTime();
+      return currentDate.getTime();
     }
 
     function _determineDay() {
@@ -127,8 +149,8 @@ function createFileName(callback) {
     }
   }
 
-  function _addExtension() {
-    fileName += '.txt';
+  function _getExtension() {
+    return '.txt';
   }
 }
 
@@ -187,6 +209,7 @@ function notify(message) {
 browser.storage.sync.get({
   fileNamePrefix: DEFAULT_FILE_NAME_PREFIX,
   dateFormat: '0',
+  fileNameComponentOrder: '0',
   prefixPageTitleInFileName: false,
   urlInFile: false,
   directorySelectionDialog: false,
@@ -195,6 +218,7 @@ browser.storage.sync.get({
 }, function(items) {
   fileNamePrefix = items.fileNamePrefix;
   dateFormat = items.dateFormat;
+  fileNameComponentOrder = items.fileNameComponentOrder;
   prefixPageTitleInFileName = items.prefixPageTitleInFileName;
   urlInFile = items.urlInFile;
   directorySelectionDialog = items.directorySelectionDialog;
@@ -221,7 +245,7 @@ browser.commands.onCommand.addListener(function(command) {
     }, function (results) {
       if (results[0]) {
           saveTextToFile({
-            selectionText: results[0] 
+            selectionText: results[0]
           });
       }
     });
@@ -231,6 +255,7 @@ browser.commands.onCommand.addListener(function(command) {
 browser.storage.onChanged.addListener(function(changes) {
   _updatePrefixOnChange();
   _updateDateFormatOnChange();
+  _updateFileNameComponentOrderOnChange();
   _updatePageTitleInFileNameOnChange();
   _updateUrlInFileOnChange();
   _updateDirectorySelectionOnChange();
@@ -249,6 +274,14 @@ browser.storage.onChanged.addListener(function(changes) {
     if (changes.dateFormat) {
       if (changes.dateFormat.newValue !== changes.dateFormat.oldValue) {
         dateFormat = changes.dateFormat.newValue;
+      }
+    }
+  }
+
+  function _updateFileNameComponentOrderOnChange() {
+    if (changes.fileNameComponentOrder) {
+      if (changes.fileNameComponentOrder.newValue !== changes.fileNameComponentOrder.oldValue) {
+        fileNameComponentOrder = changes.fileNameComponentOrder.newValue;
       }
     }
   }
