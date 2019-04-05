@@ -32,6 +32,7 @@ var fileNamePrefix;
 var dateFormat;
 var fileNameComponentOrder;
 var prefixPageTitleInFileName;
+var fileNameComponentSeparator = '-';
 var urlInFile;
 var directorySelectionDialog;
 var notifications;
@@ -85,17 +86,17 @@ function createFileName(callback) {
   var customText = fileNamePrefix;
   _getPageTitleToFileName(function() {
     if (fileNameComponentOrder === DATE_CUSTOM_TITLE) {
-      fileName = date + (date === '' ? '' : '-') + customText + (pageTitle === '' ? '' : '-') + pageTitle;
+      fileName = date + (date === '' ? '' : fileNameComponentSeparator) + customText + (pageTitle === '' ? '' : fileNameComponentSeparator) + pageTitle;
     } else if (fileNameComponentOrder === DATE_TITLE_CUSTOM) {
-      fileName = date + (date === '' ? '' : '-') + pageTitle + (pageTitle === '' ? '' : '-') + customText;
+      fileName = date + (date === '' ? '' : fileNameComponentSeparator) + pageTitle + (pageTitle === '' ? '' : fileNameComponentSeparator) + customText;
     } else if (fileNameComponentOrder === CUSTOM_DATE_TITLE) {
-      fileName = customText + (date === '' ? '' : '-') + date + (pageTitle === '' ? '' : '-') + pageTitle;
+      fileName = customText + (date === '' ? '' : fileNameComponentSeparator) + date + (pageTitle === '' ? '' : fileNameComponentSeparator) + pageTitle;
     } else if (fileNameComponentOrder === CUSTOM_TITLE_DATE) {
-      fileName = customText + (pageTitle === '' ? '' : '-') + pageTitle + (date === '' ? '' : '-') + date;
+      fileName = customText + (pageTitle === '' ? '' : fileNameComponentSeparator) + pageTitle + (date === '' ? '' : fileNameComponentSeparator) + date;
     } else if (fileNameComponentOrder === TITLE_CUSTOM_DATE) {
-      fileName = pageTitle + (pageTitle === '' ? '' : '-') + customText + (date === '' ? '' : '-') + date;
+      fileName = pageTitle + (pageTitle === '' ? '' : fileNameComponentSeparator) + customText + (date === '' ? '' : fileNameComponentSeparator) + date;
     } else if (fileNameComponentOrder === TITLE_DATE_CUSTOM) {
-      fileName = pageTitle + (pageTitle === '' ? '' : '-') + date + (date === '' ? '' : '-') + customText;
+      fileName = pageTitle + (pageTitle === '' ? '' : fileNameComponentSeparator) + date + (date === '' ? '' : fileNameComponentSeparator) + customText;
     }
     if (fileName === '') {
       notify('Error: Filename cannot be empty, please review preferences.');
@@ -211,6 +212,7 @@ browser.storage.sync.get({
   dateFormat: '0',
   fileNameComponentOrder: '0',
   prefixPageTitleInFileName: false,
+  fileNameComponentSeparator: '-',
   urlInFile: false,
   directorySelectionDialog: false,
   notifications: true,
@@ -220,6 +222,7 @@ browser.storage.sync.get({
   dateFormat = items.dateFormat;
   fileNameComponentOrder = items.fileNameComponentOrder;
   prefixPageTitleInFileName = items.prefixPageTitleInFileName;
+  fileNameComponentSeparator: items.fileNameComponentSeparator;
   urlInFile = items.urlInFile;
   directorySelectionDialog = items.directorySelectionDialog;
   notifications = items.notifications;
@@ -257,6 +260,7 @@ browser.storage.onChanged.addListener(function(changes) {
   _updateDateFormatOnChange();
   _updateFileNameComponentOrderOnChange();
   _updatePageTitleInFileNameOnChange();
+  _updateFileNameComponentSeparatorOnChange();
   _updateUrlInFileOnChange();
   _updateDirectorySelectionOnChange();
   _updateNotificationsOnChange();
@@ -290,6 +294,14 @@ browser.storage.onChanged.addListener(function(changes) {
     if (changes.prefixPageTitleInFileName) {
       if (changes.prefixPageTitleInFileName.newValue !== changes.prefixPageTitleInFileName.oldValue) {
         prefixPageTitleInFileName = changes.prefixPageTitleInFileName.newValue;
+      }
+    }
+  }
+
+  function _updateFileNameComponentSeparatorOnChange() {
+    if (changes.fileNameComponentSeparator) {
+      if (changes.fileNameComponentSeparator.newValue !== changes.fileNameComponentSeparator.oldValue) {
+        fileNameComponentSeparator = changes.fileNameComponentSeparator.newValue;
       }
     }
   }

@@ -21,15 +21,16 @@ function saveOptions() {
     dateFormat: document.getElementById('dateFormat').value,
     fileNameComponentOrder: document.getElementById('fileNameComponentOrder').value,
     prefixPageTitleInFileName: document.getElementById('prefixPageTitleInFileName').checked,
+    fileNameComponentSeparator: document.getElementById('fileNameComponentSeparator').value,
     urlInFile: document.getElementById('urlInFile').checked,
     directorySelectionDialog: document.getElementById('directorySelectionDialog').checked,
     notifications: document.getElementById('notifications').checked,
     conflictAction: document.getElementById('conflictAction').value
   }, function() {
     var status = document.getElementById('status');
-    status.textContent = 'Options saved.';
+    status.style.visibility = 'visible';
     setTimeout(function() {
-      status.textContent = '';
+      status.style.visibility = 'hidden';
     }, 5000);
   });
 }
@@ -42,6 +43,7 @@ function restoreOptions() {
     dateFormat: 0,
     fileNameComponentOrder: 0,
     prefixPageTitleInFileName: false,
+    fileNameComponentSeparator: '-',
     urlInFile: false,
     directorySelectionDialog: false,
     notifications: true,
@@ -51,6 +53,7 @@ function restoreOptions() {
     document.getElementById('dateFormat').value = items.dateFormat;
     document.getElementById('fileNameComponentOrder').value = items.fileNameComponentOrder;
     document.getElementById('prefixPageTitleInFileName').checked = items.prefixPageTitleInFileName;
+    document.getElementById('fileNameComponentSeparator').value = items.fileNameComponentSeparator;
     document.getElementById('urlInFile').checked = items.urlInFile;
     document.getElementById('directorySelectionDialog').checked = items.directorySelectionDialog;
     document.getElementById('notifications').checked = items.notifications;

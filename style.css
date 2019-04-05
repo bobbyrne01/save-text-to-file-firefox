@@ -1,13 +1,18 @@
+.option {
+  padding: 5px 0px;
+}
+
 label {
-  margin:0 0 3px 0;
-  padding:0px;
+  display: inline-block;
+  width: 200px;
 }
-li {
-  padding: 0;
-  display: block;
-  list-style: none;
-  margin: 10px 0 0 0;
+
+#status {
+  visibility: hidden;
 }
-.boldFont {
+
+#save {
+  padding: 5px;
   font-weight: bold;
+  font-size: 15px;
 }

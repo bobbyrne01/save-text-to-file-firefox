@@ -2,15 +2,17 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
   <title>Save text to file options</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <ul>
-    <li>
-      <label class="boldFont">Filename component order</label>
+  <form>
+    <h3> File name </h3>
+    <div class="option">
+      <label>Filename component order:</label>
       <select id="fileNameComponentOrder">
         <option value="0">Date-CustomText-PageTitle</option>
         <option value="1">Date-PageTitle-CustomText</option>
@@ -19,13 +21,13 @@
         <option value="4">PageTitle-CustomText-Date</option>
         <option value="5">PageTitle-Date-CustomText</option>
       </select>
-    </li>
-    <li>
-      <label class="boldFont">Filename custom text</label>
+    </div>
+    <div class="option">
+      <label>Filename custom text:</label>
       <input type="text" id="fileNamePrefix" size="50" placeholder="save-text-to-file" value="save-text-to-file" />
-    </li>
-    <li>
-      <label class="boldFont">Add date or epoch to filename</label>
+    </div>
+    <div class="option">
+      <label>Add date or epoch to filename:</label>
       <select id="dateFormat">
         <option value="0">Epoch</option>
         <option value="1">DD-MM-YYYY</option>
@@ -34,37 +36,45 @@
         <option value="4">YYYY-DD-MM</option>
         <option value="5">None</option>
       </select>
-    </li>
-    <li>
-      <label class="boldFont">Prefix filename with page title</label>
+    </div>
+    <div class="option">
+      <label>Prefix filename with page title:</label>
       <input type="checkbox" id="prefixPageTitleInFileName" />
-    </li>
-    <li>
-      <label class="boldFont">Save current URL in file</label>
+    </div>
+    <div class="option">
+      <label>Filename component separator:</label>
+      <input type="text" id="fileNameComponentSeparator" size="1" placeholder="-" value="-" />
+    </div>
+
+    <h3> File contents </h3>
+    <div class="option">
+      <label>Save current URL in file:</label>
       <input type="checkbox" id="urlInFile" />
-    </li>
-    <li>
-      <label class="boldFont">Show directory selection dialog</label>
+    </div>
+
+    <h3> Save behaviour </h3>
+    <div class="option">
+      <label>Show directory selection dialog:</label>
       <input type="checkbox" id="directorySelectionDialog" />
-    </li>
-    <li>
-      <label class="boldFont">Show notifications</label>
+    </div>
+    <div class="option">
+      <label>Show notifications:</label>
       <input type="checkbox" id="notifications" checked />
-    </li>
-    <li>
-      <label class="boldFont">If file exists</label>
+    </div>
+    <div class="option">
+      <label>If file exists:</label>
       <select id="conflictAction">
         <option value="uniquify">Uniquify</option>
 				<option value="overwrite">Overwrite</option>
         <option value="prompt">Prompt</option>
       </select>
-    </li>
+    </div>
 
-    <li>
-      <button id="save">Save</button>
-      <div id="status"></div>
-    </li>
-  </ul>
+    <div class="option">
+      <button id="save" type="button">Save</button>
+      <div id="status">Options saved.</div>
+    </div>
+  </form>
 
   <script src="options.js"></script>
 </body>
