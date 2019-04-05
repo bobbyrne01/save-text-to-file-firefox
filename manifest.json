@@ -8,7 +8,7 @@
       "strict_min_version": "57.0"
     }
   },
-  "permissions": ["contextMenus", "downloads", "storage", "notifications", "tabs", "activeTab"],
+  "permissions": ["contextMenus", "downloads", "storage", "notifications", "activeTab"],
   "background": {"scripts": ["backgroundScript.js"]},
   "manifest_version": 2,
   "icons": {

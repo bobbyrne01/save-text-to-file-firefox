@@ -145,11 +145,15 @@ function startDownloadOfTextToFile(url, fileName) {
   }
   browser.downloads.download(options, function(downloadId) {
     if (downloadId) {
-      notify('Text saved.');
+      if (notifications) {
+        notify('Text saved.');
+      }
     } else {
       var error = browser.runtime.lastError.toString();
       if (error.indexOf('Download canceled by the user') >= 0) {
-        notify('Save canceled.');
+        if (notifications) {
+          notify('Save canceled.');
+        }
       } else {
         notify('Error occured.');
       }
