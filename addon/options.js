@@ -72,8 +72,18 @@ function appConnectionTest() {
   sending.then(function(response) {
     var responseObject = JSON.parse(response);
     if (responseObject.status === 'Success') {
-      document.getElementById('nativeAppMessage').innerHTML = 'All features enabled! Application version: ' + responseObject.version;
-      document.getElementById('directoryMessage').innerHTML = '';
+      var para = document.createElement('p');
+      para.appendChild(document.createTextNode('All features enabled! Application version: ' + responseObject.version));
+      while(document.getElementById('nativeAppMessage').firstChild) {
+        document.getElementById('nativeAppMessage').removeChild(document.getElementById('nativeAppMessage').firstChild);
+      }
+      document.getElementById('nativeAppMessage').appendChild(para);
+      para = document.createElement('p');
+      para.appendChild(document.createTextNode(''));
+      while(document.getElementById('directoryMessage').firstChild) {
+        document.getElementById('directoryMessage').removeChild(document.getElementById('directoryMessage').firstChild);
+      }
+      document.getElementById('directoryMessage').appendChild(para);
       document.getElementById('nativeAppInstalled').checked = true;
       document.getElementById('directory').disabled = false;
       var conflictAction = document.getElementById('conflictAction');
