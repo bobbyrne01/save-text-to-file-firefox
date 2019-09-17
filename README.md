@@ -22,7 +22,7 @@ Download the script and manifest files:
  - `savetexttofile.bat` (Only needed for Windows)
  - `savetexttofile.json`
 
-from [Github](https://github.com/bobbyrne01/save-text-to-file-firefox).
+from [Github](https://github.com/bobbyrne01/save-text-to-file-firefox/tree/master/app).
 
 Move `savetexttofile.py` (and `savetexttofile.bat` on Windows) to a directory e.g:
  - Windows: `C:\Users\Robert\ExtensionNativeHosts\`
