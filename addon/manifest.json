@@ -1,14 +1,14 @@
 {
   "name": "Save text to file",
   "description": "Saves highlighted text to a file.",
-  "version": "3.3.0",
+  "version": "4.0.0",
   "applications": {
     "gecko": {
       "id": "HighlightedTextToFile@bobbyrne01.org",
       "strict_min_version": "57.0"
     }
   },
-  "permissions": ["contextMenus", "downloads", "storage", "notifications", "activeTab"],
+  "permissions": ["contextMenus", "downloads", "storage", "notifications", "activeTab", "nativeMessaging"],
   "background": {"scripts": ["backgroundScript.js"]},
   "manifest_version": 2,
   "icons": {

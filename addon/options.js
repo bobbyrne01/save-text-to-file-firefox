@@ -14,6 +14,8 @@
  *******************************************************************************/
 
 const DEFAULT_FILE_NAME_PREFIX = 'save-text-to-file--';
+const HOST_APPLICATION_NAME = 'savetexttofile';
+const TEST_CONNECTIVITY_ACTION = 'TEST_CONNECTIVITY';
 
 function saveOptions() {
   browser.storage.sync.set({
@@ -23,6 +25,7 @@ function saveOptions() {
     prefixPageTitleInFileName: document.getElementById('prefixPageTitleInFileName').checked,
     fileNameComponentSeparator: document.getElementById('fileNameComponentSeparator').value,
     urlInFile: document.getElementById('urlInFile').checked,
+    directory: document.getElementById('directory').value,
     directorySelectionDialog: document.getElementById('directorySelectionDialog').checked,
     notifications: document.getElementById('notifications').checked,
     conflictAction: document.getElementById('conflictAction').value
@@ -35,9 +38,7 @@ function saveOptions() {
   });
 }
 
-// Restores state using the preferences stored in chrome.storage.
 function restoreOptions() {
-  // default values
   browser.storage.sync.get({
     fileNamePrefix: DEFAULT_FILE_NAME_PREFIX,
     dateFormat: 0,
@@ -45,6 +46,7 @@ function restoreOptions() {
     prefixPageTitleInFileName: false,
     fileNameComponentSeparator: '-',
     urlInFile: false,
+    directory: '',
     directorySelectionDialog: false,
     notifications: true,
     conflictAction: 'uniquify'
@@ -55,10 +57,74 @@ function restoreOptions() {
     document.getElementById('prefixPageTitleInFileName').checked = items.prefixPageTitleInFileName;
     document.getElementById('fileNameComponentSeparator').value = items.fileNameComponentSeparator;
     document.getElementById('urlInFile').checked = items.urlInFile;
+    document.getElementById('directory').value = items.directory;
     document.getElementById('directorySelectionDialog').checked = items.directorySelectionDialog;
     document.getElementById('notifications').checked = items.notifications;
     document.getElementById('conflictAction').value = items.conflictAction;
   });
 }
+
+function appConnectionTest() {
+  var testConnectivityPayload = {
+    action: TEST_CONNECTIVITY_ACTION
+  };
+  var sending = browser.runtime.sendNativeMessage(HOST_APPLICATION_NAME, testConnectivityPayload);
+  sending.then(function(response) {
+    var responseObject = JSON.parse(response);
+    if (responseObject.status === 'Success') {
+      document.getElementById('nativeAppMessage').innerHTML = 'All features enabled! Application version: ' + responseObject.version;
+      document.getElementById('directoryMessage').innerHTML = '';
+      document.getElementById('nativeAppInstalled').checked = true;
+      document.getElementById('directory').disabled = false;
+      var conflictAction = document.getElementById('conflictAction');
+      var appendAlreadyAdded = false;
+      for (var i = 0; i < conflictAction.length; i++) {
+        if (conflictAction.options[i].value == 'uniquify') {
+          conflictAction.remove(i);
+        } else if (conflictAction.options[i].value == 'append') {
+          appendAlreadyAdded = true;
+        }
+      }
+      if (!appendAlreadyAdded) {
+        conflictAction.options[conflictAction.options.length] = new Option('Append', 'append');
+      }
+      console.log('SaveTextToFile: Successfully tested communication between native application and webextension.');
+    }
+  }, function(error) {
+    document.getElementById('nativeAppMessage').innerHTML =
+      '<p id="nativeAppNotInstalledMessage" class="hide">' +
+        'The \'Save Text to File\' host application was not found on this device.<br/>' +
+        'To enable all extension features, follow setup instructions outlined <a href="https://github.com/bobbyrne01/save-text-to-file-firefox#installation">here</a>' +
+      '</p>';
+    document.getElementById('directoryMessage').innerHTML =
+      '<div>' +
+        'The ability to specify a save directory requires installation of the \'Save Text to File\' host application.<br/>' +
+        'The extension can then communicate with the application to perform certain tasks.' +
+      '</div>' +
+      '<div>' +
+        'Follow setup instructions outlined <a href="https://github.com/bobbyrne01/save-text-to-file-firefox#installation">here</a>.' +
+      '</div>';
+    document.getElementById('nativeAppInstalled').checked = false;
+    document.getElementById('directory').disabled = true;
+    var conflictAction = document.getElementById('conflictAction');
+    var uniquifyAlreadyAdded = false;
+    for (var i = 0; i < conflictAction.length; i++) {
+      if (conflictAction.options[i].value == 'append') {
+        conflictAction.remove(i);
+      } else if (conflictAction.options[i].value == 'uniquify') {
+        uniquifyAlreadyAdded = true;
+      }
+    }
+    if (!uniquifyAlreadyAdded) {
+      conflictAction.options[conflictAction.options.length] = new Option('Uniquify', 'uniquify');
+    }
+    console.log('SaveTextToFile: Error communicating between the native application and web extension.');
+    console.log(error);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.getElementById('save').addEventListener('click', saveOptions);
+document.getElementById('appTest').addEventListener('click', appConnectionTest);
+
+appConnectionTest();

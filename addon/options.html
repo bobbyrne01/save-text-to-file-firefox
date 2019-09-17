@@ -10,6 +10,14 @@
 <body>
 
   <form>
+    <h3> Is host application installed? </h3>
+    <div class="option">
+      <label>Application found:</label>
+      <input type="checkbox" id="nativeAppInstalled" disabled />
+      <p id="nativeAppMessage"></p>
+      <button id="appTest" type="button">Test application connection</button>
+    </div>
+
     <h3> File name </h3>
     <div class="option">
       <label>Filename component order:</label>
@@ -52,6 +60,13 @@
       <input type="checkbox" id="urlInFile" />
     </div>
 
+    <h3> Directory </h3>
+    <div class="option">
+      <label>Local save directory:</label>
+      <input type="text" id="directory" size="50" placeholder="/Users/Robert or C:\Users\Robert" />
+      <div id="directoryMessage"></div>
+    </div>
+
     <h3> Save behaviour </h3>
     <div class="option">
       <label>Show directory selection dialog:</label>
@@ -64,9 +79,7 @@
     <div class="option">
       <label>If file exists:</label>
       <select id="conflictAction">
-        <option value="uniquify">Uniquify</option>
 				<option value="overwrite">Overwrite</option>
-        <option value="prompt">Prompt</option>
       </select>
     </div>
 
