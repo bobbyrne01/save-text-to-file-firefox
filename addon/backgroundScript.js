@@ -72,7 +72,7 @@ function saveTextViaApp(directory, sanitizedFileName, fileContents) {
 }
 
 function saveTextToFile(info) {
-  chrome.tabs.executeScript({
+  browser.tabs.executeScript({
     code: '(' + getSelectionText.toString() + ')()',
     allFrames: true,
     matchAboutBlank: true
@@ -287,7 +287,7 @@ function getSelectionText() {
 
 browser.commands.onCommand.addListener(function(command) {
   if (command === 'save-text-to-file') {
-    chrome.tabs.executeScript({
+    browser.tabs.executeScript({
       code: '(' + getSelectionText.toString() + ')()',
       allFrames: true,
       matchAboutBlank: true
