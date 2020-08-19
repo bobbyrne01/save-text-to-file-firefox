@@ -30,24 +30,11 @@ Then follow the steps specific to your platform below ..
 
 Assuming you saved `app/` to `C:\savetexttofile\` on your computer.
 
-Open a command prompt as Administrator (Start menu -> cmd -> Run as admin).
-
-Change directory to where the saved `app/` contents are e.g:
-
-```
-cd C:\savetexttofile
-```
-
-Run the Windows installer:
-```
-install_host.bat
-```
+* Navigate to `C:\savetexttofile\`
+* Right click on `install_host.bat`
+* Select `Run as administrator`, and confirm any prompt.
 
 The host application should now be installed.
-
-Restart Chrome, and check the browser extension's options.
-
-Save Text to File's options page should indicate the host application has been successfully configured.
 
 
 ### Mac
@@ -62,7 +49,7 @@ Modify `savetexttofile.json`, changing the `path` value to the location used pre
 ```
 Then copy the manifest to this location under the user's home directory:
 ```
-~/.config/google-chrome/NativeMessagingHosts/savetexttofile.json
+~/Library/Application Support/Mozilla/NativeMessagingHosts/savetexttofile.json
 ```
 
 
