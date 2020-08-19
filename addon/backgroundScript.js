@@ -18,7 +18,7 @@ const TEST_CONNECTIVITY_ACTION = 'TEST_CONNECTIVITY';
 const SAVE_TEXT_ACTION = 'SAVE';
 const MENU_ITEM_ID = 'save-text-to-file-menu-item';
 const NOTIFICATION_ID = 'save-text-to-file-notification';
-const EXTENSION_TITLE = 'Save text to file';
+const EXTENSION_TITLE = 'Save Text to File';
 const DEFAULT_FILE_NAME_PREFIX = 'save-text-to-file--';
 const DDMMYYYY = '1';
 const MMDDYYYY = '2';
@@ -37,6 +37,8 @@ var fileNameComponentOrder;
 var prefixPageTitleInFileName;
 var fileNameComponentSeparator = '-';
 var urlInFile;
+var templateText;
+var positionOfTemplateText;
 var directory;
 var directorySelectionDialog;
 var notifications;
@@ -107,6 +109,13 @@ function sanitizeFileName(fileName) {
 }
 
 function createFileContents(selectionText, callback) {
+
+  if (positionOfTemplateText == 0) {
+    selectionText = templateText + '\n\n' + selectionText;
+  } else {
+    selectionText = selectionText + '\n\n' + templateText;
+  }
+
   if (urlInFile) {
     browser.tabs.query({
       active: true,
@@ -258,6 +267,8 @@ browser.storage.sync.get({
   prefixPageTitleInFileName: false,
   fileNameComponentSeparator: '-',
   urlInFile: false,
+  templateText: '',
+  positionOfTemplateText: 0,
   directory: '',
   directorySelectionDialog: false,
   notifications: true,
@@ -267,8 +278,10 @@ browser.storage.sync.get({
   dateFormat = items.dateFormat;
   fileNameComponentOrder = items.fileNameComponentOrder;
   prefixPageTitleInFileName = items.prefixPageTitleInFileName;
-  fileNameComponentSeparator: items.fileNameComponentSeparator;
+  fileNameComponentSeparator = items.fileNameComponentSeparator;
   urlInFile = items.urlInFile;
+  templateText = items.templateText;
+  positionOfTemplateText = items.positionOfTemplateText;
   directory = items.directory;
   directorySelectionDialog = items.directorySelectionDialog;
   notifications = items.notifications;
@@ -308,6 +321,8 @@ browser.storage.onChanged.addListener(function(changes) {
   _updatePageTitleInFileNameOnChange();
   _updateFileNameComponentSeparatorOnChange();
   _updateUrlInFileOnChange();
+  _updateTemplateTextOnChange();
+  _updatePositionOfTemplateTextOnChange();
   _updateDirectoryOnChange();
   _updateDirectorySelectionOnChange();
   _updateNotificationsOnChange();
@@ -357,6 +372,22 @@ browser.storage.onChanged.addListener(function(changes) {
     if (changes.urlInFile) {
       if (changes.urlInFile.newValue !== changes.urlInFile.oldValue) {
         urlInFile = changes.urlInFile.newValue;
+      }
+    }
+  }
+
+  function _updateTemplateTextOnChange() {
+    if (changes.templateText) {
+      if (changes.templateText.newValue !== changes.templateText.oldValue) {
+        templateText = changes.templateText.newValue;
+      }
+    }
+  }
+
+  function _updatePositionOfTemplateTextOnChange() {
+    if (changes.positionOfTemplateText) {
+      if (changes.positionOfTemplateText.newValue !== changes.positionOfTemplateText.oldValue) {
+        positionOfTemplateText = changes.positionOfTemplateText.newValue;
       }
     }
   }

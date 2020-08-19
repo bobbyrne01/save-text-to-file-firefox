@@ -25,6 +25,8 @@ function saveOptions() {
     prefixPageTitleInFileName: document.getElementById('prefixPageTitleInFileName').checked,
     fileNameComponentSeparator: document.getElementById('fileNameComponentSeparator').value,
     urlInFile: document.getElementById('urlInFile').checked,
+    templateText: document.getElementById('templateText').value,
+    positionOfTemplateText: document.getElementById('positionOfTemplateText').value,
     directory: document.getElementById('directory').value,
     directorySelectionDialog: document.getElementById('directorySelectionDialog').checked,
     notifications: document.getElementById('notifications').checked,
@@ -46,6 +48,8 @@ function restoreOptions() {
     prefixPageTitleInFileName: false,
     fileNameComponentSeparator: '-',
     urlInFile: false,
+    templateText: '',
+    positionOfTemplateText: 0,
     directory: '',
     directorySelectionDialog: false,
     notifications: true,
@@ -57,6 +61,8 @@ function restoreOptions() {
     document.getElementById('prefixPageTitleInFileName').checked = items.prefixPageTitleInFileName;
     document.getElementById('fileNameComponentSeparator').value = items.fileNameComponentSeparator;
     document.getElementById('urlInFile').checked = items.urlInFile;
+    document.getElementById('templateText').value = items.templateText;
+    document.getElementById('positionOfTemplateText').value = items.positionOfTemplateText;
     document.getElementById('directory').value = items.directory;
     document.getElementById('directorySelectionDialog').checked = items.directorySelectionDialog;
     document.getElementById('notifications').checked = items.notifications;
