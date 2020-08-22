@@ -3,21 +3,21 @@ Save Text to File (Firefox)
 
 Save Text to File saves snippets of text from a web page to a file on the local computer.
 
-![video demo of the extension](demo.gif)
+![Video demo of extension](demo.gif)
 
 ## Installation
 
-The recommended setup is to install both the:
+The recommended setup is to install both:
 1. [Browser extension](https://addons.mozilla.org/firefox/addon/save-text-to-file), and
 2. Host application
 
-**Note:** If installing the host application, ensure the latest version of [Python](https://www.python.org/downloads/) is installed beforehand.
+2a. If installing the host application, ensure the latest version of [Python](https://www.python.org/downloads/) is installed beforehand.
 
-Next, download the `app/` directory, from [Github](https://github.com/bobbyrne01/save-text-to-file-chrome/tree/master/app).
+2b. Download this repo as a `.zip` file, from [here](https://github.com/bobbyrne01/save-text-to-file-firefox/archive/master.zip).
 
-Save `app/` and its contents to a directory on your computer, example: `C:\savetexttofile\` or `/Users/Robert/savetexttofile/`.
+2c. Copy `app/` directory, paste to your computer and rename it to `savetexttofile`, example: `C:\savetexttofile\` or `/Users/Robert/savetexttofile/`.
 
-Then follow the steps specific to your platform below ..
+2d. Follow platform specific steps below.
 
 
 ### Windows

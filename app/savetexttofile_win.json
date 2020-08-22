@@ -1,7 +1,7 @@
 {
   "name": "savetexttofile",
   "description": "Native application that saves text to a file on behalf of a web-extension.",
-  "path": "C:\\savetexttofile\\savetexttofile.py",
+  "path": "C:\\savetexttofile\\savetexttofile.bat",
   "type": "stdio",
   "allowed_extensions": [ "HighlightedTextToFile@bobbyrne01.org" ]
 }
