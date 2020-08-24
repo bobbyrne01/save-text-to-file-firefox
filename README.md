@@ -1,8 +1,8 @@
-Save Text to File (Firefox)
-==
+# Save Text to File :memo:
 
-Save Text to File saves snippets of text from a web page to a file on the local computer.
+> Save snippets of text from a web page to a file anywhere on the computer.
 
+![Video demo of extension](demo.gif)
 
 
 ## Installation
