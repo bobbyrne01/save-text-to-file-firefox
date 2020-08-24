@@ -3,7 +3,7 @@ Save Text to File (Firefox)
 
 Save Text to File saves snippets of text from a web page to a file on the local computer.
 
-![Video demo of extension](demo.gif)
+
 
 ## Installation
 
