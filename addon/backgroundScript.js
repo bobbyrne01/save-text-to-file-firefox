@@ -20,6 +20,10 @@ const MENU_ITEM_ID = 'save-text-to-file-menu-item';
 const NOTIFICATION_ID = 'save-text-to-file-notification';
 const EXTENSION_TITLE = 'Save Text to File';
 const DEFAULT_FILE_NAME_PREFIX = 'save-text-to-file--';
+const TXT = '0';
+const CSV = '1';
+const MD = '2';
+const DATA = '3';
 const DDMMYYYY = '1';
 const MMDDYYYY = '2';
 const YYYYMMDD = '3';
@@ -36,6 +40,7 @@ var dateFormat;
 var fileNameComponentOrder;
 var prefixPageTitleInFileName;
 var fileNameComponentSeparator = '-';
+var fileType = 0;
 var urlInFile;
 var templateText;
 var positionOfTemplateText;
@@ -203,7 +208,17 @@ function createFileName(callback) {
   }
 
   function _getExtension() {
-    return '.txt';
+    if (fileType === TXT) {
+      return '.txt';
+    } else if (fileType === CSV) {
+      return '.csv';
+    } else if (fileType === MD) {
+      return '.md';
+    } else if (fileType === DATA) {
+      return '.data';
+    } else {
+      return '.txt';
+    }
   }
 }
 
@@ -266,6 +281,7 @@ browser.storage.sync.get({
   fileNameComponentOrder: '0',
   prefixPageTitleInFileName: false,
   fileNameComponentSeparator: '-',
+  fileType: 0,
   urlInFile: false,
   templateText: '',
   positionOfTemplateText: 0,
@@ -279,6 +295,7 @@ browser.storage.sync.get({
   fileNameComponentOrder = items.fileNameComponentOrder;
   prefixPageTitleInFileName = items.prefixPageTitleInFileName;
   fileNameComponentSeparator = items.fileNameComponentSeparator;
+  fileType = items.fileType;
   urlInFile = items.urlInFile;
   templateText = items.templateText;
   positionOfTemplateText = items.positionOfTemplateText;
@@ -320,6 +337,7 @@ browser.storage.onChanged.addListener(function(changes) {
   _updateFileNameComponentOrderOnChange();
   _updatePageTitleInFileNameOnChange();
   _updateFileNameComponentSeparatorOnChange();
+  _updateFileTypeOnChange();
   _updateUrlInFileOnChange();
   _updateTemplateTextOnChange();
   _updatePositionOfTemplateTextOnChange();
@@ -364,6 +382,14 @@ browser.storage.onChanged.addListener(function(changes) {
     if (changes.fileNameComponentSeparator) {
       if (changes.fileNameComponentSeparator.newValue !== changes.fileNameComponentSeparator.oldValue) {
         fileNameComponentSeparator = changes.fileNameComponentSeparator.newValue;
+      }
+    }
+  }
+
+  function _updateFileTypeOnChange() {
+    if (changes.fileType) {
+      if (changes.fileType.newValue !== changes.fileType.oldValue) {
+        fileType = changes.fileType.newValue;
       }
     }
   }

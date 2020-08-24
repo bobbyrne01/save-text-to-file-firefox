@@ -24,6 +24,7 @@ function saveOptions() {
     fileNameComponentOrder: document.getElementById('fileNameComponentOrder').value,
     prefixPageTitleInFileName: document.getElementById('prefixPageTitleInFileName').checked,
     fileNameComponentSeparator: document.getElementById('fileNameComponentSeparator').value,
+    fileType: document.getElementById('fileType').value,
     urlInFile: document.getElementById('urlInFile').checked,
     templateText: document.getElementById('templateText').value,
     positionOfTemplateText: document.getElementById('positionOfTemplateText').value,
@@ -47,6 +48,7 @@ function restoreOptions() {
     fileNameComponentOrder: 0,
     prefixPageTitleInFileName: false,
     fileNameComponentSeparator: '-',
+    fileType: 0,
     urlInFile: false,
     templateText: '',
     positionOfTemplateText: 0,
@@ -60,6 +62,7 @@ function restoreOptions() {
     document.getElementById('fileNameComponentOrder').value = items.fileNameComponentOrder;
     document.getElementById('prefixPageTitleInFileName').checked = items.prefixPageTitleInFileName;
     document.getElementById('fileNameComponentSeparator').value = items.fileNameComponentSeparator;
+    document.getElementById('fileType').value = items.fileType;
     document.getElementById('urlInFile').checked = items.urlInFile;
     document.getElementById('templateText').value = items.templateText;
     document.getElementById('positionOfTemplateText').value = items.positionOfTemplateText;
