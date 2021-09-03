@@ -16,3 +16,8 @@ label {
   font-weight: bold;
   font-size: 15px;
 }
+
+.invalid_field {
+  border-width: 5px !important;
+  border-color: red !important;
+}

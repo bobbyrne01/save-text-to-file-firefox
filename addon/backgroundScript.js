@@ -461,3 +461,11 @@ sending.then(function(response) {
   console.log('SaveTextToFile: Error testing communication between native application and webextension.');
   console.log(error);
 });
+
+browser.runtime.onInstalled.addListener(function (details) {
+  if (details.reason === 'install') {
+    browser.tabs.create({
+      url: browser.runtime.getURL('options.html')
+    });
+  }
+});

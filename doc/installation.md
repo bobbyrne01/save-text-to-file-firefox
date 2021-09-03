@@ -66,6 +66,15 @@ Then copy the manifest to this location under the user's home directory:
 ~/Library/Application Support/Mozilla/NativeMessagingHosts/savetexttofile.json
 ```
 
+Ensure `/Users/Robert/savetexttofile/savetexttofile.py` is executable:
+```
+chmod +x /Users/Robert/savetexttofile/savetexttofile.py
+```
+
+Restart browser, and check the browser extension's options.
+
+Save Text to File's options page should indicate the host application has been successfully configured.
+
 
 ### Linux
 
@@ -83,3 +92,12 @@ Then copy the manifest to these locations under the user's home directory:
 ~/.mozilla/managed-storage/savetexttofile.json
 ~/.mozilla/pkcs11-modules/savetexttofile.json
 ```
+
+Ensure `/Users/Robert/savetexttofile/savetexttofile.py` is executable:
+```
+chmod +x /Users/Robert/savetexttofile/savetexttofile.py
+```
+
+Restart browser, and check the browser extension's options.
+
+Save Text to File's options page should indicate the host application has been successfully configured.

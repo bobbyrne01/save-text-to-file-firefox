@@ -16,8 +16,9 @@
 import sys
 import json
 import struct
+import os
 
-version = "0.1.0"
+version = "0.2.0"
 
 try:
     # Python 3.x version
@@ -54,6 +55,8 @@ try:
         if configuration['action'] == 'TEST_CONNECTIVITY':
             result['status'] = 'Success'
             result['version'] = version
+            scriptPath = os.path.dirname(os.path.abspath(__file__))
+            result['scriptpath'] = scriptPath + os.sep
             sendMessage(encodeMessage(json.dumps(result)))
         else:
             if configuration['directory'].endswith('/'):
@@ -112,6 +115,8 @@ except AttributeError:
         if configuration['action'] == 'TEST_CONNECTIVITY':
             result['status'] = 'Success'
             result['version'] = version
+            scriptPath = os.path.dirname(os.path.abspath(__file__))
+            result['scriptpath'] = scriptPath + os.sep
             sendMessage(encodeMessage(json.dumps(result)))
         else:
             if configuration['directory'].endswith('/'):
