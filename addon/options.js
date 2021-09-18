@@ -16,6 +16,7 @@
 const DEFAULT_FILE_NAME_PREFIX = 'save-text-to-file--';
 const HOST_APPLICATION_NAME = 'savetexttofile';
 const TEST_CONNECTIVITY_ACTION = 'TEST_CONNECTIVITY';
+var conflictActionValue;
 
 function saveOptions() {
 
@@ -40,6 +41,8 @@ function saveOptions() {
       status.style.visibility = 'hidden';
     }, 5000);
   });
+
+  conflictActionValue = document.getElementById('conflictAction').value;
 }
 
 function restoreOptions() {
@@ -70,7 +73,16 @@ function restoreOptions() {
     document.getElementById('directory').value = items.directory;
     document.getElementById('directorySelectionDialog').checked = items.directorySelectionDialog;
     document.getElementById('notifications').checked = items.notifications;
-    document.getElementById('conflictAction').value = items.conflictAction;
+
+    var optionText = items.conflictAction;
+    conflictActionValue = optionText;
+    var dd = document.getElementById('conflictAction');
+    for (var i = 0; i < dd.options.length; i++) {
+        if (dd.options[i].value === optionText) {
+            dd.selectedIndex = i;
+            break;
+        }
+    }
   });
 }
 
@@ -125,6 +137,14 @@ function appConnectionTest() {
       if (!appendAlreadyAdded) {
         conflictAction.options[conflictAction.options.length] = new Option('Append', 'append');
       }
+      var optionText = conflictActionValue;
+      var dd = document.getElementById('conflictAction');
+      for (var i = 0; i < dd.options.length; i++) {
+          if (dd.options[i].value === optionText) {
+              dd.selectedIndex = i;
+              break;
+          }
+      }
       console.log('SaveTextToFile: Successfully tested communication between native application and webextension.');
     }
   }, function(error) {
@@ -155,6 +175,14 @@ function appConnectionTest() {
     }
     if (!uniquifyAlreadyAdded) {
       conflictAction.options[conflictAction.options.length] = new Option('Uniquify', 'uniquify');
+    }
+    var optionText = conflictActionValue;
+    var dd = document.getElementById('conflictAction');
+    for (var i = 0; i < dd.options.length; i++) {
+        if (dd.options[i].value === optionText) {
+            dd.selectedIndex = i;
+            break;
+        }
     }
     console.log('SaveTextToFile: Error communicating between the native application and web extension.');
     console.log(error);

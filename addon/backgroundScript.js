@@ -35,6 +35,7 @@ const CUSTOM_DATE_TITLE = '2';
 const CUSTOM_TITLE_DATE = '3';
 const TITLE_CUSTOM_DATE = '4';
 const TITLE_DATE_CUSTOM = '5';
+const BOM = new Uint8Array([0xEF,0xBB,0xBF]);
 var fileNamePrefix;
 var dateFormat;
 var fileNameComponentOrder;
@@ -79,34 +80,31 @@ function saveTextViaApp(directory, sanitizedFileName, fileContents) {
 }
 
 function saveTextToFile(info) {
-  browser.tabs.executeScript({
-    code: '(' + getSelectionText.toString() + ')()',
-    allFrames: true,
-    matchAboutBlank: true
-  }, function (results) {
-    if (results[0]) {
-      createFileContents(results[0], function(fileContents) {
-        var blob = new Blob([fileContents], {
-          type: 'text/plain'
-        });
-        var url = URL.createObjectURL(blob);
-        createFileName(function(fileName) {
-          var sanitizedFileName = sanitizeFileName(fileName);
-          var sending = browser.runtime.sendNativeMessage(HOST_APPLICATION_NAME, testConnectivityPayload);
-          sending.then(function(response) {
-            var responseObject = JSON.parse(response);
-            if (responseObject.status === 'Success') {
-              saveTextViaApp(directory, sanitizedFileName, fileContents);
-            }
-          }, function(error) {
-            console.log('SaveTextToFile: Error communicating between the native application and web extension.');
-            console.log(error);
-            startDownloadOfTextToFile(url, sanitizedFileName);
-          });
+  if (info.selectionText) {
+    createFileContents(info.selectionText, function(fileContents) {
+      var blob = new Blob([BOM, fileContents], {
+        encoding: 'UTF-8',
+        type: 'text/plain;charset=UTF-8'
+      });
+      var url = URL.createObjectURL(blob);
+      createFileName(function(fileName) {
+        var sanitizedFileName = sanitizeFileName(fileName);
+        var sending = browser.runtime.sendNativeMessage(HOST_APPLICATION_NAME, testConnectivityPayload);
+        sending.then(function(response) {
+          var responseObject = JSON.parse(response);
+          if (responseObject.status === 'Success') {
+            saveTextViaApp(directory, sanitizedFileName, fileContents);
+          }
+        }, function(error) {
+          console.log('SaveTextToFile: Error communicating between the native application and web extension.');
+          console.log(error);
+          startDownloadOfTextToFile(url, sanitizedFileName);
         });
       });
-    }
-  });
+    });
+  } else {
+    console.log('SaveTextToFile: No selected text found.');
+  }
 }
 
 function sanitizeFileName(fileName) {
