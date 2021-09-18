@@ -108,6 +108,12 @@ function appConnectionTest() {
         document.getElementById('nativeAppMessage').appendChild(para);
       }
 
+      if (responseObject.pythonversion) {
+        para = document.createElement('p');
+        para.appendChild(document.createTextNode('Python version: ' + responseObject.pythonversion));
+        document.getElementById('nativeAppMessage').appendChild(para);
+      }
+
       para = document.createElement('p');
       para.appendChild(document.createTextNode(''));
       while(document.getElementById('directoryMessage').firstChild) {

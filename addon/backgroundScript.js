@@ -59,7 +59,8 @@ function saveTextViaApp(directory, sanitizedFileName, fileContents) {
     filename: sanitizedFileName,
     directory: directory,
     fileContent: fileContents,
-    conflictAction: conflictAction
+    conflictAction: conflictAction,
+    directorySelectionDialog: directorySelectionDialog
   };
 
   var sending = browser.runtime.sendNativeMessage(
@@ -68,10 +69,12 @@ function saveTextViaApp(directory, sanitizedFileName, fileContents) {
   sending.then(function onResponse(response) {
     var json = JSON.parse(response);
     if (json.status === 'Success') {
-        notify('Text saved.');
+      notify('Text saved.');
+    } else if (json.status === 'Cancel') {
+      notify('Canceled.');
     } else {
       notify('Error occured saving text via host application. Check browser console.');
-      console.log("SaveTextToFile: Native application response: " + response);
+      console.log('SaveTextToFile: Native application response: ' + response);
     }
   }, function onError(error) {
     notify('Error occured communicating with host application. Check browser console.');
@@ -263,13 +266,11 @@ browser.contextMenus.onClicked.addListener(function(info) {
 });
 
 function notify(message) {
-  browser.notifications.clear(NOTIFICATION_ID, function() {
-    browser.notifications.create(NOTIFICATION_ID, {
-      title: EXTENSION_TITLE,
-      type: 'basic',
-      message: message,
-      iconUrl: browser.runtime.getURL('images/ico.png')
-    });
+  browser.notifications.create('', {
+    title: EXTENSION_TITLE,
+    type: 'basic',
+    message: message,
+    iconUrl: browser.runtime.getURL('images/ico.png')
   });
 }
 
