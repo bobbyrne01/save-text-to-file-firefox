@@ -33,7 +33,8 @@ function saveOptions() {
     directory: document.getElementById('directory').value,
     directorySelectionDialog: document.getElementById('directorySelectionDialog').checked,
     notifications: document.getElementById('notifications').checked,
-    conflictAction: document.getElementById('conflictAction').value
+    conflictAction: document.getElementById('conflictAction').value,
+    stripAppendedBlankLines: document.getElementById('stripAppendedBlankLines').checked
   }, function() {
     var status = document.getElementById('status');
     status.style.visibility = 'visible';
@@ -59,7 +60,8 @@ function restoreOptions() {
     directory: '',
     directorySelectionDialog: false,
     notifications: true,
-    conflictAction: 'uniquify'
+    conflictAction: 'uniquify',
+    stripAppendedBlankLines: false
   }, function(items) {
     document.getElementById('fileNamePrefix').value = items.fileNamePrefix;
     document.getElementById('dateFormat').value = items.dateFormat;
@@ -73,6 +75,7 @@ function restoreOptions() {
     document.getElementById('directory').value = items.directory;
     document.getElementById('directorySelectionDialog').checked = items.directorySelectionDialog;
     document.getElementById('notifications').checked = items.notifications;
+    document.getElementById('stripAppendedBlankLines').checked = items.stripAppendedBlankLines;
 
     var optionText = items.conflictAction;
     conflictActionValue = optionText;
