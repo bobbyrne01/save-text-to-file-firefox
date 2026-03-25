@@ -109,10 +109,15 @@ try:
 
             if configuration['conflictAction'] == 'append':
                 saveMode = 'a'
-                if configuration.get('stripAppendedBlankLines', False):
-                    configuration['fileContent'] = '\n' + configuration['fileContent'].strip()
+                fileExists = os.path.isfile(latestPath) and os.path.getsize(latestPath) > 0
+                if fileExists:
+                    if configuration.get('stripAppendedBlankLines', False):
+                        configuration['fileContent'] = '\n' + configuration['fileContent'].strip()
+                    else:
+                        configuration['fileContent'] = '\n\n' + configuration['fileContent']
                 else:
-                    configuration['fileContent'] = '\n\n' + configuration['fileContent']
+                    if configuration.get('stripAppendedBlankLines', False):
+                        configuration['fileContent'] = configuration['fileContent'].strip()
             else:
                 saveMode = 'w+'
 
@@ -215,10 +220,15 @@ except AttributeError:
 
             if configuration['conflictAction'] == 'append':
                 saveMode = 'a'
-                if configuration.get('stripAppendedBlankLines', False):
-                    configuration['fileContent'] = '\n' + configuration['fileContent'].strip()
+                fileExists = os.path.isfile(latestPath) and os.path.getsize(latestPath) > 0
+                if fileExists:
+                    if configuration.get('stripAppendedBlankLines', False):
+                        configuration['fileContent'] = '\n' + configuration['fileContent'].strip()
+                    else:
+                        configuration['fileContent'] = '\n\n' + configuration['fileContent']
                 else:
-                    configuration['fileContent'] = '\n\n' + configuration['fileContent']
+                    if configuration.get('stripAppendedBlankLines', False):
+                        configuration['fileContent'] = configuration['fileContent'].strip()
             else:
                 saveMode = 'w+'
 
