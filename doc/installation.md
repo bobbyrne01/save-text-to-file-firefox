@@ -15,89 +15,105 @@ While installing both the browser extension and host application, text files can
 ## Table of Contents
 
 * [Prerequisites](#prerequisites)
-* [Download the Host Application](#download-the-host-application)
-* [Install Host Application](#install-host-application)
+* [Step 1 — Download the Host Application](#step-1--download-the-host-application)
+* [Step 2 — Register the Host Application](#step-2--register-the-host-application)
   * [Windows](#windows)
   * [Mac](#mac)
   * [Linux](#linux)
+* [Step 3 — Verify](#step-3--verify)
 
 
 ## Prerequisites
 
-Ensurue Python is installed and available on `PATH`.
+Ensure Python is installed and available on `PATH`.
 
 * [Python](https://www.python.org/downloads/)
 
-## Download the Host Application
+## Step 1 — Download the Host Application
 
 Download this repository as a `.zip` file, from [here](https://github.com/bobbyrne01/save-text-to-file-firefox/archive/master.zip).
 
-Copy `app/` directory and paste it to your computer, example: `C:\app\` or `/Users/Robert/app/`.
+Extract and copy the `app/` directory to your computer:
 
-Then rename it to `savetexttofile`, example: `C:\savetexttofile\` or `/Users/Robert/savetexttofile/`.
+| Platform | Required path |
+|---|---|
+| Windows | `C:\savetexttofile\` (hardcoded — must be this exact location) |
+| Mac | Any path, e.g. `/Users/yourusername/savetexttofile/` |
+| Linux | Any path, e.g. `/home/yourusername/savetexttofile/` |
 
-## Install Host Application
+Then rename the folder to `savetexttofile` at that location.
 
-Finally, follow the platform specific steps below.
+## Step 2 — Register the Host Application
+
+Follow the platform-specific steps below.
 
 ### Windows
 
-Assuming you saved `app/` to `C:\savetexttofile\` on your computer.
+The Windows batch scripts hardcode `C:\savetexttofile\`, so the folder must be placed at exactly that path.
 
-* Navigate to `C:\savetexttofile\`
-* Right click on `install_host.bat`
-* Select `Run as administrator`, and confirm any prompt.
+1. Navigate to `C:\savetexttofile\`
+2. Right-click `install_host.bat`
+3. Select **Run as administrator** and confirm any prompt.
 
-The host application should now be installed.
+The host application is now registered.
 
 
 ### Mac
 
-Modify `savetexttofile.json`, changing the `path` value to the location used previously:
+1. Open `savetexttofile.json` and update the `path` value to point to your installation:
 ```
 "path": "/path/to/savetexttofile.py"
 ```
-->
+→
 ```
-"path": "/Users/Robert/savetexttofile/savetexttofile.py"
-```
-Then copy the manifest to this location under the user's home directory:
-```
-~/Library/Application Support/Mozilla/NativeMessagingHosts/savetexttofile.json
+"path": "/Users/yourusername/savetexttofile/savetexttofile.py"
 ```
 
-Ensure `/Users/Robert/savetexttofile/savetexttofile.py` is executable:
+2. Copy the manifest to the native messaging hosts directory:
 ```
-chmod +x /Users/Robert/savetexttofile/savetexttofile.py
+cp savetexttofile.json ~/Library/Application\ Support/Mozilla/NativeMessagingHosts/savetexttofile.json
 ```
 
-Restart browser, and check the browser extension's options.
+3. Make the Python script executable:
+```
+chmod +x /Users/yourusername/savetexttofile/savetexttofile.py
+```
 
-Save Text to File's options page should indicate the host application has been successfully configured.
+4. Restart Firefox.
 
 
 ### Linux
 
-Modify `savetexttofile.json`, changing the `path` value to the location used previously:
+1. Open `savetexttofile.json` and update the `path` value to point to your installation:
 ```
 "path": "/path/to/savetexttofile.py"
 ```
-->
+→
 ```
-"path": "/home/Robert/savetexttofile/savetexttofile.py"
-```
-Then copy the manifest to these locations under the user's home directory:
-```
-~/.mozilla/native-messaging-hosts/savetexttofile.json
-~/.mozilla/managed-storage/savetexttofile.json
-~/.mozilla/pkcs11-modules/savetexttofile.json
+"path": "/home/yourusername/savetexttofile/savetexttofile.py"
 ```
 
-Ensure `/Users/Robert/savetexttofile/savetexttofile.py` is executable:
+2. Copy the manifest to the native messaging hosts directory (create it if needed):
 ```
-chmod +x /Users/Robert/savetexttofile/savetexttofile.py
+mkdir -p ~/.mozilla/native-messaging-hosts
+cp savetexttofile.json ~/.mozilla/native-messaging-hosts/savetexttofile.json
 ```
 
-Restart browser, and check the browser extension's options.
+3. Make the Python script executable:
+```
+chmod +x /home/yourusername/savetexttofile/savetexttofile.py
+```
 
-Save Text to File's options page should indicate the host application has been successfully configured.
+4. Restart Firefox.
+
+
+## Step 3 — Verify
+
+1. Open the extension options page: Firefox menu → Add-ons and themes → Save Text to File → Preferences.
+2. Click **Test application connection**.
+3. The options page should show **Application found** and display the app version and path.
+
+If the connection test fails, double-check that:
+- The `path` in `savetexttofile.json` matches the actual location of `savetexttofile.py`.
+- The manifest was copied to the correct directory for your platform.
+- Python is on your `PATH` (`python --version` should work in a terminal).
