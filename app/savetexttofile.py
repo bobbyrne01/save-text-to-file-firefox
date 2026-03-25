@@ -109,7 +109,10 @@ try:
 
             if configuration['conflictAction'] == 'append':
                 saveMode = 'a'
-                configuration['fileContent'] = '\n\n' + configuration['fileContent']
+                if configuration.get('stripAppendedBlankLines', False):
+                    configuration['fileContent'] = '\n' + configuration['fileContent'].strip()
+                else:
+                    configuration['fileContent'] = '\n\n' + configuration['fileContent']
             else:
                 saveMode = 'w+'
 
@@ -212,7 +215,10 @@ except AttributeError:
 
             if configuration['conflictAction'] == 'append':
                 saveMode = 'a'
-                configuration['fileContent'] = '\n\n' + configuration['fileContent']
+                if configuration.get('stripAppendedBlankLines', False):
+                    configuration['fileContent'] = '\n' + configuration['fileContent'].strip()
+                else:
+                    configuration['fileContent'] = '\n\n' + configuration['fileContent']
             else:
                 saveMode = 'w+'
 

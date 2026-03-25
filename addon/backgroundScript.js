@@ -49,6 +49,7 @@ var directory;
 var directorySelectionDialog;
 var notifications;
 var conflictAction;
+var stripAppendedBlankLines;
 var testConnectivityPayload = {
   action: TEST_CONNECTIVITY_ACTION
 };
@@ -60,7 +61,8 @@ function saveTextViaApp(directory, sanitizedFileName, fileContents) {
     directory: directory,
     fileContent: fileContents,
     conflictAction: conflictAction,
-    directorySelectionDialog: directorySelectionDialog
+    directorySelectionDialog: directorySelectionDialog,
+    stripAppendedBlankLines: stripAppendedBlankLines
   };
 
   var sending = browser.runtime.sendNativeMessage(
@@ -287,7 +289,8 @@ browser.storage.sync.get({
   directory: '',
   directorySelectionDialog: false,
   notifications: true,
-  conflictAction: 'uniquify'
+  conflictAction: 'uniquify',
+  stripAppendedBlankLines: false
 }, function(items) {
   fileNamePrefix = items.fileNamePrefix;
   dateFormat = items.dateFormat;
@@ -302,6 +305,7 @@ browser.storage.sync.get({
   directorySelectionDialog = items.directorySelectionDialog;
   notifications = items.notifications;
   conflictAction = items.conflictAction;
+  stripAppendedBlankLines = items.stripAppendedBlankLines;
 });
 
 function getSelectionText() {
@@ -344,6 +348,7 @@ browser.storage.onChanged.addListener(function(changes) {
   _updateDirectorySelectionOnChange();
   _updateNotificationsOnChange();
   _updateConflictActionOnChange();
+  _updateStripAppendedBlankLinesOnChange();
 
   function _updatePrefixOnChange() {
     if (changes.fileNamePrefix) {
@@ -445,6 +450,14 @@ browser.storage.onChanged.addListener(function(changes) {
     if (changes.conflictAction) {
       if (changes.conflictAction.newValue !== changes.conflictAction.oldValue) {
         conflictAction = changes.conflictAction.newValue;
+      }
+    }
+  }
+
+  function _updateStripAppendedBlankLinesOnChange() {
+    if (changes.stripAppendedBlankLines) {
+      if (changes.stripAppendedBlankLines.newValue !== changes.stripAppendedBlankLines.oldValue) {
+        stripAppendedBlankLines = changes.stripAppendedBlankLines.newValue;
       }
     }
   }
