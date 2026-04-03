@@ -92,4 +92,4 @@ Every selection will now be appended to `words-to-learn.txt`, one entry per line
 
 ## License
 
-[Apache License 2.0](COPYING)
+[GNU General Public License v3.0](COPYING)
