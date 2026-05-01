@@ -5,7 +5,7 @@
   "applications": {
     "gecko": {
       "id": "HighlightedTextToFile@bobbyrne01.org",
-      "strict_min_version": "57.0"
+      "strict_min_version": "58.0"
     }
   },
   "permissions": ["contextMenus", "downloads", "storage", "notifications", "activeTab", "nativeMessaging"],
